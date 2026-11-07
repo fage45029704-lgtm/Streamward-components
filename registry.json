@@ -1,0 +1,9 @@
+{
+  "format": "streamward-registry",
+  "formatVersion": 1,
+  "name": "万流集组件仓库",
+  "description": "画布模型组件包（.swc.json）。装了就能在双击选择器的「模型组件」里看到。",
+  "updatedAt": "2026-11-07T09:00:00.000Z",
+  "count": 0,
+  "packs": []
+}
