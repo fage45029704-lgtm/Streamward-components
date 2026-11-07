@@ -1,0 +1,740 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.097Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtqzef0d-elagc0",
+    "name": "图片高清放大_SD放大",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 52,
+          "type": "CLIPTextEncode",
+          "pos": [
+            -42,
+            1316
+          ],
+          "size": [
+            350,
+            170
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 102
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                95
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "鲜艳的颜色、过度曝光、静态、不清楚的细节、字幕、风格、艺术品、绘画、框架、静止、整体灰色、质量最差、质量低、JPEG伪影、丑陋、不完整、多余的手指、画得不好的手、画得很差的脸、变形、毁容、四肢畸形、手指融合、静止的框架、凌乱的背景、三条腿、拥挤的背景、倒立行走"
+          ]
+        },
+        {
+          "id": 54,
+          "type": "UltimateSDUpscale",
+          "pos": [
+            493,
+            822
+          ],
+          "size": [
+            280,
+            912
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 92
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 93
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 94
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 95
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 96
+            },
+            {
+              "label": "upscale_model",
+              "name": "upscale_model",
+              "type": "UPSCALE_MODEL",
+              "link": 97
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                100
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "seed": true,
+              "cfg": true,
+              "tile_height": true,
+              "tile_padding": true,
+              "force_uniform_tiles": true,
+              "mode_type": true,
+              "seam_fix_denoise": true,
+              "steps": true,
+              "seam_fix_padding": true,
+              "scheduler": true,
+              "tile_width": true,
+              "seam_fix_width": true,
+              "denoise": true,
+              "seam_fix_mode": true,
+              "sampler_name": true,
+              "tiled_decode": true,
+              "mask_blur": true,
+              "seam_fix_mask_blur": true,
+              "upscale_by": true
+            },
+            "Node name for S&R": "UltimateSDUpscale",
+            "cnr_id": "comfyui_ultimatesdupscale",
+            "ver": "bebd5696fddd61cb0d08949a222c508898ab5577",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            2,
+            262897763752632,
+            "randomize",
+            4,
+            1,
+            "euler",
+            "simple",
+            0.05,
+            "Linear",
+            1024,
+            1024,
+            8,
+            32,
+            "None",
+            1,
+            64,
+            8,
+            16,
+            true,
+            false
+          ]
+        },
+        {
+          "id": 56,
+          "type": "CLIPTextEncode",
+          "pos": [
+            -42,
+            1096
+          ],
+          "size": [
+            350,
+            160
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 101
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                94
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "高清放大"
+          ]
+        },
+        {
+          "id": 57,
+          "type": "UpscaleModelLoader",
+          "pos": [
+            -36,
+            1551
+          ],
+          "size": [
+            350,
+            90
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "UPSCALE_MODEL",
+              "name": "UPSCALE_MODEL",
+              "type": "UPSCALE_MODEL",
+              "links": [
+                97
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "UpscaleModelLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "4x-ClearRealityV1_Soft.pth"
+          ]
+        },
+        {
+          "id": 60,
+          "type": "LoadImage",
+          "pos": [
+            -362,
+            411
+          ],
+          "size": [
+            274.080078125,
+            314.0000305175781
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                92
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "LoadImage",
+            "streamward_material": {
+              "image": {
+                "label": "加载图片",
+                "required": true
+              }
+            }
+          },
+          "widgets_values": [
+            "example.png",
+            "image"
+          ]
+        },
+        {
+          "id": 61,
+          "type": "PreviewImage",
+          "pos": [
+            900,
+            835
+          ],
+          "size": [
+            497.1800842285156,
+            568.4639892578125
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 100
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          }
+        },
+        {
+          "id": 58,
+          "type": "VAELoader",
+          "pos": [
+            -378,
+            963
+          ],
+          "size": [
+            270,
+            60
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                96
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "flux2-vae.safetensors"
+          ]
+        },
+        {
+          "id": 53,
+          "type": "UNETLoader",
+          "pos": [
+            -381,
+            817
+          ],
+          "size": [
+            270,
+            90
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                98
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "Flux.2 Klein 9B-NSFW.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 62,
+          "type": "CLIPLoader",
+          "pos": [
+            -380,
+            1113
+          ],
+          "size": [
+            270,
+            110
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                101,
+                102
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CLIPLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "qwen_3_8b_fp8mixed.safetensors",
+            "flux2",
+            "default"
+          ]
+        },
+        {
+          "id": 55,
+          "type": "LoraLoaderModelOnly",
+          "pos": [
+            19,
+            822
+          ],
+          "size": [
+            300,
+            90
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 98
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                93
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "LoraLoaderModelOnly",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.1",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            }
+          },
+          "widgets_values": [
+            "f2k_9B_lcs_consist_20260415.safetensors",
+            1
+          ]
+        }
+      ],
+      "links": [
+        [
+          92,
+          60,
+          0,
+          54,
+          0,
+          "IMAGE"
+        ],
+        [
+          93,
+          55,
+          0,
+          54,
+          1,
+          "MODEL"
+        ],
+        [
+          94,
+          56,
+          0,
+          54,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          95,
+          52,
+          0,
+          54,
+          3,
+          "CONDITIONING"
+        ],
+        [
+          96,
+          58,
+          0,
+          54,
+          4,
+          "VAE"
+        ],
+        [
+          97,
+          57,
+          0,
+          54,
+          5,
+          "UPSCALE_MODEL"
+        ],
+        [
+          98,
+          53,
+          0,
+          55,
+          0,
+          "MODEL"
+        ],
+        [
+          100,
+          54,
+          0,
+          61,
+          0,
+          "IMAGE"
+        ],
+        [
+          101,
+          62,
+          0,
+          56,
+          0,
+          "CLIP"
+        ],
+        [
+          102,
+          62,
+          0,
+          52,
+          0,
+          "CLIP"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 62,
+      "last_link_id": 102,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "高清放大"
+    },
+    "manifest": {
+      "params": [],
+      "materialSlots": [
+        {
+          "nodeId": "60",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "加载图片",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "61",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "61",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：CLIP 文本编码（用 CLIP 把提示词编码成条件嵌入）；加载图片（从上传口读取图片「外部图片素材入口」）；加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；加载扩散模型（加载 UNet/DiT 扩散主干模型「生成的核心权重」）；加载 CLIP（加载文本编码器 CLIP 模型「把提示词编码成条件」）；加载 LoRA（仅模型）（加载 LoRA 微调权重，只改扩散模型、不改 CLIP）；…（共 7 个）。\n核心模型：VAE flux2-vae.safetensors / UNet Flux.2 Klein 9B-NSFW.safetensors / CLIP qwen_3_8b_fp8mixed.safetensors。\n输入：参考图。\n输出：图片。",
+      "paramNodes": [
+        {
+          "nodeId": "52",
+          "nodeType": "CLIPTextEncode",
+          "title": "CLIPTextEncode",
+          "desc": "用 CLIP 把提示词编码成条件嵌入。"
+        },
+        {
+          "nodeId": "54",
+          "nodeType": "UltimateSDUpscale",
+          "title": "UltimateSDUpscale",
+          "desc": "属于「image/upscaling」分类"
+        },
+        {
+          "nodeId": "56",
+          "nodeType": "CLIPTextEncode",
+          "title": "CLIPTextEncode",
+          "desc": "用 CLIP 把提示词编码成条件嵌入。"
+        },
+        {
+          "nodeId": "57",
+          "nodeType": "UpscaleModelLoader",
+          "title": "UpscaleModelLoader",
+          "desc": "属于「model/loaders」分类"
+        },
+        {
+          "nodeId": "60",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "61",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "58",
+          "nodeType": "VAELoader",
+          "title": "VAELoader",
+          "desc": "加载 VAE 模型（潜空间 ↔ 像素空间的编解码）。"
+        },
+        {
+          "nodeId": "53",
+          "nodeType": "UNETLoader",
+          "title": "UNETLoader",
+          "desc": "加载 UNet/DiT 扩散主干模型（生成的核心权重）。"
+        },
+        {
+          "nodeId": "62",
+          "nodeType": "CLIPLoader",
+          "title": "CLIPLoader",
+          "desc": "加载文本编码器 CLIP 模型（把提示词编码成条件）。"
+        },
+        {
+          "nodeId": "55",
+          "nodeType": "LoraLoaderModelOnly",
+          "title": "LoraLoaderModelOnly",
+          "desc": "加载 LoRA 微调权重，只改扩散模型、不改 CLIP。"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CLIPLoader",
+      "CLIPTextEncode",
+      "LoadImage",
+      "LoraLoaderModelOnly",
+      "PreviewImage",
+      "UNETLoader",
+      "UltimateSDUpscale",
+      "UpscaleModelLoader",
+      "VAELoader"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

@@ -1,0 +1,514 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.123Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvhnpp3b-i05rqb",
+    "name": "人声伴奏分离 分镜台",
+    "savedAt": 1793869547476,
+    "workflow": {
+      "id": "audio_separator_workflow",
+      "revision": 0,
+      "last_node_id": 5,
+      "last_link_id": 4,
+      "config": {},
+      "extra": {
+        "VHS_KeepIntermediate": true,
+        "VHS_MetadataImage": true,
+        "VHS_latentpreviewrate": 0,
+        "frontendVersion": "1.23.0",
+        "VHS_latentpreview": false,
+        "ds": {
+          "scale": 0.5272124494210636,
+          "offset": [
+            194.85642271748756,
+            737.7832438909471
+          ]
+        },
+        "pixaromaGroups": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "links_added_by_ue": [],
+        "ue_links": [],
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 2,
+          "type": "MelBandRoFormerModelLoader",
+          "pos": [
+            333,
+            -349
+          ],
+          "size": [
+            345.10650634765625,
+            58
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model_name",
+              "name": "model_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "model_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MELROFORMERMODEL",
+              "links": [
+                2
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "MelBandRoFormerModelLoader",
+            "cnr_id": "ComfyUI-MelBandRoFormer",
+            "ver": "b40e263224778ec417114d91d8b3b39934e30de5",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "aux_id": "kijai/ComfyUI-MelBandRoFormer",
+            "widget_ue_connectable": {
+              "model_name": true
+            }
+          },
+          "widgets_values": [
+            "MelBandRoformer_fp16.safetensors"
+          ],
+          "color": "#233",
+          "bgcolor": "#355"
+        },
+        {
+          "id": 3,
+          "type": "MelBandRoFormerSampler",
+          "pos": [
+            737,
+            -209
+          ],
+          "size": [
+            338.734375,
+            46
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MELROFORMERMODEL",
+              "link": 2
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1
+            }
+          ],
+          "outputs": [
+            {
+              "label": "vocals",
+              "name": "vocals",
+              "type": "AUDIO",
+              "links": [
+                3
+              ]
+            },
+            {
+              "label": "instruments",
+              "name": "instruments",
+              "type": "AUDIO",
+              "links": [
+                4
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "MelBandRoFormerSampler",
+            "cnr_id": "ComfyUI-MelBandRoFormer",
+            "ver": "b40e263224778ec417114d91d8b3b39934e30de5",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "aux_id": "kijai/ComfyUI-MelBandRoFormer",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [],
+          "color": "#233",
+          "bgcolor": "#355"
+        },
+        {
+          "id": 5,
+          "type": "PreviewAudio",
+          "pos": [
+            1167,
+            -73
+          ],
+          "size": [
+            337.33734130859375,
+            88
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 4
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            }
+          ],
+          "title": "伴奏预览",
+          "properties": {
+            "Node name for S&R": "PreviewAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {},
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 0,
+              "slot": "slot-3-3"
+            }
+          },
+          "widgets_values": [],
+          "color": "#233",
+          "bgcolor": "#355",
+          "_meta": {
+            "title": "伴奏（采集点 2）"
+          }
+        },
+        {
+          "id": 4,
+          "type": "PreviewAudio",
+          "pos": [
+            1165,
+            -257
+          ],
+          "size": [
+            337.33734130859375,
+            88
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 3
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            }
+          ],
+          "title": "人声预览",
+          "properties": {
+            "Node name for S&R": "PreviewAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.20.3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {},
+            "streamward_capture": true
+          },
+          "widgets_values": [],
+          "color": "#233",
+          "bgcolor": "#355",
+          "_meta": {
+            "title": "人声（采集点 1）"
+          }
+        },
+        {
+          "id": 1,
+          "type": "LoadAudioUI",
+          "pos": [
+            -230,
+            -180
+          ],
+          "size": [
+            409,
+            398
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                1
+              ]
+            },
+            {
+              "label": "duration",
+              "name": "duration",
+              "type": "FLOAT",
+              "links": []
+            },
+            {
+              "label": "filename",
+              "name": "filename",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadAudioUI",
+            "ver": "da8e020d18df43fc5c50a9f29be1a3f816420d90",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "aux_id": "WhatDreamsCost/WhatDreamsCost-ComfyUI",
+            "__load_audio_ui_trim": {
+              "audio": "8c463dc0953af3feb0129436795eea911718c30800667b1f5855a4fa5d10d9d3.flac",
+              "start_time": 0,
+              "end_time": 179.5,
+              "duration": 179.5
+            },
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "audioUI": {
+                "label": "待分离音频（人声+伴奏）",
+                "required": true,
+                "seq": 1
+              },
+              "audio": {
+                "seq": 1,
+                "required": true,
+                "label": "音频素材 1"
+              }
+            },
+            "streamward_params": {
+              "start_time": {
+                "label": "开始时间",
+                "seq": 1
+              },
+              "end_time": {
+                "label": "结束时间",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "none",
+            null,
+            0,
+            179.5,
+            179.5,
+            null,
+            ""
+          ],
+          "color": "#233",
+          "bgcolor": "#355"
+        }
+      ],
+      "links": [
+        [
+          1,
+          1,
+          0,
+          3,
+          1,
+          "AUDIO"
+        ],
+        [
+          2,
+          2,
+          0,
+          3,
+          0,
+          "MELROFORMERMODEL"
+        ],
+        [
+          3,
+          3,
+          0,
+          4,
+          0,
+          "AUDIO"
+        ],
+        [
+          4,
+          3,
+          1,
+          5,
+          0,
+          "AUDIO"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "1",
+          "nodeType": "LoadAudioUI",
+          "field": "start_time",
+          "label": "开始时间",
+          "hint": null,
+          "fromMark": true,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 100000,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "LoadAudioUI",
+          "field": "end_time",
+          "label": "结束时间",
+          "hint": null,
+          "fromMark": true,
+          "type": "float",
+          "group": "main",
+          "value": 179.5,
+          "min": 0,
+          "max": 100000,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "1",
+          "nodeType": "LoadAudioUI",
+          "field": "audio",
+          "label": "音频素材 1",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "maskOut": false,
+          "required": true,
+          "marked": true,
+          "seq": 1
+        }
+      ],
+      "outputNodes": [
+        "PreviewAudio"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "5",
+          "nodeType": "PreviewAudio",
+          "kind": "audio"
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "PreviewAudio",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "5",
+      "tailSlotId": "slot-3-3",
+      "tailOutIdx": 0,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "【音频生成】\n关键节点：Preview Audio（Preview the audio without saving it to the C…）；Mel-Band RoFormer Model Loader；Mel-Band RoFormer Sampler；Load Audio UI。\n输入：参考音频。\n输出：音频。\n可调参数：开始时间、结束时间。",
+      "paramNodes": [
+        {
+          "nodeId": "2",
+          "nodeType": "MelBandRoFormerModelLoader",
+          "title": "MelBandRoFormerModelLoader",
+          "desc": "属于「Mel-Band RoFormer」分类"
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "MelBandRoFormerSampler",
+          "title": "MelBandRoFormerSampler",
+          "desc": "属于「Mel-Band RoFormer」分类"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "PreviewAudio",
+          "title": "PreviewAudio",
+          "desc": "Preview the audio without saving it to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "PreviewAudio",
+          "title": "PreviewAudio",
+          "desc": "Preview the audio without saving it to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "LoadAudioUI",
+          "title": "LoadAudioUI",
+          "desc": "属于「WhatDreamsCost」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "LoadAudioUI",
+      "MelBandRoFormerModelLoader",
+      "MelBandRoFormerSampler",
+      "PreviewAudio"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

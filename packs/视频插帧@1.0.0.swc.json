@@ -1,0 +1,689 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.101Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtwpjrho-9j4re9",
+    "name": "视频插帧",
+    "savedAt": 1794066438323,
+    "workflow": {
+      "last_node_id": 105,
+      "last_link_id": 141,
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 103,
+          "type": "PreviewAny",
+          "pos": [
+            -44,
+            6050
+          ],
+          "size": [
+            140,
+            76
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "source",
+              "name": "source",
+              "type": "*",
+              "link": 135
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewAny"
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 102,
+          "type": "GetVideoComponents",
+          "pos": [
+            -97,
+            5815
+          ],
+          "size": [
+            185.17733764648438,
+            86
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "video",
+              "name": "video",
+              "type": "VIDEO",
+              "link": 133
+            }
+          ],
+          "outputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": [
+                136
+              ]
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "fps",
+              "name": "fps",
+              "type": "FLOAT",
+              "links": [
+                134,
+                135
+              ]
+            },
+            {
+              "label": "bit_depth",
+              "name": "bit_depth",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "GetVideoComponents"
+          }
+        },
+        {
+          "id": 93,
+          "type": "RH_DLSS5FrameInterpolation",
+          "pos": [
+            -629,
+            5576
+          ],
+          "size": [
+            298.103515625,
+            218
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "video",
+              "name": "video",
+              "shape": 7,
+              "type": "VIDEO"
+            },
+            {
+              "label": "image",
+              "name": "image",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 138
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 139
+            }
+          ],
+          "outputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": [
+                123
+              ]
+            },
+            {
+              "label": "video",
+              "name": "video",
+              "type": "VIDEO",
+              "links": [
+                133
+              ]
+            },
+            {
+              "label": "status",
+              "name": "status",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "RH_DLSS5FrameInterpolation",
+            "streamward_params": {
+              "output_fps": {
+                "label": "补帧数",
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "2x",
+            "auto",
+            0.24,
+            "on",
+            "",
+            ""
+          ]
+        },
+        {
+          "id": 95,
+          "type": "VHS_VideoCombine",
+          "pos": [
+            190,
+            5642
+          ],
+          "size": [
+            574.4569702148438,
+            1350.4534912109375
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 123
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 140
+            },
+            {
+              "label": "meta_batch",
+              "name": "meta_batch",
+              "shape": 7,
+              "type": "VHS_BatchManager"
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "shape": 7,
+              "type": "VAE"
+            },
+            {
+              "label": "frame_rate",
+              "name": "frame_rate",
+              "type": "FLOAT",
+              "widget": {
+                "name": "frame_rate"
+              },
+              "link": 134
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Filenames",
+              "name": "Filenames",
+              "type": "VHS_FILENAMES",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VHS_VideoCombine",
+            "streamward_capture": true
+          },
+          "widgets_values": {
+            "frame_rate": 24,
+            "loop_count": 0,
+            "filename_prefix": "AnimateDiff",
+            "format": "video/h264-mp4",
+            "pix_fmt": "yuv420p",
+            "crf": 19,
+            "save_metadata": false,
+            "trim_to_audio": false,
+            "pingpong": false,
+            "save_output": false,
+            "no_preview": false,
+            "videopreview": {
+              "paused": false,
+              "hidden": false,
+              "params": {
+                "storageProvider": "cos",
+                "cos_url": "https://rh-images.xiaoyaoyou.com//4c76cbad1f9d94b8364fa68f011b01d6/temp/AnimateDiff_00001_p81-audio_ktjcj_1789115506.mp4",
+                "workflow": "AnimateDiff_00001_p81.png",
+                "format": "video/h264-mp4",
+                "subfolder": "",
+                "label": "Normal",
+                "type": "temp",
+                "frame_rate": 48,
+                "bucket": "rh-images-1252422369",
+                "score": 45,
+                "filename": "AnimateDiff_00001_p81-audio_ktjcj_1789115506.mp4",
+                "fullpath": "/data/ComfyUI/personal/4c76cbad1f9d94b8364fa68f011b01d6/temp/AnimateDiff_00001_p81-audio.mp4",
+                "objectKey": "4c76cbad1f9d94b8364fa68f011b01d6/temp/AnimateDiff_00001_p81-audio_ktjcj_1789115506.mp4"
+              }
+            }
+          }
+        },
+        {
+          "id": 96,
+          "type": "CreateVideo",
+          "pos": [
+            791,
+            5660
+          ],
+          "size": [
+            270,
+            102
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 136
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 141
+            }
+          ],
+          "outputs": [
+            {
+              "label": "VIDEO",
+              "name": "VIDEO",
+              "type": "VIDEO",
+              "links": [
+                125
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CreateVideo"
+          },
+          "widgets_values": [
+            24,
+            8
+          ]
+        },
+        {
+          "id": 97,
+          "type": "GetVideoComponents",
+          "pos": [
+            1114,
+            5657
+          ],
+          "size": [
+            185.17733764648438,
+            86
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "video",
+              "name": "video",
+              "type": "VIDEO",
+              "link": 125
+            }
+          ],
+          "outputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "fps",
+              "name": "fps",
+              "type": "FLOAT",
+              "links": []
+            },
+            {
+              "label": "bit_depth",
+              "name": "bit_depth",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "GetVideoComponents",
+            "streamward_tail": {
+              "out": 0,
+              "slot": "image-chooser-1"
+            }
+          }
+        },
+        {
+          "id": 105,
+          "type": "VHS_LoadVideo",
+          "pos": [
+            -997,
+            5657
+          ],
+          "size": [
+            252.056640625,
+            334
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "meta_batch",
+              "name": "meta_batch",
+              "shape": 7,
+              "type": "VHS_BatchManager"
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "shape": 7,
+              "type": "VAE"
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                138
+              ]
+            },
+            {
+              "label": "frame_count",
+              "name": "frame_count",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                139,
+                140,
+                141
+              ]
+            },
+            {
+              "label": "video_info",
+              "name": "video_info",
+              "type": "VHS_VIDEOINFO",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VHS_LoadVideo",
+            "streamward_material": {
+              "video": {
+                "label": "加载视频",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": {
+            "video": "None",
+            "force_rate": 0,
+            "force_size": "Disabled",
+            "custom_width": 0,
+            "custom_height": 0,
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "select_every_nth": 1,
+            "format": "AnimateDiff",
+            "choose video to upload": "image",
+            "videopreview": {
+              "hidden": false,
+              "paused": false,
+              "params": {
+                "force_rate": 0,
+                "custom_width": 0,
+                "custom_height": 0,
+                "frame_load_cap": 0,
+                "skip_first_frames": 0,
+                "select_every_nth": 1
+              }
+            }
+          }
+        }
+      ],
+      "links": [
+        [
+          123,
+          93,
+          0,
+          95,
+          0,
+          "IMAGE"
+        ],
+        [
+          125,
+          96,
+          0,
+          97,
+          0,
+          "VIDEO"
+        ],
+        [
+          133,
+          93,
+          1,
+          102,
+          0,
+          "VIDEO"
+        ],
+        [
+          134,
+          102,
+          2,
+          95,
+          4,
+          "FLOAT"
+        ],
+        [
+          135,
+          102,
+          2,
+          103,
+          0,
+          "*"
+        ],
+        [
+          136,
+          102,
+          0,
+          96,
+          0,
+          "IMAGE"
+        ],
+        [
+          138,
+          105,
+          0,
+          93,
+          1,
+          "IMAGE"
+        ],
+        [
+          139,
+          105,
+          2,
+          93,
+          2,
+          "AUDIO"
+        ],
+        [
+          140,
+          105,
+          2,
+          95,
+          1,
+          "AUDIO"
+        ],
+        [
+          141,
+          105,
+          2,
+          96,
+          1,
+          "AUDIO"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": ""
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "93",
+          "nodeType": "RH_DLSS5FrameInterpolation",
+          "field": "output_fps",
+          "label": "补帧数",
+          "hint": null,
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "2x",
+          "options": [
+            "1x",
+            "2x",
+            "3x",
+            "4x",
+            "23.976",
+            "24",
+            "25",
+            "29.97",
+            "30",
+            "48",
+            "50",
+            "59.94",
+            "60",
+            "72",
+            "90",
+            "96",
+            "120",
+            "144"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "105",
+          "nodeType": "VHS_LoadVideo",
+          "field": "video",
+          "label": "加载视频",
+          "hint": "上传视频（可选）",
+          "type": "video",
+          "isMask": false,
+          "maskOut": false,
+          "required": true,
+          "marked": true,
+          "seq": 1
+        }
+      ],
+      "outputNodes": [
+        "PreviewAny",
+        "VHS_VideoCombine"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "95",
+          "nodeType": "VHS_VideoCombine",
+          "kind": "video"
+        }
+      ],
+      "tailNodeId": "97",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 0,
+      "category": "video",
+      "isInpaint": false,
+      "description": "【视频生成】\n关键节点：Video Combine 🎥🅥🅗🅢（Video Combine 🎥🅥🅗🅢<div style=\"font-size:…）；Load Video (Upload) 🎥🅥🅗🅢（Load Video 🎥🅥🅗🅢<div style=\"font-size: 0…）；Get Video Components（Extracts video frames, audio, frame rate, bi…）；RH DLSS5 Frame Interpolation（Raises a video's frame rate with NVIDIA DLSS…）。\n输入：参考视频。\n输出：视频。\n可调参数：补帧数。",
+      "paramNodes": [
+        {
+          "nodeId": "102",
+          "nodeType": "GetVideoComponents",
+          "title": "GetVideoComponents",
+          "desc": "Extracts video frames, audio, frame rate, bit depth, and color space."
+        },
+        {
+          "nodeId": "93",
+          "nodeType": "RH_DLSS5FrameInterpolation",
+          "title": "RH_DLSS5FrameInterpolation",
+          "desc": "Raises a video's frame rate with NVIDIA DLSS frame generation (NGX DLSS-FG): generated frames are interleaved between the source frames instead of blended. Linux streams frames to dlssg-worker.exe under Wine; Windows runs the worker natively. The worker runtime is user-supplied and never redistributed. Connect the outputs to the standard SaveImage / SaveVideo nodes."
+        },
+        {
+          "nodeId": "95",
+          "nodeType": "VHS_VideoCombine",
+          "title": "VHS_VideoCombine",
+          "desc": "Video Combine 🎥🅥🅗🅢<div style=\"font-size: 0.8em\"><div id=VHS_shortdesc>Combine an image sequence into a video</div></div><div style=\"font-size: 0.8em\"><div vhs_title=\"Inputs\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Inputs: <div vhs_title=\"images\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">images: The images to be turned into a video</div></div><div vhs_title=\"audio\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">audio: (optional) audio to add to the video</div></div><div vhs_title=\"meta_batch\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">meta_batch: (optional) Connect to a Meta Batch manager to divide extremely long image sequences into sub batches. See the documentation for Meta Batch Manager</div></div><div vhs_title=\"vae\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">vae: (optional) If provided, the node will take latents as input instead of images. This drastically reduces the required RAM (not VRAM) when working with long (100+ frames) sequences<div style=\"font-size: 1em\">Unlike on Load Video, this isn't always a strict upgrade over using a standalone VAE Decode.</div><div style=\"font-size: 1em\">If you have multiple Video Combine outputs, then the VAE decode will be performed for each output node increasing execution time</div><div style=\"font-size: 1em\">If you make any change to output settings on the Video Combine (such as changing the output format), the VAE decode will be performed again as the decoded result is (by design) not cached</div></div></div></div></div><div vhs_title=\"Widgets\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Widgets: <div vhs_title=\"frame_rate\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">frame_rate: The frame rate which will be used for the output video. Consider converting this to an input and connecting this to a Load Video with Video Info(Loaded)->fps. When including audio, failure to properly set this will result in audio desync</div></div><div vhs_title=\"loop_count\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">loop_count: The number of additional times the video should repeat. Can cause performance issues when used with long (100+ frames) sequences</div></div><div vhs_title=\"filename_prefix\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">filename_prefix: A prefix to add to the name of the output filename. This can include subfolders or format strings.</div></div><div vhs_title=\"format\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">format: The output format to use. Formats starting with, 'image' are saved with PIL, but formats starting with 'video' utilize the video_formats system. 'video' options require ffmpeg and selecting one frequently adds additional options to the node.</div></div><div vhs_title=\"pingpong\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">pingpong: Play the video normally, then repeat the video in reverse so that it 'pingpongs' back and forth. This is frequently used to minimize the appearance of skips on very short animations.</div></div><div vhs_title=\"save_output\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">save_output: Specifies if output files should be saved to the output folder, or the temporary output folder</div></div><div vhs_title=\"videopreview\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">videopreview: Displays a preview for the processed result. If advanced previews is enabled, the output is always converted to a format viewable from the browser. If the video has audio, it will also be previewed when moused over. Additional preview options can be accessed with right click.</div></div></div></div><div vhs_title=\"Common Format Widgets\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Common Format Widgets: <div vhs_title=\"crf\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">crf: Determines how much to prioritize quality over filesize. Numbers vary between formats, but on each format that includes it, the default value provides visually loss less output</div></div><div vhs_title=\"pix_fmt\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">pix_fmt: The pixel format to use for output. Alternative options will often have higher quality at the cost of increased file size and reduced compatibility with external software.<div style=\"font-size: 1em\"><div vhs_title=\"yuv420p\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">yuv420p: The most common and default format</div></div><div vhs_title=\"yuv420p10le\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">yuv420p10le: Use 10 bit color depth. This can improve color quality when combined with 16bit input color depth</div></div><div vhs_title=\"yuva420p\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">yuva420p: Include transparency in the output video</div></div></div></div></div><div vhs_title=\"input_color_depth\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">input_color_depth: VHS supports outputting 16bit images. While this produces higher quality output, the difference usually isn't visible without postprocessing and it significantly increases file size and processing time.</div></div><div vhs_title=\"save_metadata\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">save_metadata: Determines if metadata for the workflow should be included in the output video file</div></div></div></div></div>"
+        },
+        {
+          "nodeId": "105",
+          "nodeType": "VHS_LoadVideo",
+          "title": "VHS_LoadVideo",
+          "desc": "Load Video 🎥🅥🅗🅢<div style=\"font-size: 0.8em\"><div id=VHS_shortdesc>Loads a video from the input folder</div></div><div style=\"font-size: 0.8em\"><div vhs_title=\"Inputs\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Inputs: <div vhs_title=\"meta_batch\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">meta_batch: (optional) Connect to a Meta Batch manager to divide extremely long sequences into sub batches. See the documentation for Meta Batch Manager</div></div><div vhs_title=\"vae\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">vae: (optional) If provided the node will output latents instead of images. This drastically reduces the required RAM (not VRAM) when working with long (100+ frames) sequences<div style=\"font-size: 1em\">Using this is strongly encouraged unless connecting to a node that requires a blue image connection such as Apply Controllnet</div></div></div></div></div><div vhs_title=\"Outputs\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Outputs: <div vhs_title=\"IMAGE\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">IMAGE: The loaded images</div></div><div vhs_title=\"frame_count\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">frame_count: The length of images just returned</div></div><div vhs_title=\"audio\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">audio: The audio from the loaded video</div></div><div vhs_title=\"video_info\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">video_info: Exposes additional info about the video such as the source frame rate, or the total length</div></div><div vhs_title=\"LATENT\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">LATENT: The loaded images pre-converted to latents. Only available when a vae is connected</div></div></div></div><div vhs_title=\"Widgets\" style=\"display: flex; font-size: 0.8em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">Widgets: <div vhs_title=\"video\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">video: The video file to be loaded. Upload a local file, leave empty/None to pass None downstream, or paste an http(s) URL</div></div><div vhs_title=\"force_rate\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">force_rate: Drops or duplicates frames so that the produced output has the target frame rate. Many motion models are trained on videos of a specific frame rate and will give better results if input matches that frame rate. If set to 0, all frames are returned. May give unusual results with inputs that have a variable frame rate like animated gifs. Reducing this value can also greatly reduce the execution time and memory requirements.</div></div><div vhs_title=\"force_size\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">force_size: Previously was used to provide suggested resolutions. Instead, custom_width and custom_height can be disabled by setting to 0.</div></div><div vhs_title=\"custom_width\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">custom_width: Allows for an arbitrary width to be entered, cropping to maintain aspect ratio if both are set</div></div><div vhs_title=\"custom_height\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">custom_height: Allows for an arbitrary height to be entered, cropping to maintain aspect ratio if both are set</div></div><div vhs_title=\"frame_load_cap\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">frame_load_cap: The maximum number of frames to load. If 0, all frames are loaded.</div></div><div vhs_title=\"skip_first_frames\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">skip_first_frames: A number of frames which are discarded before producing output.</div></div><div vhs_title=\"select_every_nth\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">select_every_nth: Similar to frame rate. Keeps only the first of every n frames and discard the rest. Has better compatibility with variable frame rate inputs such as gifs. When combined with force_rate, select_every_nth_applies after force_rate so the resulting output has a frame rate equivalent to force_rate/select_every_nth. select_every_nth does not apply to skip_first_frames</div></div><div vhs_title=\"format\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">format: Updates other widgets so that only values supported by the given format can be entered and provides recommended defaults.</div></div><div vhs_title=\"choose video to upload\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">choose video to upload: An upload button is provided to upload local files to the input folder</div></div><div vhs_title=\"videopreview\" style=\"display: flex; font-size: 1em\" class=\"VHS_collapse\"><div style=\"color: #AAA; height: 1.5em;\">[<span style=\"font-family: monospace\">-</span>]</div><div style=\"width: 100%\">videopreview: Displays a preview for the selected video input. If advanced previews is enabled, this preview will reflect the frame_load_cap, force_rate, skip_first_frames, and select_every_nth values chosen. If the video has audio, it will also be previewed when moused over. Additional preview options can be accessed with right click.</div></div></div></div></div>"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CreateVideo",
+      "GetVideoComponents",
+      "PreviewAny",
+      "RH_DLSS5FrameInterpolation",
+      "VHS_LoadVideo",
+      "VHS_VideoCombine"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

@@ -1,0 +1,970 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.120Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvfe4d7w-e5lpib",
+    "name": "音乐生成_audio_ace_step_1_5_split 分镜台",
+    "savedAt": null,
+    "workflow": {
+      "id": "91a8ff3e-182c-49b7-a292-448bcd32cc85",
+      "revision": 0,
+      "last_node_id": 108,
+      "last_link_id": 263,
+      "config": {},
+      "extra": {
+        "VHS_KeepIntermediate": true,
+        "links_added_by_ue": [],
+        "note": "MiniMax H3 Director · external Image to Video groups",
+        "VHS_MetadataImage": true,
+        "ue_links": [],
+        "pixaromaGroups": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "VHS_latentpreviewrate": 0,
+        "frontendVersion": "1.23.0",
+        "VHS_latentpreview": false,
+        "ds": {
+          "scale": 0.3380916604057113,
+          "offset": [
+            938.5473595808518,
+            220.28670162013327
+          ]
+        },
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 104,
+          "type": "UNETLoader",
+          "pos": [
+            -170,
+            -790
+          ],
+          "size": [
+            380,
+            82
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                260
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "models": [
+              {
+                "name": "acestep_v1.5_turbo.safetensors",
+                "directory": "diffusion_models",
+                "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/diffusion_models/acestep_v1.5_turbo.safetensors",
+                "directory_invalid": true
+              }
+            ],
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "acestep_v1.5_turbo.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 106,
+          "type": "VAELoader",
+          "pos": [
+            -165,
+            -470
+          ],
+          "size": [
+            380,
+            58
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                262
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "models": [
+              {
+                "name": "ace_1.5_vae.safetensors",
+                "directory": "vae",
+                "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/vae/ace_1.5_vae.safetensors",
+                "directory_invalid": true
+              }
+            ],
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "ace_1.5_vae.safetensors"
+          ]
+        },
+        {
+          "id": 98,
+          "type": "EmptyAceStep1.5LatentAudio",
+          "pos": [
+            -150,
+            10
+          ],
+          "size": [
+            314.9039001464844,
+            82
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "seconds",
+              "name": "seconds",
+              "type": "FLOAT",
+              "widget": {
+                "name": "seconds"
+              },
+              "link": 250
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                249
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "EmptyAceStep1.5LatentAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {
+              "seconds": true
+            }
+          },
+          "widgets_values": [
+            120.00000000000003,
+            1
+          ]
+        },
+        {
+          "id": 47,
+          "type": "ConditioningZeroOut",
+          "pos": [
+            670,
+            50
+          ],
+          "size": [
+            204.75,
+            26
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 255
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                119
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ConditioningZeroOut",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 3,
+          "type": "KSampler",
+          "pos": [
+            930,
+            -680
+          ],
+          "size": [
+            329.394775390625,
+            262
+          ],
+          "flags": {},
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 175
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 254
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 119
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 249
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              },
+              "link": 258
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                256
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {
+              "seed": true
+            }
+          },
+          "widgets_values": [
+            512285888076187,
+            "fixed",
+            8,
+            1,
+            "euler",
+            "simple",
+            1
+          ]
+        },
+        {
+          "id": 78,
+          "type": "ModelSamplingAuraFlow",
+          "pos": [
+            930,
+            -810
+          ],
+          "size": [
+            329.394775390625,
+            82
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 260
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                175
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ModelSamplingAuraFlow",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            3,
+            "flow"
+          ]
+        },
+        {
+          "id": 108,
+          "type": "MarkdownNote",
+          "pos": [
+            -730,
+            -830
+          ],
+          "size": [
+            520,
+            530
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "properties": {
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "## Model Links (for Local Users)\n\n**diffusion_models**\n\n- [acestep_v1.5_turbo.safetensors](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/diffusion_models/acestep_v1.5_turbo.safetensors)\n\n**text_encoders**\n\n- [qwen_0.6b_ace15.safetensors](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_0.6b_ace15.safetensors)\n- [qwen_1.7b_ace15.safetensors](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_1.7b_ace15.safetensors)\n\n**vae**\n\n- [ace_1.5_vae.safetensors](https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/vae/ace_1.5_vae.safetensors)\n\n\n## Model Storage Location\n\n```\n📂 ComfyUI/\n├── 📂 models/\n│   ├── 📂 diffusion_models/\n│   │   └── acestep_v1.5_turbo.safetensors\n│   ├── 📂 text_encoders/\n│   │   ├── qwen_0.6b_ace15.safetensors\n│   │   └── qwen_1.7b_ace15.safetensors\n│   └── 📂 vae/\n│       └── ace_1.5_vae.safetensors\n```\n\n## Report Issue\n\nNote: Please update ComfyUI first ([guide](https://docs.comfy.org/installation/update_comfyui)) and prepare required models. Desktop/Cloud will be updated after the stable release; nightly-supported models may not be included yet, please wait for the next stable release.\n\n- Cannot run / runtime errors: [ComfyUI/issues](https://github.com/Comfy-Org/ComfyUI/issues)\n- UI / frontend issues: [ComfyUI_frontend/issues](https://github.com/Comfy-Org/ComfyUI_frontend/issues)\n- Workflow issues: [workflow_templates/issues](https://github.com/Comfy-Org/workflow_templates/issues)\n"
+          ],
+          "color": "#222",
+          "bgcolor": "#000"
+        },
+        {
+          "id": 102,
+          "type": "PrimitiveNode",
+          "pos": [
+            -130,
+            -120
+          ],
+          "size": [
+            268.3994445800781,
+            82
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              },
+              "links": [
+                257,
+                258
+              ]
+            }
+          ],
+          "title": "seed",
+          "properties": {
+            "Run widget replace on values": false,
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            512285888076187,
+            "randomize"
+          ]
+        },
+        {
+          "id": 94,
+          "type": "TextEncodeAceStepAudio1.5",
+          "pos": [
+            270,
+            -790
+          ],
+          "size": [
+            611.91845703125,
+            679.7643432617188
+          ],
+          "flags": {},
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 261
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              },
+              "link": 257
+            },
+            {
+              "label": "duration",
+              "name": "duration",
+              "type": "FLOAT",
+              "widget": {
+                "name": "duration"
+              },
+              "link": 251
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                254,
+                255
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "TextEncodeAceStepAudio1.5",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {
+              "seed": true,
+              "duration": true
+            },
+            "streamward_params": {
+              "tags": {
+                "label": "风格标签",
+                "textIn": true,
+                "seq": 1
+              },
+              "lyrics": {
+                "label": "歌词",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "Hard Rock: A fierce, adrenaline-fueled hard rock anthem with an unrelenting, rebellious edge. Driven by heavy, aggressive electric guitar riffs, shredding solos, thunderous punchy drums, and a thick driving bassline. Featuring a raw, gritty, and powerhouse male vocal. The track erupts with intense guitar distortion and face-melting energy, balancing pure aggression with explosive emotion.",
+            "",
+            512285888076187,
+            "fixed",
+            190,
+            120,
+            "4",
+            "en",
+            "F major",
+            true,
+            2,
+            0.85,
+            0.9,
+            0,
+            0
+          ]
+        },
+        {
+          "id": 99,
+          "type": "PrimitiveFloat",
+          "pos": [
+            -120,
+            -300
+          ],
+          "size": [
+            278.9739990234375,
+            82
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "widget": {
+                "name": "seconds"
+              },
+              "links": [
+                250,
+                251
+              ]
+            }
+          ],
+          "title": "Song Duration",
+          "properties": {
+            "Run widget replace on values": false,
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "value": {
+                "label": "时长/秒",
+                "fixed": true,
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            120.00000000000003
+          ]
+        },
+        {
+          "id": 105,
+          "type": "DualCLIPLoader",
+          "pos": [
+            -165,
+            -660
+          ],
+          "size": [
+            380,
+            130
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                261
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "DualCLIPLoader",
+            "cnr_id": "comfy-core",
+            "models": [
+              {
+                "name": "qwen_0.6b_ace15.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_0.6b_ace15.safetensors",
+                "directory_invalid": true
+              },
+              {
+                "name": "qwen_1.7b_ace15.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/Comfy-Org/ace_step_1.5_ComfyUI_files/resolve/main/split_files/text_encoders/qwen_1.7b_ace15.safetensors",
+                "directory_invalid": true
+              }
+            ],
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "qwen_0.6b_ace15.safetensors",
+            "qwen_1.7b_ace15.safetensors",
+            "ace",
+            "default"
+          ]
+        },
+        {
+          "id": 18,
+          "type": "VAEDecodeAudio",
+          "pos": [
+            1375,
+            -611
+          ],
+          "size": [
+            164.83749389648438,
+            46
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 256
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 262
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                263
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecodeAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 107,
+          "type": "SaveAudioMP3",
+          "pos": [
+            1571,
+            -614
+          ],
+          "size": [
+            305.48297119140625,
+            136
+          ],
+          "flags": {},
+          "order": 18,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 263
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SaveAudioMP3",
+            "cnr_id": "comfy-core",
+            "ver": "0.11.1",
+            "widget_ue_connectable": {},
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 0,
+              "slot": "slot-3-3"
+            }
+          },
+          "widgets_values": [
+            "audio/ComfyUI",
+            "V0"
+          ]
+        }
+      ],
+      "links": [
+        [
+          119,
+          47,
+          0,
+          3,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          175,
+          78,
+          0,
+          3,
+          0,
+          "MODEL"
+        ],
+        [
+          249,
+          98,
+          0,
+          3,
+          3,
+          "LATENT"
+        ],
+        [
+          250,
+          99,
+          0,
+          98,
+          0,
+          "FLOAT"
+        ],
+        [
+          251,
+          99,
+          0,
+          94,
+          2,
+          "FLOAT"
+        ],
+        [
+          254,
+          94,
+          0,
+          3,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          255,
+          94,
+          0,
+          47,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          256,
+          3,
+          0,
+          18,
+          0,
+          "LATENT"
+        ],
+        [
+          257,
+          102,
+          0,
+          94,
+          1,
+          "INT"
+        ],
+        [
+          258,
+          102,
+          0,
+          3,
+          4,
+          "INT"
+        ],
+        [
+          260,
+          104,
+          0,
+          78,
+          0,
+          "MODEL"
+        ],
+        [
+          261,
+          105,
+          0,
+          94,
+          0,
+          "CLIP"
+        ],
+        [
+          262,
+          106,
+          0,
+          18,
+          1,
+          "VAE"
+        ],
+        [
+          263,
+          18,
+          0,
+          107,
+          0,
+          "AUDIO"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "94",
+          "nodeType": "TextEncodeAceStepAudio1.5",
+          "field": "tags",
+          "label": "风格标签",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "Hard Rock: A fierce, adrenaline-fueled hard rock anthem with an unrelenting, rebellious edge. Driven by heavy, aggressive electric guitar riffs, shredding solos, thunderous punchy drums, and a thick driving bassline. Featuring a raw, gritty, and powerhouse male vocal. The track erupts with intense guitar distortion and face-melting energy, balancing pure aggression with explosive emotion.",
+          "textIn": true,
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "94",
+          "nodeType": "TextEncodeAceStepAudio1.5",
+          "field": "lyrics",
+          "label": "歌词",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "99",
+          "nodeType": "PrimitiveFloat",
+          "field": "value",
+          "label": "时长/秒",
+          "hint": "浮点数参数（该节点的数值）",
+          "fromMark": true,
+          "type": "float",
+          "group": "main",
+          "value": 120.00000000000003,
+          "fixed": true,
+          "min": -9223372036854776000,
+          "max": 9223372036854776000,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        }
+      ],
+      "materialSlots": [],
+      "outputNodes": [
+        "SaveAudioMP3"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "107",
+          "nodeType": "SaveAudioMP3",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "107",
+      "tailSlotId": "slot-3-3",
+      "tailOutIdx": 0,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "MiniMax H3 导演台·多段衔接（一次出 3 段）：导演台自己按时间线把 3 段连起来（组件内 continuityEnabled 开着）；每段一个「参考主体生视频」分组节点，各自带提示词/时长/参考图。⚠️ 一次运行产出 3 段，分镜台「逐段运行」还驱动不了它（需要导演台专用通道）。",
+      "paramNodes": [
+        {
+          "nodeId": "104",
+          "nodeType": "UNETLoader",
+          "title": "UNETLoader",
+          "desc": "加载 UNet/DiT 扩散主干模型（生成的核心权重）。"
+        },
+        {
+          "nodeId": "106",
+          "nodeType": "VAELoader",
+          "title": "VAELoader",
+          "desc": "加载 VAE 模型（潜空间 ↔ 像素空间的编解码）。"
+        },
+        {
+          "nodeId": "98",
+          "nodeType": "EmptyAceStep1.5LatentAudio",
+          "title": "EmptyAceStep1.5LatentAudio",
+          "desc": "属于「model/latent/ace」分类"
+        },
+        {
+          "nodeId": "47",
+          "nodeType": "ConditioningZeroOut",
+          "title": "ConditioningZeroOut",
+          "desc": "属于「model/conditioning/transform」分类"
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "KSampler",
+          "title": "KSampler",
+          "desc": "用模型 + 正负条件去噪采样，生成图片。"
+        },
+        {
+          "nodeId": "78",
+          "nodeType": "ModelSamplingAuraFlow",
+          "title": "ModelSamplingAuraFlow",
+          "desc": "属于「model/patch」分类"
+        },
+        {
+          "nodeId": "102",
+          "nodeType": "PrimitiveNode",
+          "title": "PrimitiveNode",
+          "desc": ""
+        },
+        {
+          "nodeId": "94",
+          "nodeType": "TextEncodeAceStepAudio1.5",
+          "title": "TextEncodeAceStepAudio1.5",
+          "desc": "属于「model/conditioning/ace」分类"
+        },
+        {
+          "nodeId": "99",
+          "nodeType": "PrimitiveFloat",
+          "title": "PrimitiveFloat",
+          "desc": "属于「utilities/primitive」分类"
+        },
+        {
+          "nodeId": "105",
+          "nodeType": "DualCLIPLoader",
+          "title": "DualCLIPLoader",
+          "desc": "Recipes:\nsdxl: clip-l, clip-g\nsd3: clip-l, clip-g / clip-l, t5 / clip-g, t5\nflux: clip-l, t5\nhidream: at least one of t5 or llama, recommended t5 and llama\nhunyuan_image: qwen2.5vl 7b and byt5 small\nnewbie: gemma-3-4b-it, jina clip v2"
+        },
+        {
+          "nodeId": "18",
+          "nodeType": "VAEDecodeAudio",
+          "title": "VAEDecodeAudio",
+          "desc": "把音频 latent 解码回音频。"
+        },
+        {
+          "nodeId": "107",
+          "nodeType": "SaveAudioMP3",
+          "title": "SaveAudioMP3",
+          "desc": "属于「audio」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "ConditioningZeroOut",
+      "DualCLIPLoader",
+      "EmptyAceStep1.5LatentAudio",
+      "KSampler",
+      "MarkdownNote",
+      "ModelSamplingAuraFlow",
+      "PrimitiveFloat",
+      "PrimitiveNode",
+      "SaveAudioMP3",
+      "TextEncodeAceStepAudio1.5",
+      "UNETLoader",
+      "VAEDecodeAudio",
+      "VAELoader"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

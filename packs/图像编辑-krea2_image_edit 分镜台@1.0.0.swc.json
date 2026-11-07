@@ -1,0 +1,1299 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.119Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvfe4d5o-gc6pkq",
+    "name": "图像编辑-krea2_image_edit 分镜台",
+    "savedAt": null,
+    "workflow": {
+      "id": "5f50ab2c-b077-4e14-a47b-a8d13e95699a",
+      "revision": 0,
+      "last_node_id": 47,
+      "last_link_id": 85,
+      "config": {},
+      "extra": {
+        "VHS_KeepIntermediate": true,
+        "VHS_MetadataImage": true,
+        "VHS_latentpreviewrate": 0,
+        "frontendVersion": "1.23.0",
+        "VHS_latentpreview": false,
+        "ds": {
+          "scale": 0.7247295000000026,
+          "offset": [
+            309.2501078649028,
+            -8.916618600192235
+          ]
+        },
+        "pixaromaGroups": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "links_added_by_ue": [],
+        "ue_links": [],
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 10,
+          "type": "RandomNoise",
+          "pos": [
+            -820,
+            640
+          ],
+          "size": [
+            260,
+            100
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "NOISE",
+              "name": "NOISE",
+              "type": "NOISE",
+              "links": [
+                82
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "RandomNoise",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            245292941416925,
+            "randomize"
+          ]
+        },
+        {
+          "id": 42,
+          "type": "KSamplerSelect",
+          "pos": [
+            776,
+            270
+          ],
+          "size": [
+            210,
+            60
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "SAMPLER",
+              "name": "SAMPLER",
+              "type": "SAMPLER",
+              "links": [
+                63
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSamplerSelect",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "euler"
+          ]
+        },
+        {
+          "id": 43,
+          "type": "BasicScheduler",
+          "pos": [
+            776,
+            370
+          ],
+          "size": [
+            210,
+            110
+          ],
+          "flags": {},
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 61
+            }
+          ],
+          "outputs": [
+            {
+              "label": "SIGMAS",
+              "name": "SIGMAS",
+              "type": "SIGMAS",
+              "links": [
+                64
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "BasicScheduler",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "simple",
+            8,
+            1
+          ]
+        },
+        {
+          "id": 46,
+          "type": "EmptyLatentImage",
+          "pos": [
+            776,
+            520
+          ],
+          "size": [
+            210,
+            110
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 70
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 71
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                72
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "EmptyLatentImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.25.0",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            1024,
+            1024,
+            1
+          ]
+        },
+        {
+          "id": 47,
+          "type": "Reroute",
+          "pos": [
+            -495,
+            390
+          ],
+          "size": [
+            75,
+            26
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "",
+              "name": "",
+              "type": "*",
+              "widget": {
+                "name": "value"
+              },
+              "link": 81
+            }
+          ],
+          "outputs": [
+            {
+              "label": "",
+              "name": "",
+              "type": "STRING",
+              "links": [
+                79
+              ]
+            }
+          ],
+          "properties": {
+            "showOutputText": false,
+            "horizontal": false,
+            "widget_ue_connectable": {}
+          }
+        },
+        {
+          "id": 2,
+          "type": "LoadImage",
+          "pos": [
+            -1281,
+            -32
+          ],
+          "size": [
+            290,
+            320
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                80
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "label": "主图",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 34,
+          "type": "LoadImage",
+          "pos": [
+            -1285,
+            350
+          ],
+          "size": [
+            290,
+            320
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                84
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "label": "参考图 2",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 35,
+          "type": "LoadImage",
+          "pos": [
+            -1291,
+            742
+          ],
+          "size": [
+            290,
+            320
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                85
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "label": "参考图 3",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 19,
+          "type": "PrimitiveStringMultiline",
+          "pos": [
+            -1299,
+            1175
+          ],
+          "size": [
+            436.7618408203125,
+            230.72877502441406
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                81
+              ]
+            }
+          ],
+          "title": "Prompt",
+          "properties": {
+            "Node name for S&R": "PrimitiveStringMultiline",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "value": {
+                "label": "编辑提示词",
+                "textIn": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "一位融合了炽焰九尾狐灵的神秘女弓手，幻想角色设计，动态全身战斗姿态，专注拉弓瞄准，长黑发飞扬，穿着白黑配色的精致幻想战斗服，带有绑带、护臂、过膝长靴与轻东方风元素。她的身后与周身显化出一只庄严华丽的火焰九尾灵狐，白色灵毛与赤红火尾翻涌缠绕，红金色能量流动，火星、狐火、神性光辉环绕。整体呈现强烈的东方神话幻想氛围，以红、金、象牙白、黑色为主色，线条流畅优雅，兼具精致二次元插画感与高级幻想绘画质感，画面华丽、空灵、神圣、具有强烈动势与氛围感。保留参考图中的优雅线稿、装饰细节、火狐元素、流动造型和整体视觉语言，但生成一个全新的统一构图，不直接复制任意单张参考图。"
+          ],
+          "color": "#223",
+          "bgcolor": "#335"
+        },
+        {
+          "id": 39,
+          "type": "ResolutionSelector",
+          "pos": [
+            -736,
+            1016
+          ],
+          "size": [
+            260,
+            130
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "preview",
+              "name": "preview",
+              "shape": 7,
+              "type": "RESOLUTION_PREVIEW",
+              "link": null
+            }
+          ],
+          "outputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": [
+                70
+              ]
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": [
+                71
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ResolutionSelector",
+            "cnr_id": "comfy-core",
+            "ver": "0.25.0",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "aspect_ratio": {
+                "label": "宽高比",
+                "seq": 2
+              },
+              "megapixels": {
+                "label": "百万像素",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "1:1 (Square)",
+            1,
+            8
+          ]
+        },
+        {
+          "id": 44,
+          "type": "SamplerCustomAdvanced",
+          "pos": [
+            1034,
+            217
+          ],
+          "size": [
+            220,
+            330
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "noise",
+              "name": "noise",
+              "type": "NOISE",
+              "link": 82
+            },
+            {
+              "label": "guider",
+              "name": "guider",
+              "type": "GUIDER",
+              "link": 62
+            },
+            {
+              "label": "sampler",
+              "name": "sampler",
+              "type": "SAMPLER",
+              "link": 63
+            },
+            {
+              "label": "sigmas",
+              "name": "sigmas",
+              "type": "SIGMAS",
+              "link": 64
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 72
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "LATENT",
+              "links": [
+                65
+              ]
+            },
+            {
+              "label": "denoised_output",
+              "name": "denoised_output",
+              "type": "LATENT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SamplerCustomAdvanced",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 45,
+          "type": "VAEDecode",
+          "pos": [
+            1377,
+            107
+          ],
+          "size": [
+            140,
+            50
+          ],
+          "flags": {},
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 65
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 66
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                83
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecode",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 18,
+          "type": "PreviewImage",
+          "pos": [
+            1568,
+            108
+          ],
+          "size": [
+            660,
+            510
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 83
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "PreviewImage",
+            "widget_ue_connectable": {},
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 41,
+          "type": "BasicGuider",
+          "pos": [
+            796,
+            180
+          ],
+          "size": [
+            160,
+            50
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 60
+            },
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 74
+            }
+          ],
+          "outputs": [
+            {
+              "label": "GUIDER",
+              "name": "GUIDER",
+              "type": "GUIDER",
+              "links": [
+                62
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "BasicGuider",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 36,
+          "type": "UNETLoader",
+          "pos": [
+            -623,
+            -10
+          ],
+          "size": [
+            270,
+            90
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                60,
+                61
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "UNETLoader",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "krea2_turbo_fp8_scaled.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 37,
+          "type": "CLIPLoader",
+          "pos": [
+            -610,
+            148
+          ],
+          "size": [
+            270,
+            110
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                73
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CLIPLoader",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "qwen3vl_4b_bf16.safetensors",
+            "krea2",
+            "default"
+          ]
+        },
+        {
+          "id": 38,
+          "type": "VAELoader",
+          "pos": [
+            -613,
+            309
+          ],
+          "size": [
+            270,
+            60
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                66
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAELoader",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "qwen_image_vae.safetensors"
+          ]
+        },
+        {
+          "id": 40,
+          "type": "Krea2EditRebalance",
+          "pos": [
+            -101,
+            282
+          ],
+          "size": [
+            400,
+            340
+          ],
+          "flags": {},
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 73
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "shape": 7,
+              "type": "STRING",
+              "link": null
+            },
+            {
+              "label": "image1",
+              "name": "image1",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 80
+            },
+            {
+              "label": "image2",
+              "name": "image2",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 84
+            },
+            {
+              "label": "image3",
+              "name": "image3",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 85
+            },
+            {
+              "label": "image4",
+              "name": "image4",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": null
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 79
+            }
+          ],
+          "outputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "links": [
+                74
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "Krea2EditRebalance",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "",
+            "high",
+            "normal",
+            "normal",
+            "normal"
+          ]
+        }
+      ],
+      "links": [
+        [
+          60,
+          36,
+          0,
+          41,
+          0,
+          "MODEL"
+        ],
+        [
+          61,
+          36,
+          0,
+          43,
+          0,
+          "MODEL"
+        ],
+        [
+          62,
+          41,
+          0,
+          44,
+          1,
+          "GUIDER"
+        ],
+        [
+          63,
+          42,
+          0,
+          44,
+          2,
+          "SAMPLER"
+        ],
+        [
+          64,
+          43,
+          0,
+          44,
+          3,
+          "SIGMAS"
+        ],
+        [
+          65,
+          44,
+          0,
+          45,
+          0,
+          "LATENT"
+        ],
+        [
+          66,
+          38,
+          0,
+          45,
+          1,
+          "VAE"
+        ],
+        [
+          70,
+          39,
+          0,
+          46,
+          0,
+          "INT"
+        ],
+        [
+          71,
+          39,
+          1,
+          46,
+          1,
+          "INT"
+        ],
+        [
+          72,
+          46,
+          0,
+          44,
+          4,
+          "LATENT"
+        ],
+        [
+          73,
+          37,
+          0,
+          40,
+          0,
+          "CLIP"
+        ],
+        [
+          74,
+          40,
+          0,
+          41,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          79,
+          47,
+          0,
+          40,
+          6,
+          "STRING"
+        ],
+        [
+          80,
+          2,
+          0,
+          40,
+          2,
+          "IMAGE"
+        ],
+        [
+          81,
+          19,
+          0,
+          47,
+          0,
+          "STRING"
+        ],
+        [
+          82,
+          10,
+          0,
+          44,
+          0,
+          "NOISE"
+        ],
+        [
+          83,
+          45,
+          0,
+          18,
+          0,
+          "IMAGE"
+        ],
+        [
+          84,
+          34,
+          0,
+          40,
+          3,
+          "IMAGE"
+        ],
+        [
+          85,
+          35,
+          0,
+          40,
+          4,
+          "IMAGE"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "19",
+          "nodeType": "PrimitiveStringMultiline",
+          "field": "value",
+          "label": "编辑提示词",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "一位融合了炽焰九尾狐灵的神秘女弓手，幻想角色设计，动态全身战斗姿态，专注拉弓瞄准，长黑发飞扬，穿着白黑配色的精致幻想战斗服，带有绑带、护臂、过膝长靴与轻东方风元素。她的身后与周身显化出一只庄严华丽的火焰九尾灵狐，白色灵毛与赤红火尾翻涌缠绕，红金色能量流动，火星、狐火、神性光辉环绕。整体呈现强烈的东方神话幻想氛围，以红、金、象牙白、黑色为主色，线条流畅优雅，兼具精致二次元插画感与高级幻想绘画质感，画面华丽、空灵、神圣、具有强烈动势与氛围感。保留参考图中的优雅线稿、装饰细节、火狐元素、流动造型和整体视觉语言，但生成一个全新的统一构图，不直接复制任意单张参考图。",
+          "textIn": true,
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "39",
+          "nodeType": "ResolutionSelector",
+          "field": "aspect_ratio",
+          "label": "宽高比",
+          "hint": "画面宽高比（如 1:1 / 16:9）",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "1:1 (Square)",
+          "options": [
+            "1:1 (Square)",
+            "2:3 (Portrait Photo)",
+            "3:2 (Photo)",
+            "3:4 (Portrait Standard)",
+            "4:3 (Standard)",
+            "9:16 (Portrait Widescreen)",
+            "16:9 (Widescreen)",
+            "21:9 (Ultrawide)"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "39",
+          "nodeType": "ResolutionSelector",
+          "field": "megapixels",
+          "label": "百万像素",
+          "hint": "总像素（百万）：越大越清晰、越慢",
+          "fromMark": true,
+          "type": "float",
+          "group": "main",
+          "value": 1,
+          "min": 0.1,
+          "max": 16,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "2",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "主图",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        },
+        {
+          "nodeId": "34",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "参考图 2",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": false,
+          "marked": true
+        },
+        {
+          "nodeId": "35",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "参考图 3",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": false,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "18",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "18",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "Krea2 图像编辑（用户实测版）：主图 + 最多 2 张参考图 + 编辑提示词 → 改图（风格/内容遵循原图结构）",
+      "paramNodes": [
+        {
+          "nodeId": "10",
+          "nodeType": "RandomNoise",
+          "title": "RandomNoise",
+          "desc": "生成随机噪声，作为采样的种子起点。"
+        },
+        {
+          "nodeId": "42",
+          "nodeType": "KSamplerSelect",
+          "title": "KSamplerSelect",
+          "desc": "选择采样算法（如 euler 等）。"
+        },
+        {
+          "nodeId": "43",
+          "nodeType": "BasicScheduler",
+          "title": "BasicScheduler",
+          "desc": "提供采样步数/去噪/sigma 调度参数。"
+        },
+        {
+          "nodeId": "46",
+          "nodeType": "EmptyLatentImage",
+          "title": "EmptyLatentImage",
+          "desc": "创建一批空的潜空间图像，供采样去噪。"
+        },
+        {
+          "nodeId": "47",
+          "nodeType": "Reroute",
+          "title": "Reroute",
+          "desc": ""
+        },
+        {
+          "nodeId": "2",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "34",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "35",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "19",
+          "nodeType": "PrimitiveStringMultiline",
+          "title": "PrimitiveStringMultiline",
+          "desc": "多行文本值节点（常量/参数）。"
+        },
+        {
+          "nodeId": "39",
+          "nodeType": "ResolutionSelector",
+          "title": "ResolutionSelector",
+          "desc": "按宽高比 + 像素目标计算宽高。"
+        },
+        {
+          "nodeId": "44",
+          "nodeType": "SamplerCustomAdvanced",
+          "title": "SamplerCustomAdvanced",
+          "desc": "新版自定义采样节点（H3/新架构视频工作流用）。"
+        },
+        {
+          "nodeId": "45",
+          "nodeType": "VAEDecode",
+          "title": "VAEDecode",
+          "desc": "把潜空间 latent 解码回像素图像。"
+        },
+        {
+          "nodeId": "18",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "41",
+          "nodeType": "BasicGuider",
+          "title": "BasicGuider",
+          "desc": "提供采样引导（正负条件注入）。"
+        },
+        {
+          "nodeId": "36",
+          "nodeType": "UNETLoader",
+          "title": "UNETLoader",
+          "desc": "加载 UNet/DiT 扩散主干模型（生成的核心权重）。"
+        },
+        {
+          "nodeId": "37",
+          "nodeType": "CLIPLoader",
+          "title": "CLIPLoader",
+          "desc": "加载文本编码器 CLIP 模型（把提示词编码成条件）。"
+        },
+        {
+          "nodeId": "38",
+          "nodeType": "VAELoader",
+          "title": "VAELoader",
+          "desc": "加载 VAE 模型（潜空间 ↔ 像素空间的编解码）。"
+        },
+        {
+          "nodeId": "40",
+          "nodeType": "Krea2EditRebalance",
+          "title": "Krea2EditRebalance",
+          "desc": "属于「conditioning」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "BasicGuider",
+      "BasicScheduler",
+      "CLIPLoader",
+      "EmptyLatentImage",
+      "KSamplerSelect",
+      "Krea2EditRebalance",
+      "LoadImage",
+      "PreviewImage",
+      "PrimitiveStringMultiline",
+      "RandomNoise",
+      "Reroute",
+      "ResolutionSelector",
+      "SamplerCustomAdvanced",
+      "UNETLoader",
+      "VAEDecode",
+      "VAELoader"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

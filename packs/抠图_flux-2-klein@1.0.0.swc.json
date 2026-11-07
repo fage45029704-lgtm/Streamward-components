@@ -1,0 +1,1722 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.090Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtok0zk2-nbkbui",
+    "name": "抠图\\flux-2-klein",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 227,
+          "type": "VAELoader",
+          "pos": [
+            20213,
+            13061
+          ],
+          "size": [
+            364.4270935058594,
+            58
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "vae_name",
+              "name": "vae_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "vae_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                345,
+                348
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "directory_invalid": true,
+                "name": "flux2-vae.safetensors",
+                "directory": "vae",
+                "url": "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors"
+              }
+            ],
+            "ver": "0.8.2",
+            "widget_ue_connectable": {},
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "flux2-vae.safetensors"
+          ]
+        },
+        {
+          "id": 226,
+          "type": "CLIPLoader",
+          "pos": [
+            20215,
+            12887
+          ],
+          "size": [
+            364.4270935058594,
+            106
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip_name",
+              "name": "clip_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "clip_name"
+              }
+            },
+            {
+              "label": "type",
+              "name": "type",
+              "type": "COMBO",
+              "widget": {
+                "name": "type"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                347
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CLIPLoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "name": "qwen_3_4b.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+              }
+            ],
+            "ver": "0.8.2",
+            "widget_ue_connectable": {},
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "qwen_3_8b_fp8mixed.safetensors",
+            "flux2",
+            "default"
+          ]
+        },
+        {
+          "id": 228,
+          "type": "UNETLoader",
+          "pos": [
+            20218,
+            12717
+          ],
+          "size": [
+            364.4270935058594,
+            82
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "unet_name",
+              "name": "unet_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "unet_name"
+              }
+            },
+            {
+              "label": "weight_dtype",
+              "name": "weight_dtype",
+              "type": "COMBO",
+              "widget": {
+                "name": "weight_dtype"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                360
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "name": "flux-2-klein-4b-fp8.safetensors",
+                "directory": "diffusion_models",
+                "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4b-fp8/resolve/main/flux-2-klein-4b-fp8.safetensors"
+              }
+            ],
+            "ver": "0.8.2",
+            "widget_ue_connectable": {},
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "flux-2-klein-9b-fp8.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 236,
+          "type": "LoraLoaderModelOnly",
+          "pos": [
+            20707,
+            12717
+          ],
+          "size": [
+            270,
+            82
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 360
+            },
+            {
+              "label": "lora_name",
+              "name": "lora_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "lora_name"
+              }
+            },
+            {
+              "label": "strength_model",
+              "name": "strength_model",
+              "type": "FLOAT",
+              "widget": {
+                "name": "strength_model"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                474
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoraLoaderModelOnly",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "高清放大_000002000.safetensors",
+            0.3500000000000001
+          ]
+        },
+        {
+          "id": 234,
+          "type": "PainterFluxImageEdit",
+          "pos": [
+            20659,
+            12931
+          ],
+          "size": [
+            376.39971923828125,
+            308.8714599609375
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 347
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "shape": 7,
+              "type": "VAE",
+              "link": 348
+            },
+            {
+              "label": "image1",
+              "name": "image1",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 349
+            },
+            {
+              "label": "image2",
+              "name": "image2",
+              "shape": 7,
+              "type": "IMAGE"
+            },
+            {
+              "label": "image3",
+              "name": "image3",
+              "shape": 7,
+              "type": "IMAGE"
+            },
+            {
+              "label": "image1_mask",
+              "name": "image1_mask",
+              "shape": 7,
+              "type": "MASK"
+            },
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "prompt"
+              }
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 350
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 351
+            }
+          ],
+          "outputs": [
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "links": [
+                353
+              ]
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "links": [
+                354
+              ]
+            },
+            {
+              "label": "latent",
+              "name": "latent",
+              "type": "LATENT",
+              "links": [
+                355
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "PainterFluxImageEdit",
+            "ver": "0890a8010df2f329164ee7a1f219c8f3687978f4",
+            "widget_ue_connectable": {
+              "width": true,
+              "height": true
+            },
+            "aux_id": "princepainter/Comfyui-PainterVRAM"
+          },
+          "widgets_values": [
+            "4k.（将背景、产品产生的倒影、产品孔洞中的背景都移除转变为纯绿色，保留画面中的主体及所有配件，不包含硅胶支柱：2）\n严格保持原始图像像素级一致性，不改变、不移动、不重新排列任何原始像素位置。\n\n严格保持原始图像像素级一致性，不改变、不移动、不重新排列任何原始像素位置。\n\n保持原图所有元素的绝对位置、比例、透视关系、轮廓边缘、结构细节完全不变。\n禁止重新构图，禁止改变镜头视角，禁止改变物体大小，禁止移动主体位置。\n禁止生成新的纹理替代原有纹理，禁止重绘原始区域。\n\n仅允许对指定区域进行目标修改，未指定区域必须100%保持原始图像内容。\n保留原始光影方向、材质纹理、颜色关系和细节层次。\n\n保持：\n- 原始尺寸比例\n- 原始像素布局\n- 原始边缘轮廓\n- 原始几何结构\n- 原始空间关系\n- 原始摄影透视\n\n编辑过程类似 Photoshop 图层级局部修改，而不是重新生成图片。\n\nPixel-level preservation.\nNo pixel displacement.\nNo object movement.\nNo composition change.\nNo perspective change.\nNo shape deformation.\nNo structure modification.\nOnly modify the requested area while preserving all original pixels.",
+            1912,
+            1072
+          ],
+          "color": "#232",
+          "bgcolor": "#353"
+        },
+        {
+          "id": 235,
+          "type": "KSampler",
+          "pos": [
+            21085,
+            12922
+          ],
+          "size": [
+            342.4632263183594,
+            262
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 474
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 353
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 354
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 355
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "steps",
+              "name": "steps",
+              "type": "INT",
+              "widget": {
+                "name": "steps"
+              }
+            },
+            {
+              "label": "cfg",
+              "name": "cfg",
+              "type": "FLOAT",
+              "widget": {
+                "name": "cfg"
+              }
+            },
+            {
+              "label": "sampler_name",
+              "name": "sampler_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "sampler_name"
+              }
+            },
+            {
+              "label": "scheduler",
+              "name": "scheduler",
+              "type": "COMBO",
+              "widget": {
+                "name": "scheduler"
+              }
+            },
+            {
+              "label": "denoise",
+              "name": "denoise",
+              "type": "FLOAT",
+              "widget": {
+                "name": "denoise"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                344
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.9.2",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            831949519056256,
+            "randomize",
+            2,
+            2,
+            "euler",
+            "simple",
+            1
+          ]
+        },
+        {
+          "id": 232,
+          "type": "VAEDecode",
+          "pos": [
+            21475,
+            12939
+          ],
+          "size": [
+            140,
+            46
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 344
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 345
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "slot_index": 0,
+              "links": [
+                563
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.8.2",
+            "widget_ue_connectable": {},
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 243,
+          "type": "LayerUtility: ImageMaskScaleAs",
+          "pos": [
+            21481,
+            13060
+          ],
+          "size": [
+            270,
+            162
+          ],
+          "flags": {},
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "scale_as",
+              "name": "scale_as",
+              "type": "*",
+              "link": 552
+            },
+            {
+              "label": "image",
+              "name": "image",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 563
+            },
+            {
+              "label": "mask",
+              "name": "mask",
+              "shape": 7,
+              "type": "MASK"
+            },
+            {
+              "label": "fit",
+              "name": "fit",
+              "type": "COMBO",
+              "widget": {
+                "name": "fit"
+              }
+            },
+            {
+              "label": "method",
+              "name": "method",
+              "type": "COMBO",
+              "widget": {
+                "name": "method"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": [
+                599
+              ]
+            },
+            {
+              "label": "mask",
+              "name": "mask",
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "original_size",
+              "name": "original_size",
+              "type": "BOX",
+              "links": []
+            },
+            {
+              "label": "widht",
+              "name": "widht",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LayerUtility: ImageMaskScaleAs",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "crop",
+            "lanczos"
+          ],
+          "color": "rgba(38, 73, 116, 0.7)"
+        },
+        {
+          "id": 237,
+          "type": "RembgByBiRefNetAdvanced",
+          "pos": [
+            21780,
+            12928
+          ],
+          "size": [
+            279.6578063964844,
+            246
+          ],
+          "flags": {},
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "BIREFNET",
+              "link": 367
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 599
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              }
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              }
+            },
+            {
+              "label": "upscale_method",
+              "name": "upscale_method",
+              "type": "COMBO",
+              "widget": {
+                "name": "upscale_method"
+              }
+            },
+            {
+              "label": "blur_size",
+              "name": "blur_size",
+              "type": "INT",
+              "widget": {
+                "name": "blur_size"
+              }
+            },
+            {
+              "label": "blur_size_two",
+              "name": "blur_size_two",
+              "type": "INT",
+              "widget": {
+                "name": "blur_size_two"
+              }
+            },
+            {
+              "label": "fill_color",
+              "name": "fill_color",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "fill_color"
+              }
+            },
+            {
+              "label": "color",
+              "name": "color",
+              "type": "INT",
+              "widget": {
+                "name": "color"
+              }
+            },
+            {
+              "label": "mask_threshold",
+              "name": "mask_threshold",
+              "type": "FLOAT",
+              "widget": {
+                "name": "mask_threshold"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": []
+            },
+            {
+              "label": "mask",
+              "name": "mask",
+              "type": "MASK",
+              "links": [
+                501
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "RembgByBiRefNetAdvanced",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            2048,
+            2048,
+            "bicubic",
+            1,
+            1,
+            false,
+            0,
+            0
+          ]
+        },
+        {
+          "id": 238,
+          "type": "LoadRembgByBiRefNetModel",
+          "pos": [
+            21470,
+            12751
+          ],
+          "size": [
+            286.6646423339844,
+            106
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "use_weight",
+              "name": "use_weight",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "use_weight"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "BIREFNET",
+              "links": [
+                367
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadRembgByBiRefNetModel",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "BiRefNet-HR.safetensors",
+            "AUTO",
+            true
+          ]
+        },
+        {
+          "id": 247,
+          "type": "InvertMask",
+          "pos": [
+            22090,
+            12946
+          ],
+          "size": [
+            140,
+            26
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "mask",
+              "name": "mask",
+              "type": "MASK",
+              "link": 501
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": [
+                513
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "InvertMask",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 307,
+          "type": "GrowMask",
+          "pos": [
+            22092,
+            13066
+          ],
+          "size": [
+            270,
+            82
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "mask",
+              "name": "mask",
+              "type": "MASK",
+              "link": 513
+            },
+            {
+              "label": "expand",
+              "name": "expand",
+              "type": "INT",
+              "widget": {
+                "name": "expand"
+              }
+            },
+            {
+              "label": "tapered_corners",
+              "name": "tapered_corners",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "tapered_corners"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": [
+                601
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "GrowMask",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            1,
+            true
+          ]
+        },
+        {
+          "id": 358,
+          "type": "PreviewImage",
+          "pos": [
+            22419,
+            12995
+          ],
+          "size": [
+            142.376953125,
+            266
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 605
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 230,
+          "type": "ResizeImagesByLongerEdge",
+          "pos": [
+            20220,
+            13189
+          ],
+          "size": [
+            343.0943298339844,
+            58
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 595
+            },
+            {
+              "label": "longer_edge",
+              "name": "longer_edge",
+              "type": "INT",
+              "widget": {
+                "name": "longer_edge"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": [
+                342,
+                349
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ResizeImagesByLongerEdge",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            2048
+          ]
+        },
+        {
+          "id": 229,
+          "type": "GetImageSize+",
+          "pos": [
+            20580,
+            13317
+          ],
+          "size": [
+            162.81698608398438,
+            66
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 342
+            }
+          ],
+          "outputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": [
+                350
+              ]
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": [
+                351
+              ]
+            },
+            {
+              "label": "count",
+              "name": "count",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "GetImageSize+",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 295,
+          "type": "孤海图像裁剪按比例",
+          "pos": [
+            20182,
+            13370
+          ],
+          "size": [
+            270,
+            338
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "图像",
+              "name": "图像",
+              "type": "IMAGE",
+              "link": 488
+            },
+            {
+              "label": "遮罩",
+              "name": "遮罩",
+              "shape": 7,
+              "type": "MASK"
+            },
+            {
+              "label": "缩放方法",
+              "name": "缩放方法",
+              "type": "COMBO",
+              "widget": {
+                "name": "缩放方法"
+              }
+            },
+            {
+              "label": "比例宽",
+              "name": "比例宽",
+              "type": "FLOAT",
+              "widget": {
+                "name": "比例宽"
+              }
+            },
+            {
+              "label": "比例高",
+              "name": "比例高",
+              "type": "FLOAT",
+              "widget": {
+                "name": "比例高"
+              }
+            },
+            {
+              "label": "缩放插值",
+              "name": "缩放插值",
+              "type": "COMBO",
+              "widget": {
+                "name": "缩放插值"
+              }
+            },
+            {
+              "label": "缩放模式",
+              "name": "缩放模式",
+              "type": "COMBO",
+              "widget": {
+                "name": "缩放模式"
+              }
+            },
+            {
+              "label": "启用填充色",
+              "name": "启用填充色",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "启用填充色"
+              }
+            },
+            {
+              "label": "填充颜色",
+              "name": "填充颜色",
+              "type": "COLORCODE",
+              "widget": {
+                "name": "填充颜色"
+              }
+            },
+            {
+              "label": "自适应旋转",
+              "name": "自适应旋转",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "自适应旋转"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "图像",
+              "name": "图像",
+              "type": "IMAGE",
+              "links": [
+                595
+              ]
+            },
+            {
+              "label": "宽度",
+              "name": "宽度",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "高度",
+              "name": "高度",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "遮罩",
+              "name": "遮罩",
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "扩展遮罩",
+              "name": "扩展遮罩",
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "布尔",
+              "name": "布尔",
+              "type": "BOOLEAN",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "孤海图像裁剪按比例",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "原始像素",
+            1,
+            1,
+            "Lanczos",
+            "填充",
+            true,
+            "#ffffff",
+            false
+          ]
+        },
+        {
+          "id": 242,
+          "type": "JoinImageWithAlpha",
+          "pos": [
+            22129,
+            13241
+          ],
+          "size": [
+            176.86483764648438,
+            46
+          ],
+          "flags": {},
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 566
+            },
+            {
+              "label": "alpha",
+              "name": "alpha",
+              "type": "MASK",
+              "link": 601
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                605
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "JoinImageWithAlpha",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 231,
+          "type": "LoadImage",
+          "pos": [
+            19431,
+            13186
+          ],
+          "size": [
+            646.9749755859375,
+            794.0879516601562
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "COMBO",
+              "widget": {
+                "name": "image"
+              }
+            },
+            {
+              "label": "upload",
+              "name": "upload",
+              "type": "IMAGEUPLOAD",
+              "widget": {
+                "name": "upload"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                488,
+                552,
+                566
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        }
+      ],
+      "links": [
+        [
+          342,
+          230,
+          0,
+          229,
+          0,
+          "IMAGE"
+        ],
+        [
+          344,
+          235,
+          0,
+          232,
+          0,
+          "LATENT"
+        ],
+        [
+          345,
+          227,
+          0,
+          232,
+          1,
+          "VAE"
+        ],
+        [
+          347,
+          226,
+          0,
+          234,
+          0,
+          "CLIP"
+        ],
+        [
+          348,
+          227,
+          0,
+          234,
+          1,
+          "VAE"
+        ],
+        [
+          349,
+          230,
+          0,
+          234,
+          2,
+          "IMAGE"
+        ],
+        [
+          350,
+          229,
+          0,
+          234,
+          7,
+          "INT"
+        ],
+        [
+          351,
+          229,
+          1,
+          234,
+          8,
+          "INT"
+        ],
+        [
+          353,
+          234,
+          0,
+          235,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          354,
+          234,
+          1,
+          235,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          355,
+          234,
+          2,
+          235,
+          3,
+          "LATENT"
+        ],
+        [
+          360,
+          228,
+          0,
+          236,
+          0,
+          "MODEL"
+        ],
+        [
+          367,
+          238,
+          0,
+          237,
+          0,
+          "BIREFNET"
+        ],
+        [
+          474,
+          236,
+          0,
+          235,
+          0,
+          "MODEL"
+        ],
+        [
+          488,
+          231,
+          0,
+          295,
+          0,
+          "IMAGE"
+        ],
+        [
+          501,
+          237,
+          1,
+          247,
+          0,
+          "MASK"
+        ],
+        [
+          513,
+          247,
+          0,
+          307,
+          0,
+          "MASK"
+        ],
+        [
+          552,
+          231,
+          0,
+          243,
+          0,
+          "*"
+        ],
+        [
+          563,
+          232,
+          0,
+          243,
+          1,
+          "IMAGE"
+        ],
+        [
+          566,
+          231,
+          0,
+          242,
+          0,
+          "IMAGE"
+        ],
+        [
+          595,
+          295,
+          0,
+          230,
+          0,
+          "IMAGE"
+        ],
+        [
+          599,
+          243,
+          0,
+          237,
+          1,
+          "IMAGE"
+        ],
+        [
+          601,
+          307,
+          0,
+          242,
+          1,
+          "MASK"
+        ],
+        [
+          605,
+          242,
+          0,
+          358,
+          0,
+          "IMAGE"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 358,
+      "last_link_id": 605,
+      "version": 0.4
+    },
+    "ui": {
+      "category": ""
+    },
+    "manifest": {
+      "params": [],
+      "materialSlots": [
+        {
+          "nodeId": "231",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "参考图",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": false,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "358",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "358",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；加载 CLIP（加载文本编码器 CLIP 模型「把提示词编码成条件」）；加载扩散模型（加载 UNet/DiT 扩散主干模型「生成的核心权重」）；加载 LoRA（仅模型）（加载 LoRA 微调权重，只改扩散模型、不改 CLIP）；采样器（用模型 + 正负条件去噪采样，生成图片）；VAE 解码（把潜空间 latent 解码回像素图像）；…（共 14 个）。\n核心模型：VAE flux2-vae.safetensors / CLIP qwen_3_8b_fp8mixed.safetensors / UNet flux-2-klein-9b-fp8.safetensors。\n输入：参考图。\n输出：图片。",
+      "paramNodes": [
+        {
+          "nodeId": "227",
+          "nodeType": "VAELoader",
+          "title": "VAELoader",
+          "desc": "加载 VAE 模型（潜空间 ↔ 像素空间的编解码）。"
+        },
+        {
+          "nodeId": "226",
+          "nodeType": "CLIPLoader",
+          "title": "CLIPLoader",
+          "desc": "加载文本编码器 CLIP 模型（把提示词编码成条件）。"
+        },
+        {
+          "nodeId": "228",
+          "nodeType": "UNETLoader",
+          "title": "UNETLoader",
+          "desc": "加载 UNet/DiT 扩散主干模型（生成的核心权重）。"
+        },
+        {
+          "nodeId": "236",
+          "nodeType": "LoraLoaderModelOnly",
+          "title": "LoraLoaderModelOnly",
+          "desc": "加载 LoRA 微调权重，只改扩散模型、不改 CLIP。"
+        },
+        {
+          "nodeId": "234",
+          "nodeType": "PainterFluxImageEdit",
+          "title": "PainterFluxImageEdit",
+          "desc": "Flux2 image editing with up to 3 images support. Text-to-image when no images provided."
+        },
+        {
+          "nodeId": "235",
+          "nodeType": "KSampler",
+          "title": "KSampler",
+          "desc": "用模型 + 正负条件去噪采样，生成图片。"
+        },
+        {
+          "nodeId": "232",
+          "nodeType": "VAEDecode",
+          "title": "VAEDecode",
+          "desc": "把潜空间 latent 解码回像素图像。"
+        },
+        {
+          "nodeId": "243",
+          "nodeType": "LayerUtility: ImageMaskScaleAs",
+          "title": "LayerUtility: ImageMaskScaleAs",
+          "desc": "属于「😺dzNodes/LayerUtility」分类"
+        },
+        {
+          "nodeId": "237",
+          "nodeType": "RembgByBiRefNetAdvanced",
+          "title": "RembgByBiRefNetAdvanced",
+          "desc": "Approximate Fast Foreground Colour Estimation. https://github.com/Photoroom/fast-foreground-estimation"
+        },
+        {
+          "nodeId": "238",
+          "nodeType": "LoadRembgByBiRefNetModel",
+          "title": "LoadRembgByBiRefNetModel",
+          "desc": "Load BiRefNet model from folder models/BiRefNet or the path of birefnet configured in the extra YAML file"
+        },
+        {
+          "nodeId": "247",
+          "nodeType": "InvertMask",
+          "title": "InvertMask",
+          "desc": "属于「image/mask」分类"
+        },
+        {
+          "nodeId": "307",
+          "nodeType": "GrowMask",
+          "title": "GrowMask",
+          "desc": "属于「image/mask」分类"
+        },
+        {
+          "nodeId": "358",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "230",
+          "nodeType": "ResizeImagesByLongerEdge",
+          "title": "ResizeImagesByLongerEdge",
+          "desc": "Resize images so that the longer edge matches the specified dimension while preserving aspect ratio."
+        },
+        {
+          "nodeId": "229",
+          "nodeType": "GetImageSize+",
+          "title": "GetImageSize+",
+          "desc": "读取输入图片的宽、高，输出为整数（供下游尺寸/分块参数引用）。"
+        },
+        {
+          "nodeId": "295",
+          "nodeType": "孤海图像裁剪按比例",
+          "title": "孤海图像裁剪按比例",
+          "desc": "属于「孤海工具箱」分类"
+        },
+        {
+          "nodeId": "242",
+          "nodeType": "JoinImageWithAlpha",
+          "title": "JoinImageWithAlpha",
+          "desc": "属于「image/compositing」分类"
+        },
+        {
+          "nodeId": "231",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CLIPLoader",
+      "GetImageSize+",
+      "GrowMask",
+      "InvertMask",
+      "JoinImageWithAlpha",
+      "KSampler",
+      "LayerUtility: ImageMaskScaleAs",
+      "LoadImage",
+      "LoadRembgByBiRefNetModel",
+      "LoraLoaderModelOnly",
+      "PainterFluxImageEdit",
+      "PreviewImage",
+      "RembgByBiRefNetAdvanced",
+      "ResizeImagesByLongerEdge",
+      "UNETLoader",
+      "VAEDecode",
+      "VAELoader",
+      "孤海图像裁剪按比例"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

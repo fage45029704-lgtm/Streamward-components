@@ -1,0 +1,901 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.101Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtwkmmvw-uion6e",
+    "name": "DLSS5  图片高清化",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 40,
+          "type": "LoadImage",
+          "pos": [
+            -970,
+            2813
+          ],
+          "size": [
+            408.859130859375,
+            387.0787658691406
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                1789108046554
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "required": true
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 83,
+          "type": "JWStringToFloat",
+          "pos": [
+            -871,
+            3955
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                109
+              ]
+            }
+          ],
+          "title": "有人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "0.6"
+          ]
+        },
+        {
+          "id": 41,
+          "type": "PreviewImage",
+          "pos": [
+            385,
+            3380
+          ],
+          "size": [
+            436.66632080078125,
+            385.15289306640625
+          ],
+          "flags": {},
+          "order": 24,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 1789108055856
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "PreviewImage",
+            "widget_ue_connectable": {},
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            },
+            "streamward_capture": true
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 47,
+          "type": "PDIMAGE_LongerSize",
+          "pos": [
+            -495,
+            2795
+          ],
+          "size": [
+            270,
+            82
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE"
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "PDIMAGE_LongerSize",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            1080,
+            "nearest"
+          ]
+        },
+        {
+          "id": 84,
+          "type": "ComfySwitchNode",
+          "pos": [
+            -547,
+            3861
+          ],
+          "size": [
+            270,
+            78
+          ],
+          "flags": {},
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 108
+            },
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 109
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "*",
+              "links": [
+                112
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ComfySwitchNode",
+            "streamward_params": {
+              "switch": {
+                "label": "皮肤结构强度",
+                "seq": 4
+              }
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 90,
+          "type": "ComfySwitchNode",
+          "pos": [
+            -565,
+            3597
+          ],
+          "size": [
+            270,
+            78
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 116
+            },
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 117
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "*",
+              "links": [
+                118
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ComfySwitchNode",
+            "streamward_params": {
+              "switch": {
+                "label": "局部细节/结构重建强度",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 37,
+          "type": "RH_DLSS5Enhance",
+          "pos": [
+            -153,
+            3362
+          ],
+          "size": [
+            323.2095642089844,
+            578
+          ],
+          "flags": {},
+          "order": 18,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 1789108046554
+            },
+            {
+              "label": "video",
+              "name": "video",
+              "shape": 7,
+              "type": "VIDEO"
+            },
+            {
+              "label": "intensity",
+              "name": "intensity",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "intensity"
+              },
+              "link": 115
+            },
+            {
+              "label": "structure",
+              "name": "structure",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "structure"
+              },
+              "link": 118
+            },
+            {
+              "label": "skin",
+              "name": "skin",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "skin"
+              },
+              "link": 112
+            }
+          ],
+          "outputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": [
+                1789108055856
+              ]
+            },
+            {
+              "label": "video",
+              "name": "video",
+              "type": "VIDEO",
+              "links": []
+            },
+            {
+              "label": "status",
+              "name": "status",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "title": "RH DLSS5 Enhance (NR / Upscale)无人",
+          "properties": {
+            "Node name for S&R": "RH_DLSS5Enhance",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "upscaling_mode": {
+                "label": "放大模式",
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "1x (DLAA / native)",
+            "default",
+            0,
+            0.8000000000000002,
+            0.8000000000000002,
+            0.8500000000000002,
+            -1,
+            "off",
+            "auto",
+            0.24,
+            "still images",
+            0,
+            "off",
+            "auto",
+            "auto",
+            "off",
+            1.0000000000000002,
+            1,
+            1,
+            "",
+            ""
+          ]
+        },
+        {
+          "id": 86,
+          "type": "ComfySwitchNode",
+          "pos": [
+            -578,
+            3351
+          ],
+          "size": [
+            270,
+            78
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 113
+            },
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "shape": 7,
+              "type": "FLOAT",
+              "link": 114
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "*",
+              "links": [
+                115
+              ]
+            }
+          ],
+          "title": "intensity（有人/无人）",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ComfySwitchNode",
+            "streamward_params": {
+              "switch": {
+                "label": "神经传递强度",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 82,
+          "type": "JWStringToFloat",
+          "pos": [
+            -1205,
+            3857
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                108
+              ]
+            }
+          ],
+          "title": "无人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "-1"
+          ]
+        },
+        {
+          "id": 85,
+          "type": "JWStringToFloat",
+          "pos": [
+            -1215,
+            3328
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                113
+              ]
+            }
+          ],
+          "title": "无人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "0.9"
+          ]
+        },
+        {
+          "id": 87,
+          "type": "JWStringToFloat",
+          "pos": [
+            -888,
+            3431
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                114
+              ]
+            }
+          ],
+          "title": "有人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "0.8"
+          ]
+        },
+        {
+          "id": 88,
+          "type": "JWStringToFloat",
+          "pos": [
+            -1212,
+            3568
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                116
+              ]
+            }
+          ],
+          "title": "无人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "0.95"
+          ]
+        },
+        {
+          "id": 89,
+          "type": "JWStringToFloat",
+          "pos": [
+            -874,
+            3677
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": [
+                117
+              ]
+            }
+          ],
+          "title": "有人",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "JWStringToFloat"
+          },
+          "widgets_values": [
+            "0.85"
+          ]
+        }
+      ],
+      "links": [
+        [
+          108,
+          82,
+          0,
+          84,
+          0,
+          "FLOAT"
+        ],
+        [
+          109,
+          83,
+          0,
+          84,
+          1,
+          "FLOAT"
+        ],
+        [
+          112,
+          84,
+          0,
+          37,
+          4,
+          "FLOAT"
+        ],
+        [
+          113,
+          85,
+          0,
+          86,
+          0,
+          "FLOAT"
+        ],
+        [
+          114,
+          87,
+          0,
+          86,
+          1,
+          "FLOAT"
+        ],
+        [
+          115,
+          86,
+          0,
+          37,
+          2,
+          "FLOAT"
+        ],
+        [
+          116,
+          88,
+          0,
+          90,
+          0,
+          "FLOAT"
+        ],
+        [
+          117,
+          89,
+          0,
+          90,
+          1,
+          "FLOAT"
+        ],
+        [
+          118,
+          90,
+          0,
+          37,
+          3,
+          "FLOAT"
+        ],
+        [
+          1789108046554,
+          40,
+          0,
+          37,
+          0,
+          "IMAGE"
+        ],
+        [
+          1789108055856,
+          37,
+          0,
+          41,
+          0,
+          "IMAGE"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 90,
+      "last_link_id": 1789108055856,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "高清放大"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "37",
+          "nodeType": "RH_DLSS5Enhance",
+          "field": "upscaling_mode",
+          "label": "放大模式",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "1x (DLAA / native)",
+          "options": [
+            "1x (DLAA / native)",
+            "1.5x (Quality)",
+            "1.724x (Balanced)",
+            "2x (Performance)",
+            "3x (Ultra Performance)"
+          ],
+          "scope": "editable"
+        },
+        {
+          "nodeId": "86",
+          "nodeType": "ComfySwitchNode",
+          "field": "switch",
+          "label": "神经传递强度",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "90",
+          "nodeType": "ComfySwitchNode",
+          "field": "switch",
+          "label": "局部细节/结构重建强度",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "84",
+          "nodeType": "ComfySwitchNode",
+          "field": "switch",
+          "label": "皮肤结构强度",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "40",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "参考图",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "41",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "41",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：加载图片（从上传口读取图片「外部图片素材入口」）；Preview Image（Preview the images without saving them to th…）；RH DLSS5 Enhance (NR / Upscale)（Runs NVIDIA DLSS 5 Neural Rendering…）。\n输入：参考图。\n输出：图片。\n可调参数：放大模式、神经传递强度、局部细节/结构重建强度、皮肤结构强度。",
+      "paramNodes": [
+        {
+          "nodeId": "40",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "83",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        },
+        {
+          "nodeId": "41",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "84",
+          "nodeType": "ComfySwitchNode",
+          "title": "ComfySwitchNode",
+          "desc": "属于「utilities/logic」分类"
+        },
+        {
+          "nodeId": "90",
+          "nodeType": "ComfySwitchNode",
+          "title": "ComfySwitchNode",
+          "desc": "属于「utilities/logic」分类"
+        },
+        {
+          "nodeId": "37",
+          "nodeType": "RH_DLSS5Enhance",
+          "title": "RH_DLSS5Enhance",
+          "desc": "Runs NVIDIA DLSS 5 Neural Rendering (NGX feature 18) over image batches or video frames, with optional 1.5x-3x neural upscaling via the ordinary DLSS carrier. Windows uses an in-process D3D12 bridge; Linux streams frames to dlss5nr_host.exe under Wine. Connect the outputs to the standard SaveImage / SaveVideo nodes. NVIDIA runtime DLLs are user-supplied and never redistributed."
+        },
+        {
+          "nodeId": "86",
+          "nodeType": "ComfySwitchNode",
+          "title": "ComfySwitchNode",
+          "desc": "属于「utilities/logic」分类"
+        },
+        {
+          "nodeId": "82",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        },
+        {
+          "nodeId": "85",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        },
+        {
+          "nodeId": "87",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        },
+        {
+          "nodeId": "88",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        },
+        {
+          "nodeId": "89",
+          "nodeType": "JWStringToFloat",
+          "title": "JWStringToFloat",
+          "desc": "属于「jamesWalker55」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "ComfySwitchNode",
+      "JWStringToFloat",
+      "LoadImage",
+      "PDIMAGE_LongerSize",
+      "PreviewImage",
+      "RH_DLSS5Enhance"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

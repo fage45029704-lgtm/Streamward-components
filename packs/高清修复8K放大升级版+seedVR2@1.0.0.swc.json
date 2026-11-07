@@ -1,0 +1,3707 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.082Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtjxbgwd-gi58tk",
+    "name": "高清修复8K放大升级版+seedVR2",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 125,
+          "type": "easy imageSizeByLongerSide",
+          "pos": [
+            975,
+            -540
+          ],
+          "size": [
+            210,
+            76
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 264
+            }
+          ],
+          "outputs": [
+            {
+              "label": "resolution",
+              "name": "resolution",
+              "type": "INT",
+              "links": [
+                270
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy imageSizeByLongerSide",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "1024"
+          ]
+        },
+        {
+          "id": 103,
+          "type": "SeedVR2LoadVAEModel",
+          "pos": [
+            2174,
+            -530
+          ],
+          "size": [
+            312.8667907714844,
+            298
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "cache_model",
+              "name": "cache_model",
+              "shape": 7,
+              "type": "MODEL"
+            },
+            {
+              "label": "torch_compile_args",
+              "name": "torch_compile_args",
+              "shape": 7,
+              "type": "SEEDVR2_TORCH_COMPILE"
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "encode_tiled",
+              "name": "encode_tiled",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "encode_tiled"
+              }
+            },
+            {
+              "label": "encode_tile_size",
+              "name": "encode_tile_size",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "encode_tile_size"
+              }
+            },
+            {
+              "label": "encode_tile_overlap",
+              "name": "encode_tile_overlap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "encode_tile_overlap"
+              }
+            },
+            {
+              "label": "decode_tiled",
+              "name": "decode_tiled",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "decode_tiled"
+              }
+            },
+            {
+              "label": "decode_tile_size",
+              "name": "decode_tile_size",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "decode_tile_size"
+              }
+            },
+            {
+              "label": "decode_tile_overlap",
+              "name": "decode_tile_overlap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "decode_tile_overlap"
+              }
+            },
+            {
+              "label": "tile_debug",
+              "name": "tile_debug",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "tile_debug"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "SEEDVR2_VAE",
+              "links": [
+                213,
+                229,
+                253
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SeedVR2LoadVAEModel",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "encode_tiled": true,
+              "encode_tile_overlap": true,
+              "encode_tile_size": true,
+              "decode_tiled": true,
+              "decode_tile_size": true,
+              "tile_debug": true,
+              "offload_device": true,
+              "model": true,
+              "decode_tile_overlap": true,
+              "device": true
+            }
+          },
+          "widgets_values": [
+            "ema_vae_fp16.safetensors",
+            "cuda:0",
+            true,
+            1024,
+            128,
+            true,
+            1024,
+            128,
+            "false",
+            "none"
+          ]
+        },
+        {
+          "id": 99,
+          "type": "easy cleanGpuUsed",
+          "pos": [
+            3774,
+            -1534
+          ],
+          "size": [
+            157.38925170898438,
+            26
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 29,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "anything",
+              "name": "anything",
+              "type": "*",
+              "link": 330
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "*",
+              "links": [
+                277
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy cleanGpuUsed",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 121,
+          "type": "easy ifElse",
+          "pos": [
+            3974,
+            336
+          ],
+          "size": [
+            270,
+            78
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 22,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "type": "*",
+              "link": 255
+            },
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "type": "*",
+              "link": 267
+            },
+            {
+              "label": "boolean",
+              "name": "boolean",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "boolean"
+              },
+              "link": 301
+            }
+          ],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                257
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy ifElse",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "boolean": true
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 127,
+          "type": "LayerUtility: BooleanOperatorV2",
+          "pos": [
+            2021,
+            959
+          ],
+          "size": [
+            320.8853454589844,
+            126
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "a",
+              "name": "a",
+              "shape": 7,
+              "type": "*",
+              "link": 270
+            },
+            {
+              "label": "b",
+              "name": "b",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "a_value",
+              "name": "a_value",
+              "type": "STRING",
+              "widget": {
+                "name": "a_value"
+              }
+            },
+            {
+              "label": "b_value",
+              "name": "b_value",
+              "type": "STRING",
+              "widget": {
+                "name": "b_value"
+              }
+            },
+            {
+              "label": "operator",
+              "name": "operator",
+              "type": "COMBO",
+              "widget": {
+                "name": "operator"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "BOOLEAN",
+              "links": [
+                271,
+                302
+              ]
+            },
+            {
+              "label": "string",
+              "name": "string",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LayerUtility: BooleanOperatorV2",
+            "cnr_id": "comfyui_layerstyle",
+            "ver": "1.0.90",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "",
+            "512",
+            "<"
+          ],
+          "color": "rgba(38, 73, 116, 0.7)"
+        },
+        {
+          "id": 64,
+          "type": "ImageResize+",
+          "pos": [
+            2115,
+            -1035
+          ],
+          "size": [
+            270,
+            218
+          ],
+          "flags": {},
+          "order": 23,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 257
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 247
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 248
+            },
+            {
+              "label": "interpolation",
+              "name": "interpolation",
+              "type": "COMBO",
+              "widget": {
+                "name": "interpolation"
+              }
+            },
+            {
+              "label": "method",
+              "name": "method",
+              "type": "COMBO",
+              "widget": {
+                "name": "method"
+              }
+            },
+            {
+              "label": "condition",
+              "name": "condition",
+              "type": "COMBO",
+              "widget": {
+                "name": "condition"
+              }
+            },
+            {
+              "label": "multiple_of",
+              "name": "multiple_of",
+              "type": "INT",
+              "widget": {
+                "name": "multiple_of"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                288
+              ]
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ImageResize+",
+            "cnr_id": "comfyui_essentials",
+            "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "multiple_of": true,
+              "interpolation": true,
+              "condition": true,
+              "method": true,
+              "width": true,
+              "height": true
+            }
+          },
+          "widgets_values": [
+            4032,
+            4032,
+            "lanczos",
+            "keep proportion",
+            "always",
+            8
+          ]
+        },
+        {
+          "id": 126,
+          "type": "easy ifElse",
+          "pos": [
+            3609,
+            513
+          ],
+          "size": [
+            210,
+            78
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 21,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "type": "*",
+              "link": 269
+            },
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "type": "*",
+              "link": 268
+            },
+            {
+              "label": "boolean",
+              "name": "boolean",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "boolean"
+              },
+              "link": 271
+            }
+          ],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                267
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy ifElse",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "boolean": true
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 96,
+          "type": "DF_Integer",
+          "pos": [
+            1335,
+            -1069
+          ],
+          "size": [
+            300,
+            90
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "Value",
+              "name": "Value",
+              "type": "FLOAT",
+              "widget": {
+                "name": "Value"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                195,
+                196,
+                197
+              ]
+            }
+          ],
+          "title": "分块尺寸",
+          "properties": {
+            "Node name for S&R": "DF_Integer",
+            "cnr_id": "derfuu_comfyui_moddednodes",
+            "ver": "d0905bed31249f2bd0814c67585cf4fe3c77c015",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "Value": true
+            }
+          },
+          "widgets_values": [
+            2048
+          ],
+          "color": "#56756c",
+          "bgcolor": "#426158"
+        },
+        {
+          "id": 47,
+          "type": "TTP_Image_Tile_Batch",
+          "pos": [
+            2396,
+            -1135
+          ],
+          "size": [
+            270,
+            142
+          ],
+          "flags": {},
+          "order": 24,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 288
+            },
+            {
+              "label": "tile_width",
+              "name": "tile_width",
+              "type": "INT",
+              "widget": {
+                "name": "tile_width"
+              },
+              "link": 196
+            },
+            {
+              "label": "tile_height",
+              "name": "tile_height",
+              "type": "INT",
+              "widget": {
+                "name": "tile_height"
+              },
+              "link": 197
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGES",
+              "name": "IMAGES",
+              "type": "IMAGE",
+              "links": [
+                286,
+                310
+              ]
+            },
+            {
+              "label": "POSITIONS",
+              "name": "POSITIONS",
+              "type": "LIST",
+              "links": [
+                95
+              ]
+            },
+            {
+              "label": "ORIGINAL_SIZE",
+              "name": "ORIGINAL_SIZE",
+              "type": "TUPLE",
+              "links": [
+                96
+              ]
+            },
+            {
+              "label": "GRID_SIZE",
+              "name": "GRID_SIZE",
+              "type": "TUPLE",
+              "links": [
+                97
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "TTP_Image_Tile_Batch",
+            "cnr_id": "comfyui_ttp_toolset",
+            "ver": "08fb8b9808b844a0137399b6fd34eec1e13e62d3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "tile_width": true,
+              "tile_height": true
+            },
+            "aux_id": "TTPlanetPig/Comfyui_TTP_Toolset"
+          },
+          "widgets_values": [
+            2048,
+            2048
+          ]
+        },
+        {
+          "id": 110,
+          "type": "easy ifElse",
+          "pos": [
+            4757,
+            -887
+          ],
+          "size": [
+            270,
+            78
+          ],
+          "flags": {},
+          "order": 32,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "type": "*",
+              "link": 225
+            },
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "type": "*",
+              "link": 293
+            },
+            {
+              "label": "boolean",
+              "name": "boolean",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "boolean"
+              },
+              "link": 227
+            }
+          ],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                224
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy ifElse",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "boolean": true
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 118,
+          "type": "SeedVR2VideoUpscaler",
+          "pos": [
+            3044,
+            476
+          ],
+          "size": [
+            317.5425720214844,
+            386
+          ],
+          "flags": {},
+          "order": 20,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 305
+            },
+            {
+              "label": "dit",
+              "name": "dit",
+              "type": "SEEDVR2_DIT",
+              "link": 254
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "SEEDVR2_VAE",
+              "link": 253
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "resolution",
+              "name": "resolution",
+              "type": "INT",
+              "widget": {
+                "name": "resolution"
+              }
+            },
+            {
+              "label": "max_resolution",
+              "name": "max_resolution",
+              "type": "INT",
+              "widget": {
+                "name": "max_resolution"
+              }
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            },
+            {
+              "label": "uniform_batch_size",
+              "name": "uniform_batch_size",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "uniform_batch_size"
+              }
+            },
+            {
+              "label": "color_correction",
+              "name": "color_correction",
+              "type": "COMBO",
+              "widget": {
+                "name": "color_correction"
+              }
+            },
+            {
+              "label": "temporal_overlap",
+              "name": "temporal_overlap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "temporal_overlap"
+              }
+            },
+            {
+              "label": "prepend_frames",
+              "name": "prepend_frames",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "prepend_frames"
+              }
+            },
+            {
+              "label": "input_noise_scale",
+              "name": "input_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "input_noise_scale"
+              }
+            },
+            {
+              "label": "latent_noise_scale",
+              "name": "latent_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "latent_noise_scale"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            },
+            {
+              "label": "enable_debug",
+              "name": "enable_debug",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "enable_debug"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": [
+                255,
+                269
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SeedVR2VideoUpscaler",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "color_correction": true,
+              "batch_size": true,
+              "seed": true,
+              "uniform_batch_size": true,
+              "enable_debug": true,
+              "latent_noise_scale": true,
+              "prepend_frames": true,
+              "offload_device": true,
+              "temporal_overlap": true,
+              "input_noise_scale": true,
+              "resolution": true,
+              "max_resolution": true
+            }
+          },
+          "widgets_values": [
+            42,
+            "fixed",
+            1280,
+            0,
+            1,
+            false,
+            "lab",
+            0,
+            0,
+            0,
+            0,
+            "cpu",
+            false
+          ],
+          "color": "#223",
+          "bgcolor": "#335"
+        },
+        {
+          "id": 106,
+          "type": "ImageCASharpening+",
+          "pos": [
+            3703,
+            -649
+          ],
+          "size": [
+            291.3746032714844,
+            60
+          ],
+          "flags": {},
+          "order": 28,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 329
+            },
+            {
+              "label": "amount",
+              "name": "amount",
+              "type": "FLOAT",
+              "widget": {
+                "name": "amount"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                220
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ImageCASharpening+",
+            "cnr_id": "comfyui_essentials",
+            "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "amount": true
+            }
+          },
+          "widgets_values": [
+            0.5
+          ]
+        },
+        {
+          "id": 144,
+          "type": "easy ifElse",
+          "pos": [
+            2767,
+            706
+          ],
+          "size": [
+            210,
+            78
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 19,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "type": "*",
+              "link": 304
+            },
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "type": "*",
+              "link": 303
+            },
+            {
+              "label": "boolean",
+              "name": "boolean",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "boolean"
+              },
+              "link": 302
+            }
+          ],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                305
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy ifElse",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "boolean": true
+            }
+          },
+          "widgets_values": [
+            false
+          ]
+        },
+        {
+          "id": 108,
+          "type": "SeedVR2LoadDiTModel",
+          "pos": [
+            2195,
+            198
+          ],
+          "size": [
+            307.6646423339844,
+            202
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "cache_model",
+              "name": "cache_model",
+              "shape": 7,
+              "type": "MODEL"
+            },
+            {
+              "label": "torch_compile_args",
+              "name": "torch_compile_args",
+              "shape": 7,
+              "type": "SEEDVR2_TORCH_COMPILE"
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "blocks_to_swap",
+              "name": "blocks_to_swap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "blocks_to_swap"
+              }
+            },
+            {
+              "label": "swap_io_components",
+              "name": "swap_io_components",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "swap_io_components"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            },
+            {
+              "label": "attention_mode",
+              "name": "attention_mode",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "attention_mode"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "dit",
+              "name": "dit",
+              "type": "SEEDVR2_DIT",
+              "links": [
+                221,
+                254
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SeedVR2LoadDiTModel",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "attention_mode": true,
+              "swap_io_components": true,
+              "offload_device": true,
+              "model": true,
+              "device": true,
+              "blocks_to_swap": true
+            }
+          },
+          "widgets_values": [
+            "seedvr2_ema_3b_fp8_e4m3fn.safetensors",
+            "cuda:0",
+            0,
+            false,
+            "none",
+            "sdpa"
+          ]
+        },
+        {
+          "id": 102,
+          "type": "SeedVR2LoadDiTModel",
+          "pos": [
+            3649,
+            -1401
+          ],
+          "size": [
+            307.6646423339844,
+            202
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "cache_model",
+              "name": "cache_model",
+              "shape": 7,
+              "type": "MODEL"
+            },
+            {
+              "label": "torch_compile_args",
+              "name": "torch_compile_args",
+              "shape": 7,
+              "type": "SEEDVR2_TORCH_COMPILE"
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "blocks_to_swap",
+              "name": "blocks_to_swap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "blocks_to_swap"
+              }
+            },
+            {
+              "label": "swap_io_components",
+              "name": "swap_io_components",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "swap_io_components"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            },
+            {
+              "label": "attention_mode",
+              "name": "attention_mode",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "attention_mode"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "dit",
+              "name": "dit",
+              "type": "SEEDVR2_DIT",
+              "links": [
+                212
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SeedVR2LoadDiTModel",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "attention_mode": true,
+              "swap_io_components": true,
+              "offload_device": true,
+              "model": true,
+              "device": true,
+              "blocks_to_swap": true
+            }
+          },
+          "widgets_values": [
+            "seedvr2_ema_7b-Q8_0.gguf",
+            "cuda:0",
+            0,
+            false,
+            "cpu",
+            "sdpa"
+          ]
+        },
+        {
+          "id": 95,
+          "type": "SimpleMath+",
+          "pos": [
+            1680,
+            -963
+          ],
+          "size": [
+            270,
+            98
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "a",
+              "name": "a",
+              "shape": 7,
+              "type": "*",
+              "link": 190
+            },
+            {
+              "label": "b",
+              "name": "b",
+              "shape": 7,
+              "type": "*",
+              "link": 195
+            },
+            {
+              "label": "c",
+              "name": "c",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "value",
+              "name": "value",
+              "type": "STRING",
+              "widget": {
+                "name": "value"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                247,
+                248
+              ]
+            },
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SimpleMath+",
+            "cnr_id": "comfyui_essentials",
+            "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "value": true
+            }
+          },
+          "widgets_values": [
+            "a*b-96"
+          ]
+        },
+        {
+          "id": 133,
+          "type": "数学运算_孤海",
+          "pos": [
+            2618,
+            -726
+          ],
+          "size": [
+            270,
+            162
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "a",
+              "name": "a",
+              "shape": 7,
+              "type": "*",
+              "link": 336
+            },
+            {
+              "label": "b",
+              "name": "b",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "c",
+              "name": "c",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "d",
+              "name": "d",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "f",
+              "name": "f",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "值1",
+              "name": "值1",
+              "type": "STRING",
+              "widget": {
+                "name": "值1"
+              }
+            },
+            {
+              "label": "值2",
+              "name": "值2",
+              "type": "STRING",
+              "widget": {
+                "name": "值2"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "整数1",
+              "name": "整数1",
+              "type": "INT",
+              "links": [
+                291
+              ]
+            },
+            {
+              "label": "浮点1",
+              "name": "浮点1",
+              "type": "FLOAT",
+              "links": []
+            },
+            {
+              "label": "整数2",
+              "name": "整数2",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "浮点2",
+              "name": "浮点2",
+              "type": "FLOAT",
+              "links": []
+            },
+            {
+              "label": "？帮助",
+              "name": "？帮助",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "数学运算_孤海",
+            "ver": "83abca47fa10d47a1ffd0c7cb62b7fa2a9dc0ddc",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {},
+            "aux_id": "goohai/Goohaitools-comfyui"
+          },
+          "widgets_values": [
+            "min(a,20)",
+            ""
+          ]
+        },
+        {
+          "id": 123,
+          "type": "ImageResize+",
+          "pos": [
+            1218,
+            -338
+          ],
+          "size": [
+            270,
+            218
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 259
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 317
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 318
+            },
+            {
+              "label": "interpolation",
+              "name": "interpolation",
+              "type": "COMBO",
+              "widget": {
+                "name": "interpolation"
+              }
+            },
+            {
+              "label": "method",
+              "name": "method",
+              "type": "COMBO",
+              "widget": {
+                "name": "method"
+              }
+            },
+            {
+              "label": "condition",
+              "name": "condition",
+              "type": "COMBO",
+              "widget": {
+                "name": "condition"
+              }
+            },
+            {
+              "label": "multiple_of",
+              "name": "multiple_of",
+              "type": "INT",
+              "widget": {
+                "name": "multiple_of"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                303
+              ]
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ImageResize+",
+            "cnr_id": "comfyui_essentials",
+            "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "multiple_of": true,
+              "interpolation": true,
+              "condition": true,
+              "width": true,
+              "height": true
+            }
+          },
+          "widgets_values": [
+            384,
+            384,
+            "lanczos",
+            "keep proportion",
+            "always",
+            0
+          ]
+        },
+        {
+          "id": 143,
+          "type": "LayerUtility: BooleanOperatorV2",
+          "pos": [
+            1157,
+            65
+          ],
+          "size": [
+            320.8853454589844,
+            126
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 18,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "a",
+              "name": "a",
+              "shape": 7,
+              "type": "*",
+              "link": 319
+            },
+            {
+              "label": "b",
+              "name": "b",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "a_value",
+              "name": "a_value",
+              "type": "STRING",
+              "widget": {
+                "name": "a_value"
+              }
+            },
+            {
+              "label": "b_value",
+              "name": "b_value",
+              "type": "STRING",
+              "widget": {
+                "name": "b_value"
+              }
+            },
+            {
+              "label": "operator",
+              "name": "operator",
+              "type": "COMBO",
+              "widget": {
+                "name": "operator"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "BOOLEAN",
+              "links": [
+                301
+              ]
+            },
+            {
+              "label": "string",
+              "name": "string",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LayerUtility: BooleanOperatorV2",
+            "cnr_id": "comfyui_layerstyle",
+            "ver": "1.0.90",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "",
+            "0",
+            ">"
+          ],
+          "color": "rgba(38, 73, 116, 0.7)"
+        },
+        {
+          "id": 148,
+          "type": "easy imageSizeBySide",
+          "pos": [
+            3701,
+            -879
+          ],
+          "size": [
+            220,
+            112
+          ],
+          "flags": {},
+          "order": 26,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 310
+            },
+            {
+              "label": "side",
+              "name": "side",
+              "type": "COMBO",
+              "widget": {
+                "name": "side"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "resolution",
+              "name": "resolution",
+              "type": "INT",
+              "links": [
+                311,
+                312
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy imageSizeBySide",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "widget_ue_connectable": {
+              "side": true
+            }
+          },
+          "widgets_values": [
+            "Shortest",
+            "2048"
+          ]
+        },
+        {
+          "id": 131,
+          "type": "Blur",
+          "pos": [
+            2930,
+            -748
+          ],
+          "size": [
+            270,
+            82
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 25,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 286
+            },
+            {
+              "label": "radius",
+              "name": "radius",
+              "type": "INT",
+              "widget": {
+                "name": "radius"
+              },
+              "link": 291
+            },
+            {
+              "label": "sigma_factor",
+              "name": "sigma_factor",
+              "type": "FLOAT",
+              "widget": {
+                "name": "sigma_factor"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                328
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "Blur",
+            "cnr_id": "masquerade-nodes-comfyui",
+            "ver": "432cb4d146a391b387a0cd25ace824328b5b61cf",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "sigma_factor": true,
+              "radius": true
+            }
+          },
+          "widgets_values": [
+            10,
+            1
+          ]
+        },
+        {
+          "id": 158,
+          "type": "ImageResize+",
+          "pos": [
+            3217,
+            -737
+          ],
+          "size": [
+            270,
+            218
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 27,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 328
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              }
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              }
+            },
+            {
+              "label": "interpolation",
+              "name": "interpolation",
+              "type": "COMBO",
+              "widget": {
+                "name": "interpolation"
+              }
+            },
+            {
+              "label": "method",
+              "name": "method",
+              "type": "COMBO",
+              "widget": {
+                "name": "method"
+              }
+            },
+            {
+              "label": "condition",
+              "name": "condition",
+              "type": "COMBO",
+              "widget": {
+                "name": "condition"
+              }
+            },
+            {
+              "label": "multiple_of",
+              "name": "multiple_of",
+              "type": "INT",
+              "widget": {
+                "name": "multiple_of"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                329,
+                330
+              ]
+            },
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ImageResize+",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            1280,
+            1280,
+            "nearest-exact",
+            "keep proportion",
+            "always",
+            0
+          ]
+        },
+        {
+          "id": 101,
+          "type": "SeedVR2VideoUpscaler",
+          "pos": [
+            4200,
+            -1418
+          ],
+          "size": [
+            317.5425720214844,
+            386
+          ],
+          "flags": {},
+          "order": 31,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 277
+            },
+            {
+              "label": "dit",
+              "name": "dit",
+              "type": "SEEDVR2_DIT",
+              "link": 212
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "SEEDVR2_VAE",
+              "link": 213
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "resolution",
+              "name": "resolution",
+              "type": "INT",
+              "widget": {
+                "name": "resolution"
+              },
+              "link": 311
+            },
+            {
+              "label": "max_resolution",
+              "name": "max_resolution",
+              "type": "INT",
+              "widget": {
+                "name": "max_resolution"
+              }
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            },
+            {
+              "label": "uniform_batch_size",
+              "name": "uniform_batch_size",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "uniform_batch_size"
+              }
+            },
+            {
+              "label": "color_correction",
+              "name": "color_correction",
+              "type": "COMBO",
+              "widget": {
+                "name": "color_correction"
+              }
+            },
+            {
+              "label": "temporal_overlap",
+              "name": "temporal_overlap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "temporal_overlap"
+              }
+            },
+            {
+              "label": "prepend_frames",
+              "name": "prepend_frames",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "prepend_frames"
+              }
+            },
+            {
+              "label": "input_noise_scale",
+              "name": "input_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "input_noise_scale"
+              }
+            },
+            {
+              "label": "latent_noise_scale",
+              "name": "latent_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "latent_noise_scale"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            },
+            {
+              "label": "enable_debug",
+              "name": "enable_debug",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "enable_debug"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": [
+                225
+              ]
+            }
+          ],
+          "title": "SeedVR2视频放大器 7b",
+          "properties": {
+            "Node name for S&R": "SeedVR2VideoUpscaler",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "color_correction": true,
+              "batch_size": true,
+              "seed": true,
+              "uniform_batch_size": true,
+              "enable_debug": true,
+              "latent_noise_scale": true,
+              "prepend_frames": true,
+              "offload_device": true,
+              "temporal_overlap": true,
+              "input_noise_scale": true,
+              "resolution": true,
+              "max_resolution": true
+            }
+          },
+          "widgets_values": [
+            42,
+            "fixed",
+            1080,
+            0,
+            1,
+            false,
+            "wavelet",
+            0,
+            0,
+            0,
+            0,
+            "cpu",
+            false
+          ],
+          "color": "#223",
+          "bgcolor": "#335"
+        },
+        {
+          "id": 107,
+          "type": "SeedVR2VideoUpscaler",
+          "pos": [
+            4251,
+            -565
+          ],
+          "size": [
+            317.5425720214844,
+            386
+          ],
+          "flags": {},
+          "order": 30,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 220
+            },
+            {
+              "label": "dit",
+              "name": "dit",
+              "type": "SEEDVR2_DIT",
+              "link": 221
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "SEEDVR2_VAE",
+              "link": 229
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "resolution",
+              "name": "resolution",
+              "type": "INT",
+              "widget": {
+                "name": "resolution"
+              },
+              "link": 312
+            },
+            {
+              "label": "max_resolution",
+              "name": "max_resolution",
+              "type": "INT",
+              "widget": {
+                "name": "max_resolution"
+              }
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            },
+            {
+              "label": "uniform_batch_size",
+              "name": "uniform_batch_size",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "uniform_batch_size"
+              }
+            },
+            {
+              "label": "color_correction",
+              "name": "color_correction",
+              "type": "COMBO",
+              "widget": {
+                "name": "color_correction"
+              }
+            },
+            {
+              "label": "temporal_overlap",
+              "name": "temporal_overlap",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "temporal_overlap"
+              }
+            },
+            {
+              "label": "prepend_frames",
+              "name": "prepend_frames",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "prepend_frames"
+              }
+            },
+            {
+              "label": "input_noise_scale",
+              "name": "input_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "input_noise_scale"
+              }
+            },
+            {
+              "label": "latent_noise_scale",
+              "name": "latent_noise_scale",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "latent_noise_scale"
+              }
+            },
+            {
+              "label": "offload_device",
+              "name": "offload_device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "offload_device"
+              }
+            },
+            {
+              "label": "enable_debug",
+              "name": "enable_debug",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "enable_debug"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": [
+                293
+              ]
+            }
+          ],
+          "title": "SeedVR2视频放大器 3b",
+          "properties": {
+            "Node name for S&R": "SeedVR2VideoUpscaler",
+            "cnr_id": "seedvr2_videoupscaler",
+            "ver": "f68fe920b85edd6e8925c8ddb3bf38be0b0cdb8b",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "color_correction": true,
+              "batch_size": true,
+              "seed": true,
+              "uniform_batch_size": true,
+              "enable_debug": true,
+              "latent_noise_scale": true,
+              "prepend_frames": true,
+              "offload_device": true,
+              "temporal_overlap": true,
+              "input_noise_scale": true,
+              "resolution": true,
+              "max_resolution": true
+            }
+          },
+          "widgets_values": [
+            42,
+            "fixed",
+            1080,
+            0,
+            1,
+            false,
+            "wavelet",
+            0,
+            0,
+            0,
+            0,
+            "cpu",
+            false
+          ],
+          "color": "#223",
+          "bgcolor": "#335"
+        },
+        {
+          "id": 15,
+          "type": "LoadImage",
+          "pos": [
+            -911,
+            -1203
+          ],
+          "size": [
+            640,
+            730
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "COMBO",
+              "widget": {
+                "name": "image"
+              }
+            },
+            {
+              "label": "upload",
+              "name": "upload",
+              "type": "IMAGEUPLOAD",
+              "widget": {
+                "name": "upload"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                259,
+                264,
+                268,
+                304
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.44",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "image": true,
+              "upload": true
+            },
+            "streamward_material": {
+              "image": {
+                "label": "加载图片",
+                "required": true
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 48,
+          "type": "TTP_Image_Assy",
+          "pos": [
+            5060,
+            -840
+          ],
+          "size": [
+            280,
+            120
+          ],
+          "flags": {},
+          "order": 33,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "tiles",
+              "name": "tiles",
+              "type": "IMAGE",
+              "link": 224
+            },
+            {
+              "label": "positions",
+              "name": "positions",
+              "type": "LIST",
+              "link": 95
+            },
+            {
+              "label": "original_size",
+              "name": "original_size",
+              "type": "TUPLE",
+              "link": 96
+            },
+            {
+              "label": "grid_size",
+              "name": "grid_size",
+              "type": "TUPLE",
+              "link": 97
+            },
+            {
+              "label": "padding",
+              "name": "padding",
+              "type": "INT",
+              "widget": {
+                "name": "padding"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "RECONSTRUCTED_IMAGE",
+              "name": "RECONSTRUCTED_IMAGE",
+              "type": "IMAGE",
+              "links": [
+                333
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "TTP_Image_Assy",
+            "cnr_id": "comfyui_ttp_toolset",
+            "ver": "08fb8b9808b844a0137399b6fd34eec1e13e62d3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "padding": true
+            },
+            "aux_id": "TTPlanetPig/Comfyui_TTP_Toolset"
+          },
+          "widgets_values": [
+            128
+          ]
+        },
+        {
+          "id": 160,
+          "type": "PreviewImage",
+          "pos": [
+            5393,
+            -867
+          ],
+          "size": [
+            142.376953125,
+            46
+          ],
+          "flags": {},
+          "order": 36,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 333
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            },
+            "streamward_capture": true
+          }
+        },
+        {
+          "id": 151,
+          "type": "MathExpression|pysssss",
+          "pos": [
+            582,
+            -55
+          ],
+          "size": [
+            247.0572509765625,
+            128
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "a",
+              "name": "a",
+              "shape": 7,
+              "type": "INT,FLOAT,IMAGE,LATENT",
+              "link": 335
+            },
+            {
+              "label": "b",
+              "name": "b",
+              "shape": 7,
+              "type": "INT,FLOAT,IMAGE,LATENT"
+            },
+            {
+              "label": "c",
+              "name": "c",
+              "shape": 7,
+              "type": "INT,FLOAT,IMAGE,LATENT"
+            },
+            {
+              "label": "expression",
+              "name": "expression",
+              "type": "INT,FLOAT,IMAGE,LATENT",
+              "widget": {
+                "name": "expression"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                317,
+                318,
+                319
+              ]
+            },
+            {
+              "label": "FLOAT",
+              "name": "FLOAT",
+              "type": "FLOAT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "MathExpression|pysssss",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "min((a//128)*128,1024)"
+          ]
+        },
+        {
+          "id": 163,
+          "type": "GoohaiUniversalSlider",
+          "pos": [
+            -940,
+            -350
+          ],
+          "size": [
+            300,
+            98
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                335
+              ]
+            }
+          ],
+          "title": "强制小图",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "GoohaiUniversalSlider",
+            "sliderType": "float",
+            "sliderMin": 0,
+            "sliderMax": 768,
+            "sliderStep": 1,
+            "sliderLabel": "值",
+            "sliderColor": "#e8c547",
+            "streamward_params": {
+              "值": {
+                "label": "强制小图（(0为不缩放)强制缩放长边到指定尺寸再放大，可有效修复高像素低画质、轻微失 焦、干扰噪声太多的图）",
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            0,
+            "float",
+            null
+          ],
+          "color": "#2D384D",
+          "bgcolor": "#2D384D"
+        },
+        {
+          "id": 149,
+          "type": "Int",
+          "pos": [
+            -1426,
+            -910
+          ],
+          "size": [
+            297.15234375,
+            64.55403137207031
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "value",
+              "name": "value",
+              "type": "INT",
+              "widget": {
+                "name": "value"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "Int",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            0
+          ]
+        },
+        {
+          "id": 162,
+          "type": "GoohaiUniversalSlider",
+          "pos": [
+            -935,
+            -897
+          ],
+          "size": [
+            319.4695129394531,
+            98
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 7,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                336
+              ]
+            }
+          ],
+          "title": "一致性强度",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "GoohaiUniversalSlider",
+            "sliderType": "float",
+            "sliderMin": 0,
+            "sliderMax": 20,
+            "sliderStep": 1,
+            "sliderLabel": "7b时若细节太多，可加大以减少质感",
+            "sliderColor": "#e8c547",
+            "streamward_params": {
+              "值": {
+                "label": "减少细节（7b时若细节太多，可加大以减少质感）",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            0,
+            "float",
+            ""
+          ],
+          "color": "#2D384D",
+          "bgcolor": "#2D384D"
+        },
+        {
+          "id": 79,
+          "type": "DF_Integer",
+          "pos": [
+            -940,
+            -729
+          ],
+          "size": [
+            301.5079345703125,
+            93.21442413330078
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "Value",
+              "name": "Value",
+              "type": "FLOAT",
+              "widget": {
+                "name": "Value"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                190
+              ]
+            }
+          ],
+          "title": "长边分块数量(1=2k/2=4k/3=6k/4=8k）",
+          "properties": {
+            "Node name for S&R": "DF_Integer",
+            "cnr_id": "derfuu_comfyui_moddednodes",
+            "ver": "d0905bed31249f2bd0814c67585cf4fe3c77c015",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "widget_ue_connectable": {
+              "Value": true
+            },
+            "streamward_params": {
+              "Value": {
+                "label": "长边分块数量(1=2k/2=4k/3=6k/4=8k）",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            2
+          ],
+          "color": "#724f60",
+          "bgcolor": "#5e3b4c"
+        },
+        {
+          "id": 111,
+          "type": "easy boolean",
+          "pos": [
+            -959,
+            -549
+          ],
+          "size": [
+            300,
+            90
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "value",
+              "name": "value",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "value"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "boolean",
+              "name": "boolean",
+              "type": "BOOLEAN",
+              "links": [
+                227
+              ]
+            }
+          ],
+          "title": "7B高质感开关（默认3b噪点更少）",
+          "properties": {
+            "Node name for S&R": "easy boolean",
+            "cnr_id": "comfyui-easy-use",
+            "ver": "1.3.4",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "widget_ue_connectable": {
+              "value": true
+            },
+            "streamward_params": {
+              "value": {
+                "label": "7B高质感开关",
+                "seq": 4
+              }
+            }
+          },
+          "widgets_values": [
+            true
+          ],
+          "color": "#5c7971",
+          "bgcolor": "#48655d"
+        },
+        {
+          "id": 165,
+          "type": "Note",
+          "pos": [
+            -1359,
+            -722
+          ],
+          "size": [
+            350.68438720703125,
+            380.75054931640625
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "properties": {},
+          "widgets_values": [
+            "减少细节:(0~20)\n使用7b模型时若细节太多，可适当加大以减少质感\n分块数量:\n1块:输出2K\n2块:输出4K\n3块:输出6K\n4块:输出8K\n7B高质感:\n打开:使用细节更多的7b模型关闭:使用噪点更少的3b模型\n强制小图:(0为不缩放)强制缩放长边到指定尺寸再放大，可有效修复高像素低画质、轻微失 焦、干扰噪声太多的图\n模型下载地址:https://pan.quark.cn/s/7ddf7aeeebaf提取码:V2GM\n孤海ComfyUl会员资料\nhttps://g07twv432kc.feishu.cn/docx/EvNpdSaM8ouDt1x0HW\nBcAjwen0e"
+          ],
+          "color": "#432",
+          "bgcolor": "#653"
+        },
+        {
+          "id": 164,
+          "type": "Note",
+          "pos": [
+            -1904,
+            -616
+          ],
+          "size": [
+            405.2775573730469,
+            261.60400390625
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "properties": {},
+          "widgets_values": [
+            "说明：\n1.为了速度更快，工作流默认块交换数值为0，16G及以上显存可以正常运行，小于16G可能会爆显存，请把块交换改成16，最高36；\n2.7b模型质量高，但对低像素的小图和高像素虚焦的图没啥效果，因此加入了强制小图以削弱虚焦模糊的特征，得以更好的修复，数值为0-768，值越小越能去除虚焦特性，同时因为缩得太小会丢失部分相似度，所以强制小图不适用于细小的文字修复，0为不缩小；\n3.原图本身清晰度不低但噪点很多的图可能不适合用7b修复，细节太多只会越来越脏，可以尝试关闭7b高质感开关，关闭后会使用3b模型，3b的降噪效果不错；"
+          ],
+          "color": "#432",
+          "bgcolor": "#653"
+        }
+      ],
+      "links": [
+        [
+          95,
+          47,
+          1,
+          48,
+          1,
+          "LIST"
+        ],
+        [
+          96,
+          47,
+          2,
+          48,
+          2,
+          "TUPLE"
+        ],
+        [
+          97,
+          47,
+          3,
+          48,
+          3,
+          "TUPLE"
+        ],
+        [
+          190,
+          79,
+          0,
+          95,
+          0,
+          "*"
+        ],
+        [
+          195,
+          96,
+          0,
+          95,
+          1,
+          "*"
+        ],
+        [
+          196,
+          96,
+          0,
+          47,
+          1,
+          "INT"
+        ],
+        [
+          197,
+          96,
+          0,
+          47,
+          2,
+          "INT"
+        ],
+        [
+          212,
+          102,
+          0,
+          101,
+          1,
+          "SEEDVR2_DIT"
+        ],
+        [
+          213,
+          103,
+          0,
+          101,
+          2,
+          "SEEDVR2_VAE"
+        ],
+        [
+          220,
+          106,
+          0,
+          107,
+          0,
+          "IMAGE"
+        ],
+        [
+          221,
+          108,
+          0,
+          107,
+          1,
+          "SEEDVR2_DIT"
+        ],
+        [
+          224,
+          110,
+          0,
+          48,
+          0,
+          "IMAGE"
+        ],
+        [
+          225,
+          101,
+          0,
+          110,
+          0,
+          "IMAGE"
+        ],
+        [
+          227,
+          111,
+          0,
+          110,
+          2,
+          "BOOLEAN"
+        ],
+        [
+          229,
+          103,
+          0,
+          107,
+          2,
+          "SEEDVR2_VAE"
+        ],
+        [
+          247,
+          95,
+          0,
+          64,
+          1,
+          "INT"
+        ],
+        [
+          248,
+          95,
+          0,
+          64,
+          2,
+          "INT"
+        ],
+        [
+          253,
+          103,
+          0,
+          118,
+          2,
+          "SEEDVR2_VAE"
+        ],
+        [
+          254,
+          108,
+          0,
+          118,
+          1,
+          "SEEDVR2_DIT"
+        ],
+        [
+          255,
+          118,
+          0,
+          121,
+          0,
+          "IMAGE"
+        ],
+        [
+          257,
+          121,
+          0,
+          64,
+          0,
+          "IMAGE"
+        ],
+        [
+          259,
+          15,
+          0,
+          123,
+          0,
+          "IMAGE"
+        ],
+        [
+          264,
+          15,
+          0,
+          125,
+          0,
+          "IMAGE"
+        ],
+        [
+          267,
+          126,
+          0,
+          121,
+          1,
+          "*"
+        ],
+        [
+          268,
+          15,
+          0,
+          126,
+          1,
+          "IMAGE"
+        ],
+        [
+          269,
+          118,
+          0,
+          126,
+          0,
+          "IMAGE"
+        ],
+        [
+          270,
+          125,
+          0,
+          127,
+          0,
+          "INT"
+        ],
+        [
+          271,
+          127,
+          0,
+          126,
+          2,
+          "BOOLEAN"
+        ],
+        [
+          277,
+          99,
+          0,
+          101,
+          0,
+          "IMAGE"
+        ],
+        [
+          286,
+          47,
+          0,
+          131,
+          0,
+          "IMAGE"
+        ],
+        [
+          288,
+          64,
+          0,
+          47,
+          0,
+          "IMAGE"
+        ],
+        [
+          291,
+          133,
+          0,
+          131,
+          1,
+          "INT"
+        ],
+        [
+          293,
+          107,
+          0,
+          110,
+          1,
+          "IMAGE"
+        ],
+        [
+          301,
+          143,
+          0,
+          121,
+          2,
+          "BOOLEAN"
+        ],
+        [
+          302,
+          127,
+          0,
+          144,
+          2,
+          "BOOLEAN"
+        ],
+        [
+          303,
+          123,
+          0,
+          144,
+          1,
+          "IMAGE"
+        ],
+        [
+          304,
+          15,
+          0,
+          144,
+          0,
+          "IMAGE"
+        ],
+        [
+          305,
+          144,
+          0,
+          118,
+          0,
+          "IMAGE"
+        ],
+        [
+          310,
+          47,
+          0,
+          148,
+          0,
+          "IMAGE"
+        ],
+        [
+          311,
+          148,
+          0,
+          101,
+          4,
+          "INT"
+        ],
+        [
+          312,
+          148,
+          0,
+          107,
+          4,
+          "INT"
+        ],
+        [
+          317,
+          151,
+          0,
+          123,
+          1,
+          "INT"
+        ],
+        [
+          318,
+          151,
+          0,
+          123,
+          2,
+          "INT"
+        ],
+        [
+          319,
+          151,
+          0,
+          143,
+          0,
+          "*"
+        ],
+        [
+          328,
+          131,
+          0,
+          158,
+          0,
+          "IMAGE"
+        ],
+        [
+          329,
+          158,
+          0,
+          106,
+          0,
+          "IMAGE"
+        ],
+        [
+          330,
+          158,
+          0,
+          99,
+          0,
+          "*"
+        ],
+        [
+          333,
+          48,
+          0,
+          160,
+          0,
+          "IMAGE"
+        ],
+        [
+          335,
+          163,
+          0,
+          151,
+          0,
+          "INT,FLOAT,IMAGE,LATENT"
+        ],
+        [
+          336,
+          162,
+          0,
+          133,
+          0,
+          "*"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 165,
+      "last_link_id": 336,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "高清放大"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "163",
+          "nodeType": "GoohaiUniversalSlider",
+          "field": "值",
+          "label": "强制小图（(0为不缩放)强制缩放长边到指定尺寸再放大，可有效修复高像素低画质、轻微失 焦、干扰噪声太多的图）",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 768,
+          "step": 1,
+          "slider": true,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "162",
+          "nodeType": "GoohaiUniversalSlider",
+          "field": "值",
+          "label": "减少细节（7b时若细节太多，可加大以减少质感）",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "slider": true,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "79",
+          "nodeType": "DF_Integer",
+          "field": "Value",
+          "label": "长边分块数量(1=2k/2=4k/3=6k/4=8k）",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 2,
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "step": 1,
+          "slider": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "111",
+          "nodeType": "easy boolean",
+          "field": "value",
+          "label": "7B高质感开关",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": true,
+          "scope": "editable"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "15",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "加载图片",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "160",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "160",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：SeedVR2 VAE 加载（加载 SeedVR2 放大模型的 VAE 部分权重）；加载图片（从上传口读取图片「外部图片素材入口」）；Preview Image（Preview the images without saving them to th…）；SeedVR2 高清放大（SeedVR2 超分主节点：输入低分辨率图/视频帧，输出放大后的高清图「分块拼接」）；SeedVR2 DiT 加载（加载 SeedVR2 放大模型的 DiT 主干部分权重）；数学运算 孤海（孤海工具箱）；…（共 7 个）。\n输入：参考图。\n输出：图片。\n可调参数：强制小图（(0为不缩放)强制缩放长边到指定尺寸再放大，可有效修复高像素低画质、轻微失 焦、干扰噪声太多的图）、减少细节（7b时若细节太多，可加大以减少质感）、长边分块数量(1=2k/2=4k/3=6k/4=8k）、7B高质感开关。",
+      "paramNodes": [
+        {
+          "nodeId": "125",
+          "nodeType": "easy imageSizeByLongerSide",
+          "title": "easy imageSizeByLongerSide",
+          "desc": "属于「EasyUse/Image」分类"
+        },
+        {
+          "nodeId": "103",
+          "nodeType": "SeedVR2LoadVAEModel",
+          "title": "SeedVR2LoadVAEModel",
+          "desc": "加载 SeedVR2 放大模型的 VAE 部分权重。"
+        },
+        {
+          "nodeId": "99",
+          "nodeType": "easy cleanGpuUsed",
+          "title": "easy cleanGpuUsed",
+          "desc": "属于「EasyUse/Logic」分类"
+        },
+        {
+          "nodeId": "121",
+          "nodeType": "easy ifElse",
+          "title": "easy ifElse",
+          "desc": "属于「EasyUse/Logic」分类"
+        },
+        {
+          "nodeId": "127",
+          "nodeType": "LayerUtility: BooleanOperatorV2",
+          "title": "LayerUtility: BooleanOperatorV2",
+          "desc": "属于「😺dzNodes/LayerUtility/Data」分类"
+        },
+        {
+          "nodeId": "64",
+          "nodeType": "ImageResize+",
+          "title": "ImageResize+",
+          "desc": "属于「essentials/image manipulation」分类"
+        },
+        {
+          "nodeId": "126",
+          "nodeType": "easy ifElse",
+          "title": "easy ifElse",
+          "desc": "属于「EasyUse/Logic」分类"
+        },
+        {
+          "nodeId": "96",
+          "nodeType": "DF_Integer",
+          "title": "DF_Integer",
+          "desc": "属于「Derfuu_Nodes/Variables」分类"
+        },
+        {
+          "nodeId": "47",
+          "nodeType": "TTP_Image_Tile_Batch",
+          "title": "TTP_Image_Tile_Batch",
+          "desc": "属于「TTP/Image」分类"
+        },
+        {
+          "nodeId": "110",
+          "nodeType": "easy ifElse",
+          "title": "easy ifElse",
+          "desc": "属于「EasyUse/Logic」分类"
+        },
+        {
+          "nodeId": "118",
+          "nodeType": "SeedVR2VideoUpscaler",
+          "title": "SeedVR2VideoUpscaler",
+          "desc": "SeedVR2 超分主节点：输入低分辨率图/视频帧，输出放大后的高清图（分块拼接）。"
+        },
+        {
+          "nodeId": "106",
+          "nodeType": "ImageCASharpening+",
+          "title": "ImageCASharpening+",
+          "desc": "属于「essentials/image processing」分类"
+        },
+        {
+          "nodeId": "144",
+          "nodeType": "easy ifElse",
+          "title": "easy ifElse",
+          "desc": "属于「EasyUse/Logic」分类"
+        },
+        {
+          "nodeId": "108",
+          "nodeType": "SeedVR2LoadDiTModel",
+          "title": "SeedVR2LoadDiTModel",
+          "desc": "加载 SeedVR2 放大模型的 DiT 主干部分权重。"
+        },
+        {
+          "nodeId": "102",
+          "nodeType": "SeedVR2LoadDiTModel",
+          "title": "SeedVR2LoadDiTModel",
+          "desc": "加载 SeedVR2 放大模型的 DiT 主干部分权重。"
+        },
+        {
+          "nodeId": "95",
+          "nodeType": "SimpleMath+",
+          "title": "SimpleMath+",
+          "desc": "属于「essentials/utilities」分类"
+        },
+        {
+          "nodeId": "133",
+          "nodeType": "数学运算_孤海",
+          "title": "数学运算_孤海",
+          "desc": "属于「孤海工具箱」分类"
+        },
+        {
+          "nodeId": "123",
+          "nodeType": "ImageResize+",
+          "title": "ImageResize+",
+          "desc": "属于「essentials/image manipulation」分类"
+        },
+        {
+          "nodeId": "143",
+          "nodeType": "LayerUtility: BooleanOperatorV2",
+          "title": "LayerUtility: BooleanOperatorV2",
+          "desc": "属于「😺dzNodes/LayerUtility/Data」分类"
+        },
+        {
+          "nodeId": "148",
+          "nodeType": "easy imageSizeBySide",
+          "title": "easy imageSizeBySide",
+          "desc": "属于「EasyUse/Image」分类"
+        },
+        {
+          "nodeId": "131",
+          "nodeType": "Blur",
+          "title": "Blur",
+          "desc": "属于「Masquerade Nodes」分类"
+        },
+        {
+          "nodeId": "158",
+          "nodeType": "ImageResize+",
+          "title": "ImageResize+",
+          "desc": "属于「essentials/image manipulation」分类"
+        },
+        {
+          "nodeId": "101",
+          "nodeType": "SeedVR2VideoUpscaler",
+          "title": "SeedVR2VideoUpscaler",
+          "desc": "SeedVR2 超分主节点：输入低分辨率图/视频帧，输出放大后的高清图（分块拼接）。"
+        },
+        {
+          "nodeId": "107",
+          "nodeType": "SeedVR2VideoUpscaler",
+          "title": "SeedVR2VideoUpscaler",
+          "desc": "SeedVR2 超分主节点：输入低分辨率图/视频帧，输出放大后的高清图（分块拼接）。"
+        },
+        {
+          "nodeId": "15",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "48",
+          "nodeType": "TTP_Image_Assy",
+          "title": "TTP_Image_Assy",
+          "desc": "属于「TTP/Image」分类"
+        },
+        {
+          "nodeId": "160",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "151",
+          "nodeType": "MathExpression|pysssss",
+          "title": "MathExpression|pysssss",
+          "desc": "属于「utils」分类"
+        },
+        {
+          "nodeId": "163",
+          "nodeType": "GoohaiUniversalSlider",
+          "title": "GoohaiUniversalSlider",
+          "desc": "属于「孤海工具箱」分类"
+        },
+        {
+          "nodeId": "162",
+          "nodeType": "GoohaiUniversalSlider",
+          "title": "GoohaiUniversalSlider",
+          "desc": "属于「孤海工具箱」分类"
+        },
+        {
+          "nodeId": "79",
+          "nodeType": "DF_Integer",
+          "title": "DF_Integer",
+          "desc": "属于「Derfuu_Nodes/Variables」分类"
+        },
+        {
+          "nodeId": "111",
+          "nodeType": "easy boolean",
+          "title": "easy boolean",
+          "desc": "属于「EasyUse/Logic/Type」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "Blur",
+      "DF_Integer",
+      "GoohaiUniversalSlider",
+      "ImageCASharpening+",
+      "ImageResize+",
+      "Int",
+      "LayerUtility: BooleanOperatorV2",
+      "LoadImage",
+      "MathExpression|pysssss",
+      "Note",
+      "PreviewImage",
+      "SeedVR2LoadDiTModel",
+      "SeedVR2LoadVAEModel",
+      "SeedVR2VideoUpscaler",
+      "SimpleMath+",
+      "TTP_Image_Assy",
+      "TTP_Image_Tile_Batch",
+      "easy boolean",
+      "easy cleanGpuUsed",
+      "easy ifElse",
+      "easy imageSizeByLongerSide",
+      "easy imageSizeBySide",
+      "数学运算_孤海"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

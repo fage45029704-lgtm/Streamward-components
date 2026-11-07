@@ -1,0 +1,483 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.123Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvhnpozx-3wk5ln",
+    "name": "语音文字提取-Qwen3-ASR 分镜台",
+    "savedAt": 1793870473871,
+    "workflow": {
+      "id": "0f3795c4-2576-4778-88d3-d96ddf7662f2",
+      "revision": 0,
+      "last_node_id": 12,
+      "last_link_id": 10,
+      "config": {},
+      "extra": {
+        "VHS_KeepIntermediate": true,
+        "VHS_MetadataImage": true,
+        "workflowRendererVersion": "LG",
+        "VHS_latentpreviewrate": 0,
+        "frontendVersion": "1.23.0",
+        "VHS_latentpreview": false,
+        "ds": {
+          "scale": 0.45000000000000107,
+          "offset": [
+            -955.2115847325965,
+            -175.47703635794971
+          ]
+        },
+        "pixaromaGroups": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "links_added_by_ue": [],
+        "ue_links": [],
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 9,
+          "type": "Qwen3ASRTranscribe_DFT",
+          "pos": [
+            1477,
+            584
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "QWEN3_ASR_MODEL",
+              "link": 8
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 7
+            }
+          ],
+          "outputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "links": [
+                9
+              ]
+            },
+            {
+              "label": "language",
+              "name": "language",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "timestamps",
+              "name": "timestamps",
+              "type": "STRING",
+              "links": [
+                10
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "Qwen3ASRTranscribe_DFT",
+            "streamward_params": {
+              "language": {
+                "label": "识别语言",
+                "hint": "auto=自动识别；已知语言就选上，中文短剧台词识别更稳",
+                "seq": 1
+              },
+              "context": {
+                "label": "术语提示",
+                "hint": "把专有名词/人名写进来（逗号分隔），能显著减少同音错字；只影响识别文本，不影响我们用的时间戳",
+                "seq": 2
+              },
+              "return_timestamps": {
+                "label": "返回时间戳",
+                "hint": "必须开：字幕对齐靠它的时间戳（分镜台只取时间，不用它认出来的字）",
+                "seq": 3,
+                "fixed": true
+              }
+            }
+          },
+          "widgets_values": [
+            "auto",
+            "",
+            true
+          ]
+        },
+        {
+          "id": 11,
+          "type": "PreviewAny",
+          "pos": [
+            1955,
+            445
+          ],
+          "size": [
+            292.36151123046875,
+            199.8682861328125
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "source",
+              "name": "source",
+              "type": "*",
+              "link": 9
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewAny",
+            "cnr_id": "comfy-core",
+            "ver": "0.9.2"
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 12,
+          "type": "PreviewAny",
+          "pos": [
+            1958,
+            769
+          ],
+          "size": [
+            295.4404602050781,
+            282.2298583984375
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "source",
+              "name": "source",
+              "type": "*",
+              "link": 10
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewAny",
+            "cnr_id": "comfy-core",
+            "ver": "0.9.2",
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 0,
+              "slot": "slot-1792562451192"
+            }
+          },
+          "widgets_values": [],
+          "_meta": {
+            "title": "对齐时间戳（采集点）"
+          }
+        },
+        {
+          "id": 10,
+          "type": "Qwen3ASRLoader_DFT",
+          "pos": [
+            969,
+            749
+          ],
+          "size": [
+            435,
+            188
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "QWEN3_ASR_MODEL",
+              "links": [
+                8
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "Qwen3ASRLoader_DFT"
+          },
+          "widgets_values": [
+            "Qwen/Qwen3-ASR-1.7B",
+            "bf16",
+            "flash_attention_2",
+            "Qwen/Qwen3-ForcedAligner-0.6B",
+            false
+          ]
+        },
+        {
+          "id": 7,
+          "type": "LoadAudio",
+          "pos": [
+            1078,
+            520
+          ],
+          "size": [
+            282.82501220703125,
+            136
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                7
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "LoadAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.9.2",
+            "streamward_material": {
+              "audio": {
+                "label": "待识别音频（成片音轨）",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            null,
+            null
+          ]
+        }
+      ],
+      "links": [
+        [
+          7,
+          7,
+          0,
+          9,
+          1,
+          "AUDIO"
+        ],
+        [
+          8,
+          10,
+          0,
+          9,
+          0,
+          "QWEN3_ASR_MODEL"
+        ],
+        [
+          9,
+          9,
+          0,
+          11,
+          0,
+          "*"
+        ],
+        [
+          10,
+          9,
+          2,
+          12,
+          0,
+          "*"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "9",
+          "nodeType": "Qwen3ASRTranscribe_DFT",
+          "field": "language",
+          "label": "识别语言",
+          "hint": "auto=自动识别；已知语言就选上，中文短剧台词识别更稳",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "auto",
+          "options": [
+            "auto",
+            "Chinese",
+            "English",
+            "Cantonese",
+            "Arabic",
+            "German",
+            "French",
+            "Spanish",
+            "Portuguese",
+            "Indonesian",
+            "Italian",
+            "Korean",
+            "Russian",
+            "Thai",
+            "Vietnamese",
+            "Japanese",
+            "Turkish",
+            "Hindi",
+            "Malay",
+            "Dutch",
+            "Swedish",
+            "Danish",
+            "Finnish",
+            "Polish",
+            "Czech",
+            "Filipino",
+            "Persian",
+            "Greek",
+            "Hungarian",
+            "Macedonian",
+            "Romanian"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "9",
+          "nodeType": "Qwen3ASRTranscribe_DFT",
+          "field": "context",
+          "label": "术语提示",
+          "hint": "把专有名词/人名写进来（逗号分隔），能显著减少同音错字；只影响识别文本，不影响我们用的时间戳",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "9",
+          "nodeType": "Qwen3ASRTranscribe_DFT",
+          "field": "return_timestamps",
+          "label": "返回时间戳",
+          "hint": "必须开：字幕对齐靠它的时间戳（分镜台只取时间，不用它认出来的字）",
+          "fromMark": true,
+          "type": "boolean",
+          "group": "main",
+          "value": true,
+          "fixed": true,
+          "scope": "editable",
+          "officialKind": "toggle",
+          "slider": false
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "7",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "待识别音频（成片音轨）",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "maskOut": false,
+          "required": true,
+          "marked": true,
+          "seq": 1
+        }
+      ],
+      "outputNodes": [
+        "PreviewAny"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "12",
+          "nodeType": "PreviewAny",
+          "kind": "text"
+        }
+      ],
+      "tailNodeId": "12",
+      "tailSlotId": "slot-1792562451192",
+      "tailOutIdx": 0,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "【文字生成】\n关键节点：Preview as Text（Preview any input value as text）；Qwen3-ASR Loader_DFT；Load Audio；Qwen3-ASR Transcribe_DFT。\n输入：参考音频。\n输出：文字。\n可调参数：识别语言（auto=自动识别；已知语言就选上，中文短剧台词识别更稳）、术语提示（把专有名词/人名写进来（逗号分隔），能显著减少同音错字；只影响识别文本，不影响我们用的时间戳）、返回时间戳（必须开：字幕对齐靠它的时间戳（分镜台只取时间，不用它认出来的字））。",
+      "paramNodes": [
+        {
+          "nodeId": "9",
+          "nodeType": "Qwen3ASRTranscribe_DFT",
+          "title": "Qwen3ASRTranscribe_DFT",
+          "desc": "属于「Qwen3-ASR_DFT」分类"
+        },
+        {
+          "nodeId": "12",
+          "nodeType": "PreviewAny",
+          "title": "PreviewAny",
+          "desc": "Preview any input value as text."
+        },
+        {
+          "nodeId": "10",
+          "nodeType": "Qwen3ASRLoader_DFT",
+          "title": "Qwen3ASRLoader_DFT",
+          "desc": "属于「Qwen3-ASR_DFT」分类"
+        },
+        {
+          "nodeId": "7",
+          "nodeType": "LoadAudio",
+          "title": "LoadAudio",
+          "desc": "属于「audio」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "LoadAudio",
+      "PreviewAny",
+      "Qwen3ASRLoader_DFT",
+      "Qwen3ASRTranscribe_DFT"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

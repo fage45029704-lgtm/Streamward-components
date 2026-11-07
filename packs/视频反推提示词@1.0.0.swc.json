@@ -1,0 +1,1443 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.073Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mte17xef-dzlx96",
+    "name": "视频反推提示词",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 17,
+          "type": "XB_CanvasLabel",
+          "pos": [
+            9840,
+            1830
+          ],
+          "size": [
+            843.43359375,
+            66
+          ],
+          "flags": {
+            "pinned": true,
+            "allow_interaction": false
+          },
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "title": "更多教程全网搜：机智罗_LX",
+          "properties": {
+            "Node name for S&R": "XB_CanvasLabel",
+            "fontSize": 66,
+            "fontColor": "#ffffff",
+            "textAlign": "left",
+            "backgroundColor": "transparent",
+            "padding": 0,
+            "borderRadius": 0,
+            "angle": 0,
+            "cnr_id": "XB_ToolBox",
+            "ver": "1d9cd0bf9fe5f10b3894bc2e677e88fa62d36c9c",
+            "aux_id": "wjluoxiao/XB_ToolBox",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [],
+          "color": "transparent",
+          "bgcolor": "transparent"
+        },
+        {
+          "id": 18,
+          "type": "XB_CanvasLabel",
+          "pos": [
+            8470,
+            1640
+          ],
+          "size": [
+            2221.58056640625,
+            147
+          ],
+          "flags": {
+            "pinned": true,
+            "allow_interaction": false
+          },
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "title": "LLAMA 风格可控 视频反推 工作流",
+          "properties": {
+            "Node name for S&R": "XB_CanvasLabel",
+            "fontSize": 147,
+            "fontColor": "#ffffff",
+            "textAlign": "left",
+            "backgroundColor": "transparent",
+            "padding": 0,
+            "borderRadius": 0,
+            "angle": 0,
+            "cnr_id": "XB_ToolBox",
+            "ver": "1d9cd0bf9fe5f10b3894bc2e677e88fa62d36c9c",
+            "aux_id": "wjluoxiao/XB_ToolBox",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [],
+          "color": "transparent",
+          "bgcolor": "transparent"
+        },
+        {
+          "id": 20,
+          "type": "PiDKSamplerCapture",
+          "pos": [
+            12132,
+            1881
+          ],
+          "size": [
+            330.66986083984375,
+            286
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 13
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 14
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 15
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 16
+            }
+          ],
+          "outputs": [
+            {
+              "label": "final_latent",
+              "name": "final_latent",
+              "type": "LATENT",
+              "links": [
+                21
+              ]
+            },
+            {
+              "label": "pid_latent",
+              "name": "pid_latent",
+              "type": "LATENT",
+              "links": []
+            },
+            {
+              "label": "pid_sigma",
+              "name": "pid_sigma",
+              "type": "FLOAT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PiDKSamplerCapture",
+            "cnr_id": "comfyui-pid",
+            "ver": "0.2.3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "aux_id": "Merserk/ComfyUI-PiD",
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            }
+          },
+          "widgets_values": [
+            191166039668422,
+            "randomize",
+            9,
+            1,
+            "euler",
+            "beta",
+            1,
+            8
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 21,
+          "type": "CLIPTextEncode",
+          "pos": [
+            11677,
+            2059
+          ],
+          "size": [
+            270.8931579589844,
+            159.5561981201172
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 17
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790066628559
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                14
+              ]
+            }
+          ],
+          "title": "CLIP Text Encode (Positive Prompt)",
+          "properties": {
+            "widget_ue_connectable": {
+              "text": true
+            },
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.73",
+            "ue_properties": {
+              "widget_ue_connectable": {
+                "text": true
+              },
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            },
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "dark_fantasy_illustration, retro dark fantasy book cover art, a lone silver-haired ranger crossing a ruined bridge over a black river at dusk, tattered cloak, old leather armor, glowing lantern, ancient stone statues covered in moss, deep blue shadows, amber torchlight, dramatic cloudy sky, visible brush texture, gritty film grain, intricate environment detail, epic composition, no text, no watermark, safe fantasy illustration"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 22,
+          "type": "CLIPTextEncode",
+          "pos": [
+            11789,
+            2263
+          ],
+          "size": [
+            274.46148681640625,
+            88
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 18
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                15
+              ]
+            }
+          ],
+          "title": "CLIP Text Encode (Negative Prompt)",
+          "properties": {
+            "widget_ue_connectable": {
+              "text": true
+            },
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.73",
+            "ue_properties": {
+              "widget_ue_connectable": {
+                "text": true
+              },
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            },
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            ""
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 23,
+          "type": "ModelSamplingAuraFlow",
+          "pos": [
+            11793,
+            1886
+          ],
+          "size": [
+            262.8551940917969,
+            58
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 19
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "slot_index": 0,
+              "links": [
+                13
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ModelSamplingAuraFlow",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            },
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            3
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 24,
+          "type": "EmptySD3LatentImage",
+          "pos": [
+            11072,
+            2140
+          ],
+          "size": [
+            338.62017822265625,
+            106
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                16
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "EmptySD3LatentImage",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            },
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            768,
+            1200,
+            1
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 25,
+          "type": "SaveImage",
+          "pos": [
+            13049,
+            2016
+          ],
+          "size": [
+            263.5965270996094,
+            270
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 20
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "SaveImage",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            },
+            "tabXOffset": 10,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "widgets_values": [
+            "zimage"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 26,
+          "type": "VAEDecodeTiled",
+          "pos": [
+            12618,
+            1980
+          ],
+          "size": [
+            270,
+            150
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 21
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 22
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                20
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAEDecodeTiled",
+            "cnr_id": "comfy-core",
+            "ver": "0.22.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            }
+          },
+          "widgets_values": [
+            512,
+            64,
+            64,
+            8
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 27,
+          "type": "CheckpointLoaderSimple",
+          "pos": [
+            11107,
+            1921
+          ],
+          "size": [
+            359.6537780761719,
+            102.62785339355469
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                19
+              ]
+            },
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                17,
+                18
+              ]
+            },
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                22
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CheckpointLoaderSimple",
+            "ttNbgOverride": {
+              "bgcolor": "#533",
+              "groupcolor": "#A88",
+              "color": "#322"
+            }
+          },
+          "widgets_values": [
+            "Z-Image-BladeGraphics.safetensors"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 11,
+          "type": "XB_VideoLoader",
+          "pos": [
+            8404,
+            1949
+          ],
+          "size": [
+            311.4722595214844,
+            310
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "meta_batch",
+              "name": "meta_batch",
+              "shape": 7,
+              "type": "VHS_BatchManager"
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "shape": 7,
+              "type": "VAE"
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                10
+              ]
+            },
+            {
+              "label": "frame_count",
+              "name": "frame_count",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "video_info",
+              "name": "video_info",
+              "type": "VHS_VIDEOINFO",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "XB_VideoLoader",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "widget_ue_connectable": {
+              "video": true,
+              "force_rate": true,
+              "custom_width": true,
+              "custom_height": true,
+              "frame_load_cap": true,
+              "skip_first_frames": true,
+              "select_every_nth": true,
+              "format": true
+            },
+            "streamward_material": {
+              "video": {
+                "label": "加载视频",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "001.mp4",
+            0,
+            0,
+            0,
+            220,
+            0,
+            1,
+            "AnimateDiff",
+            "image",
+            {
+              "hidden": false,
+              "paused": false,
+              "params": {
+                "filename": "001.mp4",
+                "type": "input",
+                "format": "video/mp4",
+                "force_rate": 0,
+                "custom_width": 0,
+                "custom_height": 0,
+                "frame_load_cap": 220,
+                "skip_first_frames": 0,
+                "select_every_nth": 1
+              },
+              "muted": false
+            }
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 14,
+          "type": "XB_llamaPromptEnhancer",
+          "pos": [
+            8749,
+            2240
+          ],
+          "size": [
+            370,
+            60
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "system_prompt",
+              "name": "system_prompt",
+              "type": "STRING",
+              "links": [
+                11
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "XB_llamaPromptEnhancer",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "widget_ue_connectable": {
+              "preset": true
+            },
+            "streamward_node_alias": "提示词预设",
+            "streamward_params": {
+              "preset": {
+                "label": "用与模型选择",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "Krea2 T2I [ZH]"
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 13,
+          "type": "XB_llamaModelLoader",
+          "pos": [
+            8785,
+            1893
+          ],
+          "size": [
+            370,
+            210
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "llama_model",
+              "name": "llama_model",
+              "type": "LLAMACPPMODEL",
+              "links": [
+                8
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "XB_llamaModelLoader",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "widget_ue_connectable": {
+              "model": true,
+              "mmproj": true,
+              "chat_handler": true,
+              "n_ctx": true,
+              "vram_limit": true,
+              "image_min_tokens": true,
+              "image_max_tokens": true
+            }
+          },
+          "widgets_values": [
+            "Qwen3.5-9b-heretic-v2-q8_0.gguf",
+            "Qwen3.5-9B-mmproj-F16.gguf",
+            "Qwen3.5",
+            99216,
+            -1,
+            0,
+            0
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 29,
+          "type": "PrimitiveStringMultiline",
+          "pos": [
+            7969,
+            2344
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                25
+              ]
+            }
+          ],
+          "title": "用户提示词：带\"*\"的预设提示中用作占位符(如BBox检测中的目标名称)否则将覆盖预设提示词",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PrimitiveStringMultiline",
+            "streamward_params": {
+              "text": {
+                "label": "用户提示词",
+                "textIn": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            ""
+          ]
+        },
+        {
+          "id": 9,
+          "type": "XB_llamaParameters",
+          "pos": [
+            8766,
+            2451
+          ],
+          "size": [
+            370,
+            350
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "parameters",
+              "name": "parameters",
+              "type": "LLAMACPPARAMS",
+              "links": [
+                9
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "XB_llamaParameters",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "widget_ue_connectable": {
+              "max_tokens": true,
+              "top_k": true,
+              "top_p": true,
+              "min_p": true,
+              "typical_p": true,
+              "temperature": true,
+              "repeat_penalty": true,
+              "frequency_penalty": true,
+              "present_penalty": true,
+              "mirostat_mode": true,
+              "mirostat_eta": true,
+              "mirostat_tau": true,
+              "state_uid": true
+            }
+          },
+          "widgets_values": [
+            4096,
+            30,
+            0.9,
+            0.05,
+            1,
+            0.8,
+            1,
+            0,
+            0,
+            0,
+            0.1,
+            5,
+            -1
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 15,
+          "type": "XB_llamaInstruct",
+          "pos": [
+            9301,
+            2220
+          ],
+          "size": [
+            430,
+            760
+          ],
+          "flags": {},
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "llama_model",
+              "name": "llama_model",
+              "type": "LLAMACPPMODEL",
+              "link": 8
+            },
+            {
+              "label": "parameters",
+              "name": "parameters",
+              "shape": 7,
+              "type": "LLAMACPPARAMS",
+              "link": 9
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "shape": 7,
+              "type": "IMAGE",
+              "link": 10
+            },
+            {
+              "label": "queue_handler",
+              "name": "queue_handler",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "custom_prompt",
+              "name": "custom_prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "custom_prompt"
+              },
+              "link": 25
+            },
+            {
+              "label": "system_prompt",
+              "name": "system_prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "system_prompt"
+              },
+              "link": 11
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "STRING",
+              "links": [
+                1790066617405
+              ]
+            },
+            {
+              "label": "output_list",
+              "name": "output_list",
+              "shape": 6,
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "state_uid",
+              "name": "state_uid",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "XB_llamaInstruct",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "widget_ue_connectable": {
+              "preset_prompt": true,
+              "custom_prompt": true,
+              "system_prompt": true,
+              "inference_mode": true,
+              "max_frames": true,
+              "max_size": true,
+              "seed": true,
+              "force_offload": true,
+              "save_states": true
+            },
+            "streamward_params": {
+              "preset_prompt": {
+                "label": "样式选择",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "Prompt Style - 详细 [ZH]",
+            "",
+            "",
+            "video",
+            220,
+            512,
+            0,
+            "randomize",
+            true,
+            false
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "type": "TextPreview",
+          "title": "Preview Text",
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790066617405
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1790066628559
+              ]
+            }
+          ],
+          "widgets_values": [
+            ""
+          ],
+          "properties": {
+            "Node name for S&R": "Preview Text",
+            "streamward_capture": true
+          },
+          "id": 31,
+          "pos": [
+            9749,
+            2214
+          ]
+        }
+      ],
+      "links": [
+        [
+          8,
+          13,
+          0,
+          15,
+          0,
+          "LLAMACPPMODEL"
+        ],
+        [
+          9,
+          9,
+          0,
+          15,
+          1,
+          "LLAMACPPARAMS"
+        ],
+        [
+          10,
+          11,
+          0,
+          15,
+          2,
+          "IMAGE"
+        ],
+        [
+          11,
+          14,
+          0,
+          15,
+          5,
+          "STRING"
+        ],
+        [
+          13,
+          23,
+          0,
+          20,
+          0,
+          "MODEL"
+        ],
+        [
+          14,
+          21,
+          0,
+          20,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          15,
+          22,
+          0,
+          20,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          16,
+          24,
+          0,
+          20,
+          3,
+          "LATENT"
+        ],
+        [
+          17,
+          27,
+          1,
+          21,
+          0,
+          "CLIP"
+        ],
+        [
+          18,
+          27,
+          1,
+          22,
+          0,
+          "CLIP"
+        ],
+        [
+          19,
+          27,
+          0,
+          23,
+          0,
+          "MODEL"
+        ],
+        [
+          20,
+          26,
+          0,
+          25,
+          0,
+          "IMAGE"
+        ],
+        [
+          21,
+          20,
+          0,
+          26,
+          0,
+          "LATENT"
+        ],
+        [
+          22,
+          27,
+          2,
+          26,
+          1,
+          "VAE"
+        ],
+        [
+          25,
+          29,
+          0,
+          15,
+          4,
+          "STRING"
+        ],
+        [
+          1790066617405,
+          15,
+          0,
+          31,
+          0,
+          "STRING"
+        ],
+        [
+          1790066628559,
+          31,
+          0,
+          21,
+          1,
+          "STRING"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 31,
+      "last_link_id": 1790066628559,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "文本生成"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "29",
+          "nodeType": "PrimitiveStringMultiline",
+          "field": "text",
+          "label": "用户提示词",
+          "hint": "描述你想生成的画面",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "",
+          "textIn": true,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "14",
+          "nodeType": "XB_llamaPromptEnhancer",
+          "field": "preset",
+          "label": "用与模型选择",
+          "hint": "提示词优化风格预设：决定扩写/翻译/改写方式",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "Krea2 T2I [ZH]",
+          "options": [
+            "Animagine XL [EN]",
+            "Animagine XL [ZH]",
+            "Boogu T2I [EN]",
+            "Boogu T2I [ZH]",
+            "ERNIE-Image T2I [EN]",
+            "ERNIE-Image T2I [ZH]",
+            "Flux.2 I2I [EN]",
+            "Flux.2 I2I [ZH]",
+            "Flux.2 Klein I2I [EN]",
+            "Flux.2 Klein I2I [ZH]",
+            "Flux.2 Klein T2I [EN]",
+            "Flux.2 Klein T2I [ZH]",
+            "Flux.2 T2I [EN]",
+            "Flux.2 T2I [ZH]",
+            "Ideogram 4.0 T2I [EN]",
+            "Ideogram 4.0 T2I [ZH]",
+            "Krea2 T2I [EN]",
+            "Krea2 T2I [ZH]",
+            "LTX2.3 T2V [EN]",
+            "LTX2.3 T2V [ZH]",
+            "Lumina-Next T2I [EN]",
+            "Lumina-Next T2I [ZH]",
+            "Pony V6 XL [EN]",
+            "Pony V6 XL [ZH]",
+            "Qwen-Image 2512 [EN]",
+            "Qwen-Image 2512 [ZH]",
+            "Qwen-Image-Edit 2511 [EN]",
+            "Qwen-Image-Edit 2511 [ZH]",
+            "Wan FLF2V [EN]",
+            "Wan FLF2V [ZH]",
+            "Wan I2V [EN]",
+            "Wan I2V [ZH]",
+            "Wan I2V Full-Auto [EN]",
+            "Wan I2V Full-Auto [ZH]",
+            "Wan T2V [EN]",
+            "Wan T2V [ZH]",
+            "Z-Image Turbo [ZH]",
+            "Z-Image Turbo [EN]"
+          ],
+          "scope": "editable"
+        },
+        {
+          "nodeId": "15",
+          "nodeType": "XB_llamaInstruct",
+          "field": "preset_prompt",
+          "label": "样式选择",
+          "hint": "给大模型的指令模板（决定它怎么处理输入）",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "Prompt Style - 详细 [ZH]",
+          "options": [
+            "Empty - Nothing",
+            "Normal - Describe [EN]",
+            "Prompt Style - Tags [EN]",
+            "Prompt Style - Simple [EN]",
+            "Prompt Style - Detailed [EN]",
+            "Prompt Style - Extreme Detailed [EN]",
+            "Prompt Style - Cinematic [EN]",
+            "Creative - Detailed Analysis [EN]",
+            "Creative - Summarize Video [EN]",
+            "Creative - Short Story [EN]",
+            "Creative - Refine & Expand Prompt [EN]",
+            "Vision - *Bounding Box [EN]",
+            "Normal - 描述 [ZH]",
+            "Prompt Style - 标签 [ZH]",
+            "Prompt Style - 简洁 [ZH]",
+            "Prompt Style - 详细 [ZH]",
+            "Prompt Style - 极度详细 [ZH]",
+            "Prompt Style - 电影级 [ZH]",
+            "Creative - 详细分析 [ZH]",
+            "Creative - 视频摘要 [ZH]",
+            "Creative - 短故事 [ZH]",
+            "Creative - 润色扩充提示词 [ZH]",
+            "Vision - BBox检测 [ZH]"
+          ],
+          "scope": "editable"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "11",
+          "nodeType": "XB_VideoLoader",
+          "field": "video",
+          "label": "加载视频",
+          "hint": "上传视频（可选）",
+          "type": "video",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [],
+      "capturePoints": [
+        {
+          "nodeId": "31",
+          "nodeType": "TextPreview",
+          "kind": "text"
+        }
+      ],
+      "tailNodeId": "25",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "txt2img",
+      "isInpaint": false,
+      "description": "【文字生成】\n关键节点：XB-BOX - 🎬 视频加载器（修复预览BUG）；XB-llama - 📦 模型加载器；Preview Text；文本（多行）（多行文本值节点「常量/参数」）；XB-llama - ✨ 提示词增强预设；XB-llama - ⚙️ 推理参数；…（共 7 个）。\n输入：参考视频。\n输出：文字。\n可调参数：用户提示词（描述你想生成的画面）、用与模型选择（提示词优化风格预设：决定扩写/翻译/改写方式）、样式选择（给大模型的指令模板（决定它怎么处理输入））。",
+      "paramNodes": [
+        {
+          "nodeId": "11",
+          "nodeType": "XB_VideoLoader",
+          "title": "XB_VideoLoader",
+          "desc": "属于「XB_ToolBox/Video」分类"
+        },
+        {
+          "nodeId": "14",
+          "nodeType": "XB_llamaPromptEnhancer",
+          "title": "提示词预设",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "13",
+          "nodeType": "XB_llamaModelLoader",
+          "title": "XB_llamaModelLoader",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "29",
+          "nodeType": "PrimitiveStringMultiline",
+          "title": "PrimitiveStringMultiline",
+          "desc": "多行文本值节点（常量/参数）。"
+        },
+        {
+          "nodeId": "9",
+          "nodeType": "XB_llamaParameters",
+          "title": "XB_llamaParameters",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "15",
+          "nodeType": "XB_llamaInstruct",
+          "title": "XB_llamaInstruct",
+          "desc": "属于「XB-llama」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CLIPTextEncode",
+      "CheckpointLoaderSimple",
+      "EmptySD3LatentImage",
+      "ModelSamplingAuraFlow",
+      "PiDKSamplerCapture",
+      "PrimitiveStringMultiline",
+      "SaveImage",
+      "TextPreview",
+      "VAEDecodeTiled",
+      "XB_CanvasLabel",
+      "XB_VideoLoader",
+      "XB_llamaInstruct",
+      "XB_llamaModelLoader",
+      "XB_llamaParameters",
+      "XB_llamaPromptEnhancer"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

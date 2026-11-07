@@ -1,0 +1,618 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.124Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvhwgqz9-2xrahv",
+    "name": "VoxCPM2-多人对话 分镜台",
+    "savedAt": null,
+    "workflow": {
+      "id": "0c182428-a476-44d6-be75-be39cd031a8b",
+      "revision": 0,
+      "last_node_id": 6,
+      "last_link_id": 5,
+      "config": {},
+      "extra": {
+        "workflowRendererVersion": "LG",
+        "ue_links": [],
+        "ds": {
+          "scale": 1.167184107045006,
+          "offset": [
+            1695.4998875127337,
+            237.22065119428538
+          ]
+        },
+        "frontendVersion": "1.39.19",
+        "VHS_latentpreview": false,
+        "VHS_latentpreviewrate": 0,
+        "VHS_MetadataImage": true,
+        "VHS_KeepIntermediate": true
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 1,
+          "type": "RunningHub_VoxCPM_LoadModel",
+          "pos": [
+            -1464,
+            -102
+          ],
+          "size": [
+            313.1402282714844,
+            106
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model_name",
+              "name": "model_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "model_name"
+              },
+              "link": null
+            },
+            {
+              "label": "optimize",
+              "name": "optimize",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "optimize"
+              },
+              "link": null
+            },
+            {
+              "label": "lora_name",
+              "name": "lora_name",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "lora_name"
+              },
+              "link": null
+            }
+          ],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "VOXCPM_MODEL",
+              "links": [
+                1
+              ]
+            }
+          ],
+          "properties": {
+            "aux_id": "HM-RunningHub/ComfyUI_RH_VoxCPM",
+            "ver": "f290007d6ad86407232dd4046fe7212ebb4b2b0d",
+            "Node name for S&R": "RunningHub_VoxCPM_LoadModel",
+            "ue_properties": {
+              "version": "7.3",
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            }
+          },
+          "widgets_values": [
+            "VoxCPM2",
+            false,
+            "None"
+          ]
+        },
+        {
+          "id": 6,
+          "type": "SaveAudio",
+          "pos": [
+            -474,
+            -82
+          ],
+          "size": [
+            270,
+            112
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 5
+            }
+          ],
+          "outputs": [],
+          "properties": {
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "Node name for S&R": "SaveAudio",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "streamward_capture": true,
+            "streamward_tail": {
+              "slot": "slot-3-3"
+            }
+          },
+          "widgets_values": [
+            "audio/ComfyUI"
+          ],
+          "_meta": {
+            "title": "多人配音（采集点）"
+          }
+        },
+        {
+          "id": 5,
+          "type": "RunningHub_VoxCPM_MultiSpeaker",
+          "pos": [
+            -1004,
+            -82
+          ],
+          "size": [
+            440,
+            590
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "model",
+              "type": "VOXCPM_MODEL",
+              "link": 1
+            },
+            {
+              "name": "audio_1",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 2
+            },
+            {
+              "name": "audio_2",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 3
+            },
+            {
+              "name": "audio_3",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 4
+            },
+            {
+              "name": "audio_4",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": null
+            },
+            {
+              "name": "audio_5",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": null
+            }
+          ],
+          "outputs": [
+            {
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                5
+              ]
+            }
+          ],
+          "properties": {
+            "aux_id": "HM-RunningHub/ComfyUI_RH_VoxCPM",
+            "ver": "f290007d6ad86407232dd4046fe7212ebb4b2b0d",
+            "Node name for S&R": "RunningHub_VoxCPM_MultiSpeaker",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "streamward_params": {
+              "script": {
+                "label": "多人台词",
+                "hint": "格式 [spk1]台词 换行 [spk2]台词…；spk 与下面三路音色一一对应",
+                "seq": 1
+              },
+              "cfg_value": {
+                "label": "cfg_value",
+                "fixed": true,
+                "seq": 2
+              },
+              "inference_steps": {
+                "label": "inference_steps",
+                "fixed": true,
+                "seq": 3
+              },
+              "seed": {
+                "label": "seed",
+                "fixed": true,
+                "seq": 4
+              }
+            }
+          },
+          "widgets_values": [
+            "[spk5]《大话西游》城楼告白名场面，经典重现！\n[spk1]曾经有一份真诚的爱情摆在我的面前，但是我没有珍惜。\n[spk2]你现在说这些还有什么用？\n[spk1]等到了失去的时候才后悔莫及，人世间最痛苦的事莫过于此。\n[spk2]既然错过了，就别再纠缠了。\n[spk1]如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\n[spk2]如果非要在这份爱上加一个期限，你希望是多久？\n[spk1]我希望是——一万年！\n",
+            2,
+            10,
+            735261876190003,
+            "randomize",
+            "",
+            "",
+            "",
+            "",
+            "",
+            true,
+            false,
+            4096,
+            true
+          ]
+        },
+        {
+          "id": 4,
+          "type": "LoadAudio",
+          "pos": [
+            -1454,
+            438
+          ],
+          "size": [
+            270,
+            136
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                4
+              ]
+            }
+          ],
+          "properties": {
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "Node name for S&R": "LoadAudio",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "streamward_material": {
+              "audio": {
+                "label": "音色 C（spk3）",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "女性-旁白.mp3",
+            null,
+            null
+          ]
+        },
+        {
+          "id": 2,
+          "type": "LoadAudio",
+          "pos": [
+            -1454,
+            48
+          ],
+          "size": [
+            270,
+            136
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                2
+              ]
+            }
+          ],
+          "properties": {
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "Node name for S&R": "LoadAudio",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "streamward_material": {
+              "audio": {
+                "label": "音色 A（spk1）",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "唐僧.mp3",
+            null,
+            null
+          ]
+        },
+        {
+          "id": 3,
+          "type": "LoadAudio",
+          "pos": [
+            -1458,
+            238
+          ],
+          "size": [
+            270,
+            136
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                3
+              ]
+            }
+          ],
+          "properties": {
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "Node name for S&R": "LoadAudio",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "streamward_material": {
+              "audio": {
+                "label": "音色 B（spk2）",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "女儿国国王.mp3",
+            null,
+            null
+          ]
+        }
+      ],
+      "links": [
+        [
+          1,
+          1,
+          0,
+          5,
+          0,
+          "VOXCPM_MODEL"
+        ],
+        [
+          2,
+          2,
+          0,
+          5,
+          1,
+          "AUDIO"
+        ],
+        [
+          3,
+          3,
+          0,
+          5,
+          2,
+          "AUDIO"
+        ],
+        [
+          4,
+          4,
+          0,
+          5,
+          3,
+          "AUDIO"
+        ],
+        [
+          5,
+          5,
+          0,
+          6,
+          0,
+          "AUDIO"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "5",
+          "nodeType": "RunningHub_VoxCPM_MultiSpeaker",
+          "field": "script",
+          "label": "多人台词",
+          "hint": "格式 [spk1]台词 换行 [spk2]台词…；spk 与下面三路音色一一对应",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "[spk5]《大话西游》城楼告白名场面，经典重现！\n[spk1]曾经有一份真诚的爱情摆在我的面前，但是我没有珍惜。\n[spk2]你现在说这些还有什么用？\n[spk1]等到了失去的时候才后悔莫及，人世间最痛苦的事莫过于此。\n[spk2]既然错过了，就别再纠缠了。\n[spk1]如果上天能够给我一个再来一次的机会，我会对那个女孩子说三个字：我爱你。\n[spk2]如果非要在这份爱上加一个期限，你希望是多久？\n[spk1]我希望是——一万年！\n",
+          "scope": "editable",
+          "officialKind": null,
+          "slider": false
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RunningHub_VoxCPM_MultiSpeaker",
+          "field": "cfg_value",
+          "label": "cfg_value",
+          "hint": null,
+          "fromMark": true,
+          "type": "float",
+          "group": "main",
+          "value": 2,
+          "fixed": true,
+          "min": 0.1,
+          "max": 5,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": null
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RunningHub_VoxCPM_MultiSpeaker",
+          "field": "inference_steps",
+          "label": "inference_steps",
+          "hint": null,
+          "fromMark": true,
+          "type": "int",
+          "group": "main",
+          "value": 10,
+          "fixed": true,
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": null
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RunningHub_VoxCPM_MultiSpeaker",
+          "field": "seed",
+          "label": "seed",
+          "hint": "随机种子（留空=随机）",
+          "fromMark": true,
+          "type": "int",
+          "group": "main",
+          "value": 735261876190003,
+          "mode": "randomize",
+          "fixed": true,
+          "min": 0,
+          "max": 18446744073709552000,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": null
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "2",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "音色 A（spk1）",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "音色 B（spk2）",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "required": false,
+          "marked": true
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "音色 C（spk3）",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "required": false,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "SaveAudio"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "6",
+          "nodeType": "SaveAudio",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "6",
+      "tailSlotId": "slot-3-3",
+      "tailOutIdx": "",
+      "category": "audio",
+      "isInpaint": false,
+      "description": "【音频生成】\n关键节点：Save Audio (FLAC) (DEPRECATED)；Load Audio；RunningHub VoxCPM Load Model；RunningHub VoxCPM Multi-Speaker。\n输入：参考音频。\n输出：音频。\n可调参数：多人台词（格式 [spk1]台词 换行 [spk2]台词…；spk 与下面三路音色一一对应）。",
+      "paramNodes": [
+        {
+          "nodeId": "1",
+          "nodeType": "RunningHub_VoxCPM_LoadModel",
+          "title": "RunningHub_VoxCPM_LoadModel",
+          "desc": "属于「RunningHub/VoxCPM」分类"
+        },
+        {
+          "nodeId": "6",
+          "nodeType": "SaveAudio",
+          "title": "SaveAudio",
+          "desc": "属于「audio」分类"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RunningHub_VoxCPM_MultiSpeaker",
+          "title": "RunningHub_VoxCPM_MultiSpeaker",
+          "desc": "属于「RunningHub/VoxCPM」分类"
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "LoadAudio",
+          "title": "LoadAudio",
+          "desc": "属于「audio」分类"
+        },
+        {
+          "nodeId": "2",
+          "nodeType": "LoadAudio",
+          "title": "LoadAudio",
+          "desc": "属于「audio」分类"
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "LoadAudio",
+          "title": "LoadAudio",
+          "desc": "属于「audio」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "LoadAudio",
+      "RunningHub_VoxCPM_LoadModel",
+      "RunningHub_VoxCPM_MultiSpeaker",
+      "SaveAudio"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

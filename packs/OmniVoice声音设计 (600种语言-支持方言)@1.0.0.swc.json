@@ -1,0 +1,1590 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.117Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mv9dq4g2-50iu0q",
+    "name": "OmniVoice声音设计 (600种语言-支持方言)",
+    "savedAt": null,
+    "workflow": {
+      "id": "ed60d879-65d3-4612-bd03-8e56003f64a6",
+      "revision": 0,
+      "last_node_id": 20,
+      "last_link_id": 26,
+      "config": {},
+      "extra": {
+        "links_added_by_ue": [],
+        "ue_links": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "pixaromaGroups": [],
+        "ds": {
+          "scale": 0.3073560549142827,
+          "offset": [
+            141.04448116710154,
+            71.50810414160108
+          ]
+        },
+        "frontendVersion": "1.23.0",
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0,
+        "VHS_MetadataImage": true,
+        "VHS_KeepIntermediate": true,
+        "VHS_latentpreview": false,
+        "VHS_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 4,
+          "type": "CR Prompt Text",
+          "pos": [
+            243,
+            561
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "prompt"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "links": [
+                4
+              ]
+            },
+            {
+              "label": "show_help",
+              "name": "show_help",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CR Prompt Text",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "prompt": {
+                "label": "voice instruct",
+                "hint": "音色要求提示词",
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "\n女，青年，四川话"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "CR Prompt Text",
+          "pos": [
+            241,
+            265
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "prompt"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "links": [
+                2
+              ]
+            },
+            {
+              "label": "show_help",
+              "name": "show_help",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CR Prompt Text",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "prompt": {
+                "label": "设置说话内容",
+                "hint": "说话的内容",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "为什么我的眼里常含泪水？因为我对这土地爱得深沉。这土地，这河流，这吹刮着的暴风。"
+          ]
+        },
+        {
+          "id": 1,
+          "type": "OmniVoiceVoiceDesignTTS",
+          "pos": [
+            811,
+            276
+          ],
+          "size": [
+            468.0063781738281,
+            512.2073974609375
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 2
+            },
+            {
+              "label": "voice_instruct",
+              "name": "voice_instruct",
+              "type": "STRING",
+              "widget": {
+                "name": "voice_instruct"
+              },
+              "link": 4
+            },
+            {
+              "label": "steps",
+              "name": "steps",
+              "type": "INT",
+              "widget": {
+                "name": "steps"
+              }
+            },
+            {
+              "label": "speed",
+              "name": "speed",
+              "type": "FLOAT",
+              "widget": {
+                "name": "speed"
+              }
+            },
+            {
+              "label": "duration",
+              "name": "duration",
+              "type": "FLOAT",
+              "widget": {
+                "name": "duration"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "dtype",
+              "name": "dtype",
+              "type": "COMBO",
+              "widget": {
+                "name": "dtype"
+              }
+            },
+            {
+              "label": "attention",
+              "name": "attention",
+              "type": "COMBO",
+              "widget": {
+                "name": "attention"
+              }
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "keep_model_loaded",
+              "name": "keep_model_loaded",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "keep_model_loaded"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                5
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "OmniVoiceVoiceDesignTTS",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "speed": true,
+              "duration": true,
+              "device": true,
+              "dtype": true,
+              "attention": true,
+              "seed": true,
+              "steps": true
+            }
+          },
+          "widgets_values": [
+            "OmniVoice-bf16",
+            "为什么我的眼里常含泪水？因为我对这土地爱得深沉。这土地，这河流，这吹刮着的暴风。",
+            "\n女，青年，四川话",
+            32,
+            1,
+            0,
+            "auto",
+            "auto",
+            "auto",
+            85,
+            "fixed",
+            false
+          ]
+        },
+        {
+          "id": 8,
+          "type": "CLIPTextEncode",
+          "pos": [
+            3165,
+            857
+          ],
+          "size": [
+            735.870361328125,
+            379.2035827636719
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 8
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 26
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "slot_index": 0,
+              "links": [
+                10,
+                16
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "text": true
+            },
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            "脖子以上完整头部大头照，干净均匀纯白背景，头发边缘与背景清晰分离，无额外轮廓光；22 岁青年男性，诙谐喜剧感长相，克制中性表情，嘴唇自然闭合，眉眼放松，眼神平稳自带懵懂亲和感；偏圆润的方圆脸，脸部宽度略宽于标准比例，下颌线条柔和无锋利折角，下巴圆润偏短，颧骨平缓，面中软组织饱满，苹果肌圆润，整体骨感弱、软组织丰盈，自带憨厚观众缘；眉毛浓密度中等，眉形偏平带自然微垂感，眉尾略散，眉间距适中偏宽，左眉眉尾有一小块天然稀疏缺口，存在轻微自然的眉眼不对称；眼睛大小中等，眼裂偏圆，轻微内双，眼距略宽，眼尾微向下，黑瞳比例偏大，眼下有淡卧蚕，眼神清澈带一点懵感；鼻梁高度中等偏矮，鼻头圆润偏大，鼻翼略宽，鼻孔轻微可见，鼻根平缓，整体鼻部钝感强无精致感；上下唇厚度中等偏厚，唇峰不明显，唇珠平缓，嘴角自然放平，人中偏短，右嘴角下方有一颗淡褐色小痣；深黑色短发，发质偏硬略带炸毛感，前刘海参差不齐，几缕碎发自然垂在额前，鬓角略长，发型随意凌乱像刚睡醒，发际线自然不齐带细碎胎毛；自然黄调二白肤色，肤色自然不均，额头鼻翼轻微泛红，脸颊有淡淡日晒痕迹；毛孔相对细腻但清晰可见，面部细小绒毛，眼下轻微干纹，鼻翼颗粒感明显，唇周细纹，少量极淡闭口，哑光原生肤质，真实皮肤纹理，细腻微纹理，加强皮肤纹理，强化面部轮廓，完整保留原生皮肤瑕疵感，拒绝过度磨皮和美化，无网红滤镜；iPhone 后置原相机自拍，26mm 近距离视角，自然近摄透视，光圈 f/2.0，自动曝光白平衡，轻微手机锐化 + 原生数码噪点，焦点锁定近侧眼睛、鼻梁毛孔、脸颊绒毛\n\n### 负向提示词\n\n过度磨皮，美颜滤镜，塑料皮肤，蜡像感，油腻镜面高光，脸部过度对称，网红模板脸，精致浓颜帅哥，尖锐锋利五官，浓妆，夸张表情，大笑愤怒惊讶，肩膀胸口，全身照，明显服装，道具，复杂场景，灰色渐变背景，字幕水印，影棚广告光，长焦压缩，CGI，3D 渲染，皮肤过度光滑"
+          ]
+        },
+        {
+          "id": 9,
+          "type": "CLIPLoader",
+          "pos": [
+            2982,
+            1799
+          ],
+          "size": [
+            324,
+            149.328125
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                8,
+                22
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "clip_name": true,
+              "type": true,
+              "device": true
+            },
+            "Node name for S&R": "CLIPLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            "qwen_3_4b.safetensors",
+            "lumina2",
+            "default"
+          ]
+        },
+        {
+          "id": 10,
+          "type": "VAELoader",
+          "pos": [
+            2996,
+            2276
+          ],
+          "size": [
+            310.484375,
+            100.578125
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                19,
+                21,
+                24
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "vae_name": true
+            },
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            "z_image_turbo-vae.safetensors"
+          ]
+        },
+        {
+          "id": 11,
+          "type": "UNETLoader",
+          "pos": [
+            3005,
+            1533
+          ],
+          "size": [
+            270,
+            115.328125
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "模型",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                13,
+                14
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "weight_dtype": true,
+              "unet_name": true
+            },
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            "z_image_turbo_bf16.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 12,
+          "type": "KSampler",
+          "pos": [
+            4178,
+            1530
+          ],
+          "size": [
+            378,
+            699.328125
+          ],
+          "flags": {},
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "模型",
+              "name": "model",
+              "type": "MODEL",
+              "link": 9
+            },
+            {
+              "label": "正面条件",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 10
+            },
+            {
+              "label": "负面条件",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 11
+            },
+            {
+              "label": "Latent",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 12
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Latent",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                18
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "scheduler": true,
+              "denoise": true,
+              "seed": true,
+              "cfg": true,
+              "sampler_name": true,
+              "steps": true
+            },
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            816264235915394,
+            "randomize",
+            8,
+            1,
+            "euler",
+            "sgm_uniform",
+            1
+          ]
+        },
+        {
+          "id": 13,
+          "type": "ModelSamplingAuraFlow",
+          "pos": [
+            3602,
+            1480
+          ],
+          "size": [
+            378,
+            82
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "模型",
+              "name": "model",
+              "type": "MODEL",
+              "link": 13
+            }
+          ],
+          "outputs": [
+            {
+              "label": "模型",
+              "name": "MODEL",
+              "type": "MODEL",
+              "slot_index": 0,
+              "links": [
+                9
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "shift": true
+            },
+            "Node name for S&R": "ModelSamplingAuraFlow",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            3,
+            "flow"
+          ]
+        },
+        {
+          "id": 14,
+          "type": "EmptyLatentImage",
+          "pos": [
+            3524,
+            1789
+          ],
+          "size": [
+            312.953125,
+            149.328125
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "Latent",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                12
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "batch_size": true,
+              "width": true,
+              "height": true
+            },
+            "Node name for S&R": "EmptyLatentImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            904,
+            1600,
+            1
+          ]
+        },
+        {
+          "id": 15,
+          "type": "HFEPostProcessor (lrzjason)",
+          "pos": [
+            5137,
+            1500
+          ],
+          "size": [
+            353.98004150390625,
+            653.7837524414062
+          ],
+          "flags": {},
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 14
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 15
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 16
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 17
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                23
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "HFEPostProcessor (lrzjason)"
+          },
+          "widgets_values": [
+            180647074816891,
+            "randomize",
+            3,
+            2,
+            1,
+            "res_multistep",
+            "sgm_uniform",
+            1.05,
+            5,
+            0.05,
+            2,
+            0.5
+          ]
+        },
+        {
+          "id": 16,
+          "type": "VAEDecode",
+          "pos": [
+            4645,
+            1654
+          ],
+          "size": [
+            213.51881408691406,
+            53.764305114746094
+          ],
+          "flags": {},
+          "order": 14,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "Latent",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 18
+            },
+            {
+              "label": "VAE",
+              "name": "vae",
+              "type": "VAE",
+              "link": 19
+            }
+          ],
+          "outputs": [
+            {
+              "label": "图像",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "slot_index": 0,
+              "links": [
+                20
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          }
+        },
+        {
+          "id": 17,
+          "type": "VAEEncode",
+          "pos": [
+            4890,
+            1572
+          ],
+          "size": [
+            225,
+            71.328125
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "图像",
+              "name": "pixels",
+              "type": "IMAGE",
+              "link": 20
+            },
+            {
+              "label": "VAE",
+              "name": "vae",
+              "type": "VAE",
+              "link": 21
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Latent",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                15
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAEEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          }
+        },
+        {
+          "id": 18,
+          "type": "CLIPTextEncode",
+          "pos": [
+            3557,
+            2010
+          ],
+          "size": [
+            252.14385986328125,
+            88
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "CLIP",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 22
+            }
+          ],
+          "outputs": [
+            {
+              "label": "条件",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "slot_index": 0,
+              "links": [
+                11,
+                17
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "text": true
+            },
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            }
+          },
+          "widgets_values": [
+            ""
+          ]
+        },
+        {
+          "id": 19,
+          "type": "VAEDecode",
+          "pos": [
+            5225,
+            2229
+          ],
+          "size": [
+            252,
+            71.328125
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "Latent",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 23
+            },
+            {
+              "label": "VAE",
+              "name": "vae",
+              "type": "VAE",
+              "link": 24
+            }
+          ],
+          "outputs": [
+            {
+              "label": "图像",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "slot_index": 0,
+              "links": [
+                25
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            },
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          }
+        },
+        {
+          "id": 20,
+          "type": "SaveImage",
+          "pos": [
+            5787,
+            1882
+          ],
+          "size": [
+            300,
+            450
+          ],
+          "flags": {},
+          "order": 18,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 25
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "SaveImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.67",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.4.1"
+            },
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "widgets_values": [
+            "SeedVR2 修复"
+          ],
+          "color": "#4a7b4a",
+          "bgcolor": "#335533"
+        },
+        {
+          "id": 7,
+          "type": "Text",
+          "pos": [
+            2434,
+            358
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 7
+            }
+          ],
+          "outputs": [
+            {
+              "label": "string",
+              "name": "string",
+              "type": "STRING",
+              "links": [
+                26
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "Text"
+          },
+          "widgets_values": [
+            ""
+          ]
+        },
+        {
+          "id": 5,
+          "type": "SaveAudio",
+          "pos": [
+            1395,
+            276
+          ],
+          "size": [
+            270,
+            112
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 5
+            },
+            {
+              "label": "filename_prefix",
+              "name": "filename_prefix",
+              "type": "STRING",
+              "widget": {
+                "name": "filename_prefix"
+              }
+            },
+            {
+              "label": "audioUI",
+              "name": "audioUI",
+              "type": "AUDIO_UI",
+              "widget": {
+                "name": "audioUI"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                6
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SaveAudio",
+            "widget_ue_connectable": {},
+            "streamward_capture": true
+          },
+          "widgets_values": [
+            "audio/ComfyUI"
+          ]
+        },
+        {
+          "id": 6,
+          "type": "Apply Whisper",
+          "pos": [
+            2119,
+            381
+          ],
+          "size": [
+            270,
+            146
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 6
+            }
+          ],
+          "outputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "links": [
+                7
+              ]
+            },
+            {
+              "label": "segments_alignment",
+              "name": "segments_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            },
+            {
+              "label": "words_alignment",
+              "name": "words_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "Apply Whisper"
+          },
+          "widgets_values": [
+            "Belle-whisper-large-v3-zh-punct-ct2-float32",
+            "auto",
+            ""
+          ]
+        }
+      ],
+      "links": [
+        [
+          2,
+          3,
+          0,
+          1,
+          1,
+          "STRING"
+        ],
+        [
+          4,
+          4,
+          0,
+          1,
+          2,
+          "STRING"
+        ],
+        [
+          5,
+          1,
+          0,
+          5,
+          0,
+          "AUDIO"
+        ],
+        [
+          6,
+          5,
+          0,
+          6,
+          0,
+          "AUDIO"
+        ],
+        [
+          7,
+          6,
+          0,
+          7,
+          0,
+          "STRING"
+        ],
+        [
+          8,
+          9,
+          0,
+          8,
+          0,
+          "CLIP"
+        ],
+        [
+          9,
+          13,
+          0,
+          12,
+          0,
+          "MODEL"
+        ],
+        [
+          10,
+          8,
+          0,
+          12,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          11,
+          18,
+          0,
+          12,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          12,
+          14,
+          0,
+          12,
+          3,
+          "LATENT"
+        ],
+        [
+          13,
+          11,
+          0,
+          13,
+          0,
+          "MODEL"
+        ],
+        [
+          14,
+          11,
+          0,
+          15,
+          0,
+          "MODEL"
+        ],
+        [
+          15,
+          17,
+          0,
+          15,
+          1,
+          "LATENT"
+        ],
+        [
+          16,
+          8,
+          0,
+          15,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          17,
+          18,
+          0,
+          15,
+          3,
+          "CONDITIONING"
+        ],
+        [
+          18,
+          12,
+          0,
+          16,
+          0,
+          "LATENT"
+        ],
+        [
+          19,
+          10,
+          0,
+          16,
+          1,
+          "VAE"
+        ],
+        [
+          20,
+          16,
+          0,
+          17,
+          0,
+          "IMAGE"
+        ],
+        [
+          21,
+          10,
+          0,
+          17,
+          1,
+          "VAE"
+        ],
+        [
+          22,
+          9,
+          0,
+          18,
+          0,
+          "CLIP"
+        ],
+        [
+          23,
+          15,
+          0,
+          19,
+          0,
+          "LATENT"
+        ],
+        [
+          24,
+          10,
+          0,
+          19,
+          1,
+          "VAE"
+        ],
+        [
+          25,
+          19,
+          0,
+          20,
+          0,
+          "IMAGE"
+        ],
+        [
+          26,
+          7,
+          0,
+          8,
+          1,
+          "STRING"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "文本生成"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "4",
+          "nodeType": "CR Prompt Text",
+          "field": "prompt",
+          "label": "voice instruct",
+          "hint": "音色要求提示词",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "\n女，青年，四川话",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "CR Prompt Text",
+          "field": "prompt",
+          "label": "设置说话内容",
+          "hint": "说话的内容",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "为什么我的眼里常含泪水？因为我对这土地爱得深沉。这土地，这河流，这吹刮着的暴风。",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "steps",
+          "label": "步数",
+          "hint": "采样步数",
+          "type": "int",
+          "group": "main",
+          "value": 32,
+          "min": 4,
+          "max": 64,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "speed",
+          "label": "speed",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 1,
+          "min": 0.5,
+          "max": 2,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "duration",
+          "label": "duration",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 60,
+          "step": 0.5,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "device",
+          "label": "device",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "auto",
+          "options": [
+            "auto",
+            "cuda",
+            "cpu",
+            "mps"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "dtype",
+          "label": "dtype",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "auto",
+          "options": [
+            "auto",
+            "bf16",
+            "fp16",
+            "fp32"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "attention",
+          "label": "attention",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "auto",
+          "options": [
+            "auto",
+            "eager",
+            "sage_attention"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "field": "seed",
+          "label": "种子",
+          "hint": "随机种子（留空=随机）",
+          "type": "int",
+          "group": "main",
+          "value": 85,
+          "mode": "fixed",
+          "min": 0,
+          "max": 2147483647,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        }
+      ],
+      "materialSlots": [],
+      "outputNodes": [
+        "SaveAudio"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "5",
+          "nodeType": "SaveAudio",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "20",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "【音频生成】\n关键节点：Save Audio (FLAC) (DEPRECATED)；OmniVoice Voice Design TTS（OmniVoice Voice Design TTS - Design syntheti…）；⚙️ CR Prompt Text。\n输出：音频。\n可调参数：voice instruct（音色要求提示词）、设置说话内容（说话的内容）、步数（采样步数）、种子（随机种子（留空=随机））。",
+      "paramNodes": [
+        {
+          "nodeId": "4",
+          "nodeType": "CR Prompt Text",
+          "title": "CR Prompt Text",
+          "desc": "属于「🧩 Comfyroll Studio/✨ Essential/📦 Core」分类"
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "CR Prompt Text",
+          "title": "CR Prompt Text",
+          "desc": "属于「🧩 Comfyroll Studio/✨ Essential/📦 Core」分类"
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "OmniVoiceVoiceDesignTTS",
+          "title": "OmniVoiceVoiceDesignTTS",
+          "desc": "OmniVoice Voice Design TTS - Design synthetic voices from text descriptions. Control gender, age, pitch, accent, and more. No reference audio needed."
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "SaveAudio",
+          "title": "SaveAudio",
+          "desc": "属于「audio」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "Apply Whisper",
+      "CLIPLoader",
+      "CLIPTextEncode",
+      "CR Prompt Text",
+      "EmptyLatentImage",
+      "HFEPostProcessor (lrzjason)",
+      "KSampler",
+      "ModelSamplingAuraFlow",
+      "OmniVoiceVoiceDesignTTS",
+      "SaveAudio",
+      "SaveImage",
+      "Text",
+      "UNETLoader",
+      "VAEDecode",
+      "VAEEncode",
+      "VAELoader"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

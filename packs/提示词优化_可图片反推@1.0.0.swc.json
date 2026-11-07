@@ -1,0 +1,1703 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.112Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mu8luros-5tgedv",
+    "name": "提示词优化/可图片反推",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 83,
+          "type": "XB_llamaModelLoader",
+          "pos": [
+            -2403,
+            592
+          ],
+          "size": [
+            370,
+            210
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "llama_model",
+              "name": "llama_model",
+              "type": "LLAMACPPMODEL",
+              "links": [
+                128
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "image_min_tokens": true,
+              "vram_limit": true,
+              "mmproj": true,
+              "model": true,
+              "n_ctx": true,
+              "chat_handler": true,
+              "image_max_tokens": true
+            },
+            "Node name for S&R": "XB_llamaModelLoader",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63"
+          },
+          "widgets_values": [
+            "Qwen3.5-9B-Q8_0.gguf",
+            "Qwen3.5-9B-mmproj-BF16.gguf",
+            "Qwen3.5",
+            8192,
+            -1,
+            0,
+            0
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 79,
+          "type": "XB_CanvasLabel",
+          "pos": [
+            -2266,
+            242
+          ],
+          "size": [
+            1820.74560546875,
+            113
+          ],
+          "flags": {
+            "allow_interaction": true
+          },
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "title": "LLAMA 风格可控 提示词增强 工作流",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "XB_CanvasLabel",
+            "fontSize": 113,
+            "fontColor": "#ffffff",
+            "textAlign": "left",
+            "backgroundColor": "transparent",
+            "padding": 0,
+            "borderRadius": 0,
+            "angle": 0,
+            "cnr_id": "XB_ToolBox",
+            "ver": "1d9cd0bf9fe5f10b3894bc2e677e88fa62d36c9c",
+            "aux_id": "wjluoxiao/XB_ToolBox"
+          },
+          "color": "transparent",
+          "bgcolor": "transparent"
+        },
+        {
+          "id": 78,
+          "type": "XB_CanvasLabel",
+          "pos": [
+            -2274,
+            427
+          ],
+          "size": [
+            472.833984375,
+            37
+          ],
+          "flags": {
+            "allow_interaction": true
+          },
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "title": "更多教程全网搜：机智罗_LX",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "XB_CanvasLabel",
+            "fontSize": 37,
+            "fontColor": "#ffffff",
+            "textAlign": "left",
+            "backgroundColor": "transparent",
+            "padding": 0,
+            "borderRadius": 0,
+            "angle": 0,
+            "cnr_id": "XB_ToolBox",
+            "ver": "1d9cd0bf9fe5f10b3894bc2e677e88fa62d36c9c",
+            "aux_id": "wjluoxiao/XB_ToolBox"
+          },
+          "color": "transparent",
+          "bgcolor": "transparent"
+        },
+        {
+          "id": 77,
+          "type": "XB_llamaParameters",
+          "pos": [
+            -2113,
+            1262
+          ],
+          "size": [
+            370,
+            350
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "parameters",
+              "name": "parameters",
+              "type": "LLAMACPPARAMS",
+              "links": [
+                129
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "mirostat_eta": true,
+              "max_tokens": true,
+              "mirostat_mode": true,
+              "present_penalty": true,
+              "top_p": true,
+              "min_p": true,
+              "frequency_penalty": true,
+              "state_uid": true,
+              "mirostat_tau": true,
+              "top_k": true,
+              "temperature": true,
+              "repeat_penalty": true,
+              "typical_p": true
+            },
+            "Node name for S&R": "XB_llamaParameters",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63"
+          },
+          "widgets_values": [
+            4096,
+            30,
+            0.9,
+            0.05,
+            1,
+            0.8,
+            1,
+            0,
+            0,
+            0,
+            0.1,
+            5,
+            -1
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 80,
+          "type": "XB_llamaPromptEnhancer",
+          "pos": [
+            -3015,
+            1165
+          ],
+          "size": [
+            370,
+            60
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "system_prompt",
+              "name": "system_prompt",
+              "type": "STRING",
+              "links": [
+                1789442321629
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "preset": true
+            },
+            "Node name for S&R": "XB_llamaPromptEnhancer",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "streamward_node_alias": "模型预设（提示词用处）",
+            "streamward_params": {
+              "preset": {
+                "label": "给某模型用",
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "Krea2 T2I [ZH]"
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 85,
+          "type": "XB_llamaInstruct",
+          "pos": [
+            -1781,
+            834
+          ],
+          "size": [
+            430,
+            760
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "llama_model",
+              "name": "llama_model",
+              "type": "LLAMACPPMODEL",
+              "link": 128
+            },
+            {
+              "label": "parameters",
+              "name": "parameters",
+              "shape": 7,
+              "type": "LLAMACPPARAMS",
+              "link": 129
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "shape": 7,
+              "type": "IMAGE"
+            },
+            {
+              "label": "queue_handler",
+              "name": "queue_handler",
+              "shape": 7,
+              "type": "*"
+            },
+            {
+              "label": "custom_prompt",
+              "name": "custom_prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "custom_prompt"
+              },
+              "link": 1787984687036
+            },
+            {
+              "label": "system_prompt",
+              "name": "system_prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "system_prompt"
+              },
+              "link": 1789442415260
+            }
+          ],
+          "outputs": [
+            {
+              "label": "output",
+              "name": "output",
+              "type": "STRING",
+              "links": [
+                1790065620291
+              ]
+            },
+            {
+              "label": "output_list",
+              "name": "output_list",
+              "shape": 6,
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "state_uid",
+              "name": "state_uid",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "max_frames": true,
+              "seed": true,
+              "inference_mode": true,
+              "custom_prompt": true,
+              "force_offload": true,
+              "system_prompt": true,
+              "save_states": true,
+              "preset_prompt": true,
+              "max_size": true
+            },
+            "Node name for S&R": "XB_llamaInstruct",
+            "cnr_id": "XB_ToolBox",
+            "ver": "a7c244783c7df83f997f6feb68b91231f41f3a63",
+            "streamward_params": {
+              "preset_prompt": {
+                "label": "提示词样式",
+                "seq": 2
+              }
+            },
+            "streamward_node_alias": "输出样式选择",
+            "streamward_material": {
+              "images": {
+                "label": "图片反推",
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "Prompt Style - 极度详细 [ZH]",
+            "",
+            "",
+            "images",
+            158,
+            1024,
+            0,
+            "randomize",
+            true,
+            false
+          ],
+          "color": "#16727c",
+          "bgcolor": "#4F0074"
+        },
+        {
+          "id": 91,
+          "type": "CLIPTextEncode",
+          "pos": [
+            857,
+            510
+          ],
+          "size": [
+            450,
+            650
+          ],
+          "flags": {},
+          "order": 15,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "CLIP",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 153
+            },
+            {
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790065650870
+            }
+          ],
+          "outputs": [
+            {
+              "label": "条件",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                137,
+                151
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.73",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "surreal 3d chess match artwork, epic, misty, angel and cloaked skeleton, dramatic, minimal design with perfect lines and shadows, best quality, realistic quality"
+          ]
+        },
+        {
+          "id": 94,
+          "type": "CLIPLoader",
+          "pos": [
+            534,
+            678
+          ],
+          "size": [
+            270,
+            141.328125
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "clip_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "clip_name"
+              }
+            },
+            {
+              "name": "type",
+              "type": "COMBO",
+              "widget": {
+                "name": "type"
+              }
+            },
+            {
+              "name": "device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                153
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "CLIPLoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "directory_invalid": true,
+                "name": "qwen_3_4b.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
+              }
+            ],
+            "ver": "0.3.73",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "qwen_3_4b.safetensors",
+            "lumina2",
+            "default"
+          ]
+        },
+        {
+          "id": 96,
+          "type": "EmptySD3LatentImage",
+          "pos": [
+            1360,
+            1035
+          ],
+          "size": [
+            260,
+            168
+          ],
+          "flags": {},
+          "order": 13,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 149
+            },
+            {
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 150
+            },
+            {
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Latent",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                154
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "EmptySD3LatentImage",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            1024,
+            1024,
+            1
+          ]
+        },
+        {
+          "id": 92,
+          "type": "KSampler",
+          "pos": [
+            1821,
+            583
+          ],
+          "size": [
+            320,
+            341.328125
+          ],
+          "flags": {},
+          "order": 17,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "模型",
+              "name": "model",
+              "type": "MODEL",
+              "link": 155
+            },
+            {
+              "label": "正面条件",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 137
+            },
+            {
+              "label": "负面条件",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 156
+            },
+            {
+              "label": "Latent",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 154
+            },
+            {
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "name": "steps",
+              "type": "INT",
+              "widget": {
+                "name": "steps"
+              }
+            },
+            {
+              "name": "cfg",
+              "type": "FLOAT",
+              "widget": {
+                "name": "cfg"
+              }
+            },
+            {
+              "name": "sampler_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "sampler_name"
+              }
+            },
+            {
+              "name": "scheduler",
+              "type": "COMBO",
+              "widget": {
+                "name": "scheduler"
+              }
+            },
+            {
+              "name": "denoise",
+              "type": "FLOAT",
+              "widget": {
+                "name": "denoise"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Latent",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                152
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            11,
+            "increment",
+            8,
+            1,
+            "res_multistep",
+            "simple",
+            1
+          ]
+        },
+        {
+          "id": 97,
+          "type": "ModelSamplingAuraFlow",
+          "pos": [
+            1470,
+            451
+          ],
+          "size": [
+            310,
+            104
+          ],
+          "flags": {},
+          "order": 12,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "模型",
+              "name": "model",
+              "type": "MODEL",
+              "link": 147
+            },
+            {
+              "name": "shift",
+              "type": "FLOAT",
+              "widget": {
+                "name": "shift"
+              },
+              "label": "shift"
+            },
+            {
+              "name": "sampling",
+              "label": "sampling",
+              "type": [
+                "flow",
+                "img_to_img_velocity"
+              ],
+              "widget": {
+                "name": "sampling"
+              },
+              "link": null
+            }
+          ],
+          "outputs": [
+            {
+              "label": "模型",
+              "name": "MODEL",
+              "type": "MODEL",
+              "slot_index": 0,
+              "links": [
+                155
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ModelSamplingAuraFlow",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            3,
+            "flow"
+          ]
+        },
+        {
+          "id": 93,
+          "type": "UNETLoader",
+          "pos": [
+            1010,
+            321
+          ],
+          "size": [
+            270,
+            106.65625
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "unet_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "unet_name"
+              }
+            },
+            {
+              "name": "weight_dtype",
+              "type": "COMBO",
+              "widget": {
+                "name": "weight_dtype"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "模型",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                147
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "directory_invalid": true,
+                "name": "z_image_turbo_bf16.safetensors",
+                "directory": "diffusion_models",
+                "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/diffusion_models/z_image_turbo_bf16.safetensors"
+              }
+            ],
+            "ver": "0.3.73",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "z_image_turbo_bf16.safetensors",
+            "default"
+          ]
+        },
+        {
+          "id": 98,
+          "type": "ConditioningZeroOut",
+          "pos": [
+            1381,
+            681
+          ],
+          "size": [
+            225,
+            72
+          ],
+          "flags": {},
+          "order": 16,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "条件",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 151
+            }
+          ],
+          "outputs": [
+            {
+              "label": "条件",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                156
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ConditioningZeroOut",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.73",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          }
+        },
+        {
+          "id": 90,
+          "type": "ResolutionSelector",
+          "pos": [
+            979,
+            1208
+          ],
+          "size": [
+            276.953125,
+            133.984375
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "aspect_ratio",
+              "name": "aspect_ratio",
+              "type": "COMBO",
+              "widget": {
+                "name": "aspect_ratio"
+              }
+            },
+            {
+              "label": "megapixels",
+              "name": "megapixels",
+              "type": "FLOAT",
+              "widget": {
+                "name": "megapixels"
+              }
+            },
+            {
+              "label": "multiple",
+              "name": "multiple",
+              "type": "INT",
+              "widget": {
+                "name": "multiple"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": [
+                149
+              ]
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": [
+                150
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "ResolutionSelector"
+          },
+          "widgets_values": [
+            "16:9 (Widescreen)",
+            1,
+            8
+          ]
+        },
+        {
+          "id": 99,
+          "type": "VAEDecode",
+          "pos": [
+            2324,
+            592
+          ],
+          "size": [
+            225,
+            96
+          ],
+          "flags": {},
+          "order": 18,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "Latent",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 152
+            },
+            {
+              "label": "VAE",
+              "name": "vae",
+              "type": "VAE",
+              "link": 148
+            }
+          ],
+          "outputs": [
+            {
+              "label": "图像",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "slot_index": 0,
+              "links": [
+                157
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          }
+        },
+        {
+          "id": 95,
+          "type": "VAELoader",
+          "pos": [
+            1919,
+            1021
+          ],
+          "size": [
+            270,
+            106.65625
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "name": "vae_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "vae_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                148
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "models": [
+              {
+                "directory_invalid": true,
+                "name": "ae.safetensors",
+                "directory": "vae",
+                "url": "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/vae/ae.safetensors"
+              }
+            ],
+            "ver": "0.3.73",
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10
+          },
+          "widgets_values": [
+            "ae.safetensors"
+          ]
+        },
+        {
+          "id": 9,
+          "type": "SaveImage",
+          "pos": [
+            2598,
+            607
+          ],
+          "size": [
+            720.5172119140625,
+            642.7775268554688
+          ],
+          "flags": {},
+          "order": 19,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 157
+            },
+            {
+              "label": "filename_prefix",
+              "name": "filename_prefix",
+              "type": "STRING",
+              "widget": {
+                "name": "filename_prefix"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SaveImage",
+            "cnr_id": "comfy-core",
+            "hasSecondTab": false,
+            "ver": "0.3.64",
+            "widget_ue_connectable": {},
+            "secondTabText": "Send Back",
+            "enableTabs": false,
+            "secondTabOffset": 80,
+            "tabWidth": 65,
+            "secondTabWidth": 65,
+            "tabXOffset": 10,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "Image -easy Image Chooser（IMAGE）"
+            }
+          },
+          "widgets_values": [
+            "z-image-turbo"
+          ]
+        },
+        {
+          "type": "MultiLinePrompt",
+          "title": "Multi Line Prompt",
+          "inputs": [
+            {
+              "label": "multi_line_prompt",
+              "name": "multi_line_prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "multi_line_prompt"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1787984687036
+              ]
+            }
+          ],
+          "widgets_values": [
+            ""
+          ],
+          "properties": {
+            "Node name for S&R": "Multi Line Prompt",
+            "streamward_node_alias": "提示词",
+            "streamward_params": {
+              "multi_line_prompt": {
+                "label": "用户提示词",
+                "textIn": true,
+                "seq": 1
+              }
+            }
+          },
+          "id": 100,
+          "pos": [
+            -2418,
+            928
+          ]
+        },
+        {
+          "type": "ComfySwitchNode",
+          "title": "If/Else Switch",
+          "inputs": [
+            {
+              "label": "on_false",
+              "name": "on_false",
+              "type": "COMFY_MATCHTYPE_V3",
+              "link": 1789442321629
+            },
+            {
+              "label": "on_true",
+              "name": "on_true",
+              "type": "COMFY_MATCHTYPE_V3",
+              "link": 1789442980323
+            },
+            {
+              "label": "switch",
+              "name": "switch",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "switch"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "COMFY_MATCHTYPE_V3",
+              "name": "COMFY_MATCHTYPE_V3",
+              "type": "COMFY_MATCHTYPE_V3",
+              "links": [
+                1789442415260
+              ]
+            }
+          ],
+          "widgets_values": [
+            false
+          ],
+          "properties": {
+            "Node name for S&R": "If/Else Switch",
+            "streamward_params": {
+              "switch": {
+                "label": "自定义系统规则开关",
+                "seq": 4
+              }
+            }
+          },
+          "id": 109,
+          "pos": [
+            -2538,
+            1228
+          ]
+        },
+        {
+          "type": "Text Multiline",
+          "title": "Text Multiline",
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1789442980323
+              ]
+            }
+          ],
+          "widgets_values": [
+            "Role: 室内外空间视觉一致性导演\n\nTask: 读取参考图像，自动识别空间类型，提取空间亮点，生成{N}个多视角镜头描述。未见视角基于已有信息合理补全，所有视角必须保持空间结构、材质、光影、比例、风格的绝对一致性。\n\n【第一步：空间套别判定】\n先判定图片属于哪一套：\n套A[室外建筑+园林]：建筑外立面、屋顶、外墙、入口、庭院、水景、步道、绿植造景\n套B[室内家装]：客厅、餐厅、卧室、厨房、玄关、楼梯间等室内空间\n混合图以主体面积占比判定，用户指定则以用户为准。\n\n【第二步：读图分析（内部完成，不输出）】\n必须分析：空间类型、整体风格、主要材质清单（至少3种）、光源方向与色温、视觉锚点、空间结构关系、最值得展示的3个亮点、图中已有视角清单、需补全视角清单。\n\n【第三步：空间一致性锁死（最高优先级）】\n- 结构一致：层高、开间、门窗位置、结构元素在所有视角统一，补全不得新增重大结构\n- 材质一致：色号、纹理、光泽度全片统一，特写与全景必须是同一种材质\n- 光影一致：光源方向、色温、亮灯状态全片统一，补全视角光影必须自洽\n- 比例一致：家具/构件/绿植的相对比例全片统一\n- 风格一致：设计风格与造型语言全片统一，补全视角延续已有风格\n\n【第四步：亮点提取与镜头分配】\n套A亮点优先级：建筑结构（屋顶/立面/门廊/挑檐）> 材质（外墙石/木格栅/金属/玻璃）> 园林（水景/步道/景墙/造型树）> 光影 > 特殊视角\n套B亮点优先级：空间结构（挑空/楼梯/拱形/背景墙/落地窗）> 材质（木饰面/石材/金属/涂料）> 灯光 > 软装 > 特殊视角\nS级亮点分配1-2个镜头，A级亮点分配1个，B级可合并。视角有限时优先保S级和A级。\n\n【第五步：视角补全规则】\n- 补全数量 = {N} - 图中已有优质视角数量\n- 补全前先建立空间三维心智模型，确定摄像机物理站位\n- 补全内容的每个元素必须能在已有信息中找到依据或合理延伸\n- 无法推断的部分采用\"同风格最小化假设\"，不得过度设计\n- 信息严重不足无法可靠补全时，明确告知用户，不得强行编造\n- 补全视角标注[补全推断]，图中可见标注[图中可见]\n\n【第六步：空间接力（镜头间连贯）】\n通用接力：方位接力、视线接力、材质接力、光影接力、结构接力\n套A专用：建筑-园林接力、水景倒影接力、绿植框景接力、路径接力\n套B专用：空间-空间接力、柜体延伸接力、灯光呼应接力、窗景回望接力\n\n【第七步：视角数量与排序】\n视角数量严格={N}，默认N=9。\n分配比例：全景20%-30%、中景25%-35%、特写20%-30%、特殊10%-20%。\n排序固定：第1个全景定调 → 前段扩展视角 → 中段中景特写交替 → 后段特殊视角+细节 → 第N个全景收束。\n原则：先整体后局部，先空间后材质，先亮点后补充，最后回到整体。\n\n【第八步：画面约束】\n- 固定机位为主，允许极慢推近/轻微横移，禁止剧烈运动镜头\n- 默认无人物（套A套B均如此），用户要求除外\n- 每个镜头必须服务于空间展示，禁止无意义空镜\n\n【第九步：输出格式】\n每行固定格式：Next Scene：序号) [可见/补全] 镜头类型 :: 画面内容 :: 核心作用\n严格输出{N}行，连续文本块，零空行，禁止解释，禁止代词，禁止额外说明。\n\n【执行】\n现在读取参考图像，按以上流程生成。\n"
+          ],
+          "properties": {
+            "Node name for S&R": "Text Multiline",
+            "streamward_params": {
+              "text": {
+                "label": "自定义系统规则",
+                "seq": 5
+              }
+            }
+          },
+          "id": 111,
+          "pos": [
+            -2971,
+            1387
+          ]
+        },
+        {
+          "type": "TextPreview",
+          "title": "Preview Text",
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790065620291
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1790065650870
+              ]
+            }
+          ],
+          "widgets_values": [
+            ""
+          ],
+          "properties": {
+            "Node name for S&R": "Preview Text",
+            "streamward_capture": true
+          },
+          "id": 113,
+          "pos": [
+            -1294,
+            835
+          ]
+        }
+      ],
+      "links": [
+        [
+          128,
+          83,
+          0,
+          85,
+          0,
+          "LLAMACPPMODEL"
+        ],
+        [
+          129,
+          77,
+          0,
+          85,
+          1,
+          "LLAMACPPARAMS"
+        ],
+        [
+          137,
+          91,
+          0,
+          92,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          147,
+          93,
+          0,
+          97,
+          0,
+          "MODEL"
+        ],
+        [
+          148,
+          95,
+          0,
+          99,
+          1,
+          "VAE"
+        ],
+        [
+          149,
+          90,
+          0,
+          96,
+          0,
+          "INT"
+        ],
+        [
+          150,
+          90,
+          1,
+          96,
+          1,
+          "INT"
+        ],
+        [
+          151,
+          91,
+          0,
+          98,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          152,
+          92,
+          0,
+          99,
+          0,
+          "LATENT"
+        ],
+        [
+          153,
+          94,
+          0,
+          91,
+          0,
+          "CLIP"
+        ],
+        [
+          154,
+          96,
+          0,
+          92,
+          3,
+          "LATENT"
+        ],
+        [
+          155,
+          97,
+          0,
+          92,
+          0,
+          "MODEL"
+        ],
+        [
+          156,
+          98,
+          0,
+          92,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          157,
+          99,
+          0,
+          9,
+          0,
+          "IMAGE"
+        ],
+        [
+          1787984687036,
+          100,
+          0,
+          85,
+          4,
+          "STRING"
+        ],
+        [
+          1789442321629,
+          80,
+          0,
+          109,
+          0,
+          "STRING"
+        ],
+        [
+          1789442415260,
+          109,
+          0,
+          85,
+          5,
+          "COMFY_MATCHTYPE_V3"
+        ],
+        [
+          1789442980323,
+          111,
+          0,
+          109,
+          1,
+          "STRING"
+        ],
+        [
+          1790065620291,
+          85,
+          0,
+          113,
+          0,
+          "STRING"
+        ],
+        [
+          1790065650870,
+          113,
+          0,
+          91,
+          1,
+          "STRING"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 113,
+      "last_link_id": 1790065650870,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "文本生成"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "100",
+          "nodeType": "MultiLinePrompt",
+          "field": "multi_line_prompt",
+          "label": "用户提示词",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "",
+          "textIn": true,
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "85",
+          "nodeType": "XB_llamaInstruct",
+          "field": "preset_prompt",
+          "label": "提示词样式",
+          "hint": "给大模型的指令模板（决定它怎么处理输入）",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "Prompt Style - 极度详细 [ZH]",
+          "options": [
+            "Empty - Nothing",
+            "Normal - Describe [EN]",
+            "Prompt Style - Tags [EN]",
+            "Prompt Style - Simple [EN]",
+            "Prompt Style - Detailed [EN]",
+            "Prompt Style - Extreme Detailed [EN]",
+            "Prompt Style - Cinematic [EN]",
+            "Creative - Detailed Analysis [EN]",
+            "Creative - Summarize Video [EN]",
+            "Creative - Short Story [EN]",
+            "Creative - Refine & Expand Prompt [EN]",
+            "Vision - *Bounding Box [EN]",
+            "Normal - 描述 [ZH]",
+            "Prompt Style - 标签 [ZH]",
+            "Prompt Style - 简洁 [ZH]",
+            "Prompt Style - 详细 [ZH]",
+            "Prompt Style - 极度详细 [ZH]",
+            "Prompt Style - 电影级 [ZH]",
+            "Creative - 详细分析 [ZH]",
+            "Creative - 视频摘要 [ZH]",
+            "Creative - 短故事 [ZH]",
+            "Creative - 润色扩充提示词 [ZH]",
+            "Vision - BBox检测 [ZH]"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "80",
+          "nodeType": "XB_llamaPromptEnhancer",
+          "field": "preset",
+          "label": "给某模型用",
+          "hint": "提示词优化风格预设：决定扩写/翻译/改写方式",
+          "fromMark": true,
+          "type": "combo",
+          "group": "main",
+          "value": "Krea2 T2I [ZH]",
+          "options": [
+            "Animagine XL [EN]",
+            "Animagine XL [ZH]",
+            "Boogu T2I [EN]",
+            "Boogu T2I [ZH]",
+            "ERNIE-Image T2I [EN]",
+            "ERNIE-Image T2I [ZH]",
+            "Flux.2 I2I [EN]",
+            "Flux.2 I2I [ZH]",
+            "Flux.2 Klein I2I [EN]",
+            "Flux.2 Klein I2I [ZH]",
+            "Flux.2 Klein T2I [EN]",
+            "Flux.2 Klein T2I [ZH]",
+            "Flux.2 T2I [EN]",
+            "Flux.2 T2I [ZH]",
+            "Ideogram 4.0 T2I [EN]",
+            "Ideogram 4.0 T2I [ZH]",
+            "Krea2 T2I [EN]",
+            "Krea2 T2I [ZH]",
+            "LTX2.3 T2V [EN]",
+            "LTX2.3 T2V [ZH]",
+            "Lumina-Next T2I [EN]",
+            "Lumina-Next T2I [ZH]",
+            "Pony V6 XL [EN]",
+            "Pony V6 XL [ZH]",
+            "Qwen-Image 2512 [EN]",
+            "Qwen-Image 2512 [ZH]",
+            "Qwen-Image-Edit 2511 [EN]",
+            "Qwen-Image-Edit 2511 [ZH]",
+            "Wan FLF2V [EN]",
+            "Wan FLF2V [ZH]",
+            "Wan I2V [EN]",
+            "Wan I2V [ZH]",
+            "Wan I2V Full-Auto [EN]",
+            "Wan I2V Full-Auto [ZH]",
+            "Wan T2V [EN]",
+            "Wan T2V [ZH]",
+            "Z-Image Turbo [ZH]",
+            "Z-Image Turbo [EN]"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "109",
+          "nodeType": "ComfySwitchNode",
+          "field": "switch",
+          "label": "自定义系统规则开关",
+          "hint": null,
+          "fromMark": true,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable",
+          "officialKind": "toggle",
+          "slider": false
+        },
+        {
+          "nodeId": "111",
+          "nodeType": "Text Multiline",
+          "field": "text",
+          "label": "自定义系统规则",
+          "hint": "描述你想生成的画面",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "Role: 室内外空间视觉一致性导演\n\nTask: 读取参考图像，自动识别空间类型，提取空间亮点，生成{N}个多视角镜头描述。未见视角基于已有信息合理补全，所有视角必须保持空间结构、材质、光影、比例、风格的绝对一致性。\n\n【第一步：空间套别判定】\n先判定图片属于哪一套：\n套A[室外建筑+园林]：建筑外立面、屋顶、外墙、入口、庭院、水景、步道、绿植造景\n套B[室内家装]：客厅、餐厅、卧室、厨房、玄关、楼梯间等室内空间\n混合图以主体面积占比判定，用户指定则以用户为准。\n\n【第二步：读图分析（内部完成，不输出）】\n必须分析：空间类型、整体风格、主要材质清单（至少3种）、光源方向与色温、视觉锚点、空间结构关系、最值得展示的3个亮点、图中已有视角清单、需补全视角清单。\n\n【第三步：空间一致性锁死（最高优先级）】\n- 结构一致：层高、开间、门窗位置、结构元素在所有视角统一，补全不得新增重大结构\n- 材质一致：色号、纹理、光泽度全片统一，特写与全景必须是同一种材质\n- 光影一致：光源方向、色温、亮灯状态全片统一，补全视角光影必须自洽\n- 比例一致：家具/构件/绿植的相对比例全片统一\n- 风格一致：设计风格与造型语言全片统一，补全视角延续已有风格\n\n【第四步：亮点提取与镜头分配】\n套A亮点优先级：建筑结构（屋顶/立面/门廊/挑檐）> 材质（外墙石/木格栅/金属/玻璃）> 园林（水景/步道/景墙/造型树）> 光影 > 特殊视角\n套B亮点优先级：空间结构（挑空/楼梯/拱形/背景墙/落地窗）> 材质（木饰面/石材/金属/涂料）> 灯光 > 软装 > 特殊视角\nS级亮点分配1-2个镜头，A级亮点分配1个，B级可合并。视角有限时优先保S级和A级。\n\n【第五步：视角补全规则】\n- 补全数量 = {N} - 图中已有优质视角数量\n- 补全前先建立空间三维心智模型，确定摄像机物理站位\n- 补全内容的每个元素必须能在已有信息中找到依据或合理延伸\n- 无法推断的部分采用\"同风格最小化假设\"，不得过度设计\n- 信息严重不足无法可靠补全时，明确告知用户，不得强行编造\n- 补全视角标注[补全推断]，图中可见标注[图中可见]\n\n【第六步：空间接力（镜头间连贯）】\n通用接力：方位接力、视线接力、材质接力、光影接力、结构接力\n套A专用：建筑-园林接力、水景倒影接力、绿植框景接力、路径接力\n套B专用：空间-空间接力、柜体延伸接力、灯光呼应接力、窗景回望接力\n\n【第七步：视角数量与排序】\n视角数量严格={N}，默认N=9。\n分配比例：全景20%-30%、中景25%-35%、特写20%-30%、特殊10%-20%。\n排序固定：第1个全景定调 → 前段扩展视角 → 中段中景特写交替 → 后段特殊视角+细节 → 第N个全景收束。\n原则：先整体后局部，先空间后材质，先亮点后补充，最后回到整体。\n\n【第八步：画面约束】\n- 固定机位为主，允许极慢推近/轻微横移，禁止剧烈运动镜头\n- 默认无人物（套A套B均如此），用户要求除外\n- 每个镜头必须服务于空间展示，禁止无意义空镜\n\n【第九步：输出格式】\n每行固定格式：Next Scene：序号) [可见/补全] 镜头类型 :: 画面内容 :: 核心作用\n严格输出{N}行，连续文本块，零空行，禁止解释，禁止代词，禁止额外说明。\n\n【执行】\n现在读取参考图像，按以上流程生成。\n",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "85",
+          "nodeType": "XB_llamaInstruct",
+          "field": "images",
+          "label": "图片反推",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "maxCount": 1,
+          "required": false,
+          "marked": true
+        }
+      ],
+      "outputNodes": [],
+      "capturePoints": [
+        {
+          "nodeId": "113",
+          "nodeType": "TextPreview",
+          "kind": "text"
+        }
+      ],
+      "tailNodeId": "9",
+      "tailSlotId": "Image -easy Image Chooser（IMAGE）",
+      "tailOutIdx": 1,
+      "category": "txt2img",
+      "isInpaint": false,
+      "description": "【文字生成】\n关键节点：XB-llama - 📦 模型加载器；Preview Text；XB-llama - ⚙️ 推理参数；XB-llama - ✨ 提示词增强预设；XB-llama - 💬 指令推理；Multi Line Prompt；…（共 8 个）。\n输入：参考图。\n输出：文字。\n可调参数：用户提示词、提示词样式（给大模型的指令模板（决定它怎么处理输入））、给某模型用（提示词优化风格预设：决定扩写/翻译/改写方式）、自定义系统规则开关、自定义系统规则（描述你想生成的画面）。",
+      "paramNodes": [
+        {
+          "nodeId": "83",
+          "nodeType": "XB_llamaModelLoader",
+          "title": "XB_llamaModelLoader",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "77",
+          "nodeType": "XB_llamaParameters",
+          "title": "XB_llamaParameters",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "80",
+          "nodeType": "XB_llamaPromptEnhancer",
+          "title": "模型预设（提示词用处）",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "85",
+          "nodeType": "XB_llamaInstruct",
+          "title": "输出样式选择",
+          "desc": "属于「XB-llama」分类"
+        },
+        {
+          "nodeId": "100",
+          "nodeType": "MultiLinePrompt",
+          "title": "提示词",
+          "desc": "属于「MW-DiffRhythm」分类"
+        },
+        {
+          "nodeId": "109",
+          "nodeType": "ComfySwitchNode",
+          "title": "If/Else Switch",
+          "desc": "属于「utilities/logic」分类"
+        },
+        {
+          "nodeId": "111",
+          "nodeType": "Text Multiline",
+          "title": "Text Multiline",
+          "desc": "属于「WAS Suite/Text」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CLIPLoader",
+      "CLIPTextEncode",
+      "ComfySwitchNode",
+      "ConditioningZeroOut",
+      "EmptySD3LatentImage",
+      "KSampler",
+      "ModelSamplingAuraFlow",
+      "MultiLinePrompt",
+      "ResolutionSelector",
+      "SaveImage",
+      "Text Multiline",
+      "TextPreview",
+      "UNETLoader",
+      "VAEDecode",
+      "VAELoader",
+      "XB_CanvasLabel",
+      "XB_llamaInstruct",
+      "XB_llamaModelLoader",
+      "XB_llamaParameters",
+      "XB_llamaPromptEnhancer"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

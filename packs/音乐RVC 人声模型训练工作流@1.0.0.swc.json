@@ -1,0 +1,614 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.114Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mu8us7q4-2uiqxm",
+    "name": "音乐RVC 人声模型训练工作流",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 110,
+          "type": "ShellAgentPluginOutputText",
+          "pos": [
+            1399,
+            -1523
+          ],
+          "size": [
+            295.2300720214844,
+            82
+          ],
+          "flags": {},
+          "order": 28,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 150
+            },
+            {
+              "label": "output_name",
+              "name": "output_name",
+              "type": "STRING",
+              "widget": {
+                "name": "output_name"
+              }
+            }
+          ],
+          "outputs": [],
+          "properties": {
+            "Node name for S&R": "ShellAgentPluginOutputText",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "",
+            "output_text"
+          ]
+        },
+        {
+          "id": 108,
+          "type": "easy saveText",
+          "pos": [
+            1504,
+            -1909
+          ],
+          "size": [
+            270,
+            150
+          ],
+          "flags": {},
+          "order": 27,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "link": 149
+            },
+            {
+              "label": "image",
+              "name": "image",
+              "shape": 7,
+              "type": "IMAGE"
+            },
+            {
+              "label": "output_file_path",
+              "name": "output_file_path",
+              "type": "STRING",
+              "widget": {
+                "name": "output_file_path"
+              }
+            },
+            {
+              "label": "file_name",
+              "name": "file_name",
+              "type": "STRING",
+              "widget": {
+                "name": "file_name"
+              }
+            },
+            {
+              "label": "file_extension",
+              "name": "file_extension",
+              "type": "COMBO",
+              "widget": {
+                "name": "file_extension"
+              }
+            },
+            {
+              "label": "overwrite",
+              "name": "overwrite",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "overwrite"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy saveText",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "",
+            "",
+            "txt",
+            true
+          ]
+        },
+        {
+          "id": 111,
+          "type": "RunningHubRVCOneClickTrain",
+          "pos": [
+            891,
+            -1755
+          ],
+          "size": [
+            311.5406188964844,
+            538
+          ],
+          "flags": {},
+          "order": 24,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "shape": 7,
+              "type": "*",
+              "link": 151
+            },
+            {
+              "label": "trainset_dir",
+              "name": "trainset_dir",
+              "type": "STRING",
+              "widget": {
+                "name": "trainset_dir"
+              }
+            },
+            {
+              "label": "experiment_name",
+              "name": "experiment_name",
+              "type": "STRING",
+              "widget": {
+                "name": "experiment_name"
+              }
+            },
+            {
+              "label": "save_name",
+              "name": "save_name",
+              "type": "STRING",
+              "widget": {
+                "name": "save_name"
+              }
+            },
+            {
+              "label": "version",
+              "name": "version",
+              "type": "COMBO",
+              "widget": {
+                "name": "version"
+              }
+            },
+            {
+              "label": "sample_rate",
+              "name": "sample_rate",
+              "type": "COMBO",
+              "widget": {
+                "name": "sample_rate"
+              }
+            },
+            {
+              "label": "use_f0",
+              "name": "use_f0",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "use_f0"
+              }
+            },
+            {
+              "label": "f0_method",
+              "name": "f0_method",
+              "type": "COMBO",
+              "widget": {
+                "name": "f0_method"
+              }
+            },
+            {
+              "label": "speaker_id",
+              "name": "speaker_id",
+              "type": "INT",
+              "widget": {
+                "name": "speaker_id"
+              }
+            },
+            {
+              "label": "total_epoch",
+              "name": "total_epoch",
+              "type": "INT",
+              "widget": {
+                "name": "total_epoch"
+              }
+            },
+            {
+              "label": "save_every_epoch",
+              "name": "save_every_epoch",
+              "type": "INT",
+              "widget": {
+                "name": "save_every_epoch"
+              }
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            },
+            {
+              "label": "cpu_processes",
+              "name": "cpu_processes",
+              "type": "INT",
+              "widget": {
+                "name": "cpu_processes"
+              }
+            },
+            {
+              "label": "is_half",
+              "name": "is_half",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "is_half"
+              }
+            },
+            {
+              "label": "train_index",
+              "name": "train_index",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "train_index"
+              }
+            },
+            {
+              "label": "pretrained_G",
+              "name": "pretrained_G",
+              "shape": 7,
+              "type": "STRING",
+              "widget": {
+                "name": "pretrained_G"
+              }
+            },
+            {
+              "label": "pretrained_D",
+              "name": "pretrained_D",
+              "shape": 7,
+              "type": "STRING",
+              "widget": {
+                "name": "pretrained_D"
+              }
+            },
+            {
+              "label": "save_latest_only",
+              "name": "save_latest_only",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "save_latest_only"
+              }
+            },
+            {
+              "label": "cache_dataset_in_gpu",
+              "name": "cache_dataset_in_gpu",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "cache_dataset_in_gpu"
+              }
+            },
+            {
+              "label": "save_every_weights",
+              "name": "save_every_weights",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "save_every_weights"
+              }
+            },
+            {
+              "label": "audio_auto_clean",
+              "name": "audio_auto_clean",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "audio_auto_clean"
+              }
+            },
+            {
+              "label": "auto_extract_vocals",
+              "name": "auto_extract_vocals",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "auto_extract_vocals"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "info",
+              "name": "info",
+              "type": "STRING",
+              "links": [
+                149,
+                150,
+                1789850401947
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "RunningHubRVCOneClickTrain",
+            "widget_ue_connectable": {},
+            "streamward_capture": true
+          },
+          "widgets_values": [
+            "",
+            "demo_rvc_train",
+            "自制人声_rvc_model",
+            "v2",
+            "40k",
+            true,
+            "harvest",
+            0,
+            20,
+            10,
+            4,
+            4,
+            true,
+            true,
+            "",
+            "",
+            false,
+            false,
+            false,
+            true,
+            true
+          ]
+        },
+        {
+          "id": 109,
+          "type": "HAIGC_LoadImagesFromZip",
+          "pos": [
+            393,
+            -1744
+          ],
+          "size": [
+            270,
+            202
+          ],
+          "flags": {},
+          "order": 19,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "zip_file",
+              "name": "zip_file",
+              "type": "COMBO",
+              "widget": {
+                "name": "zip_file"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "图像",
+              "name": "图像",
+              "shape": 6,
+              "type": "IMAGE",
+              "links": []
+            },
+            {
+              "label": "遮罩",
+              "name": "遮罩",
+              "shape": 6,
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "提示词",
+              "name": "提示词",
+              "shape": 6,
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "视频",
+              "name": "视频",
+              "shape": 6,
+              "type": "VIDEO",
+              "links": []
+            },
+            {
+              "label": "音频",
+              "name": "音频",
+              "shape": 6,
+              "type": "AUDIO",
+              "links": [
+                151
+              ]
+            },
+            {
+              "label": "文本",
+              "name": "文本",
+              "shape": 6,
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "命名信息",
+              "name": "命名信息",
+              "type": "*",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "HAIGC_LoadImagesFromZip",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            null,
+            null
+          ]
+        },
+        {
+          "id": 241,
+          "type": "Note",
+          "pos": [
+            -379,
+            -1717
+          ],
+          "size": [
+            732.4678955078125,
+            673.8925170898438
+          ],
+          "flags": {},
+          "order": 20,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "properties": {},
+          "widgets_values": [
+            "一、 要求：\n \n> 1. 音频尽量干净，无背景 BGM、杂音；节点已经开了 `audio_auto_clean / auto_extract_vocals` 自动分离人声，但原始素材越干净效果越好\n> 2. 素材总时长：**5~20 分钟人声最合适**，不要太短（少于 3 分钟很容易崩），5 分钟素材，云端一般几分钟～十几分钟，素材越长越慢\n> 3. 打包规则：直接把一堆 wav 丢进 zip，**不要嵌套多层文件夹**，zip 根目录直接是音频文件\n> 左侧节点输出的`音频`端口，就是把 zip 内的人声数据集喂给 RH_RVC 训练节点。\n\n\n## 训练参数简单说明（你当前配置）\n\n- version：v2（RVC v2 模型）\n- f0_method：harvest（适合偏稳人声，唱歌也能用，推理会慢一点）\n- total_epoch：20 轮，每 10 轮保存一次权重 `save_every_epoch=10`\n- `save_latest_only=true`：**只保留最后一轮模型，中间 epoch 的权重会删掉**\n- `audio_auto_clean=true`：自动降噪；`auto_extract_vocals=true`：自动把人声从伴奏里剥离\n\n\n输出模型：存在 RunningHub 你的云端资产库，名字叫 demo_rvc_model"
+          ],
+          "color": "#432",
+          "bgcolor": "#653"
+        },
+        {
+          "type": "PreviewAny",
+          "title": "Preview as Text",
+          "inputs": [
+            {
+              "label": "source",
+              "name": "source",
+              "type": "*",
+              "link": 1789850401947
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Preview as Text",
+            "streamward_tail": {
+              "out": 0,
+              "slot": "image-chooser-1"
+            }
+          },
+          "id": 242,
+          "pos": [
+            1526,
+            -1278
+          ]
+        }
+      ],
+      "links": [
+        [
+          149,
+          111,
+          0,
+          108,
+          0,
+          "STRING"
+        ],
+        [
+          150,
+          111,
+          0,
+          110,
+          0,
+          "STRING"
+        ],
+        [
+          151,
+          109,
+          4,
+          111,
+          0,
+          "*"
+        ],
+        [
+          1789850401947,
+          111,
+          0,
+          242,
+          0,
+          "STRING"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 242,
+      "last_link_id": 1789850401947,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "模型训练"
+    },
+    "manifest": {
+      "params": [],
+      "materialSlots": [],
+      "outputNodes": [],
+      "capturePoints": [
+        {
+          "nodeId": "111",
+          "nodeType": "RunningHubRVCOneClickTrain",
+          "kind": "text"
+        }
+      ],
+      "tailNodeId": "242",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 0,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【文字生成】\n关键节点：加载zip文件；RunningHub RVC One-Click Train（Runs the RVC training pipeline from a local…）。\n输出：文字。",
+      "paramNodes": [
+        {
+          "nodeId": "111",
+          "nodeType": "RunningHubRVCOneClickTrain",
+          "title": "RunningHubRVCOneClickTrain",
+          "desc": "Runs the RVC training pipeline from a local training audio folder: preprocess, extract F0/features, train the model, and optionally build a FAISS index. The exported model and index are saved under ComfyUI output/RVC/<save_name>."
+        },
+        {
+          "nodeId": "109",
+          "nodeType": "HAIGC_LoadImagesFromZip",
+          "title": "HAIGC_LoadImagesFromZip",
+          "desc": "属于「HAIGC/Zip」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "HAIGC_LoadImagesFromZip",
+      "Note",
+      "PreviewAny",
+      "RunningHubRVCOneClickTrain",
+      "ShellAgentPluginOutputText",
+      "easy saveText"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

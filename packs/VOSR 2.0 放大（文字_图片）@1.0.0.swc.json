@@ -1,0 +1,529 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.097Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtr2s8ea-p2syom",
+    "name": "VOSR 2.0 放大（文字_图片）",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 2,
+          "type": "VOSR2ModelLoader",
+          "pos": [
+            218,
+            193
+          ],
+          "size": [
+            270,
+            82
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "VOSR2_MODEL",
+              "links": [
+                1
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VOSR2ModelLoader"
+          },
+          "widgets_values": [
+            "VOSR2",
+            "default"
+          ]
+        },
+        {
+          "id": 3,
+          "type": "LoadImage",
+          "pos": [
+            220,
+            378
+          ],
+          "size": [
+            274.080078125,
+            314
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                3
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "LoadImage",
+            "streamward_material": {
+              "image": {
+                "label": "加载图片",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 4,
+          "type": "PreviewImage",
+          "pos": [
+            1691,
+            197
+          ],
+          "size": [
+            225.3160400390625,
+            278
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 1789129490131
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 1,
+          "type": "VOSR2Upscale",
+          "pos": [
+            581,
+            214
+          ],
+          "size": [
+            270,
+            246
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "VOSR2_MODEL",
+              "link": 1
+            },
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 3
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                1789130390283
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "VOSR2Upscale",
+            "streamward_params": {
+              "upscale": {
+                "label": "VOSR2放大比例",
+                "seq": 1
+              }
+            },
+            "streamward_node_alias": "vosr放大比例"
+          },
+          "widgets_values": [
+            2,
+            954164339612330,
+            "randomize",
+            "none",
+            512,
+            64,
+            1024,
+            128
+          ]
+        },
+        {
+          "type": "RTXVideoSuperResolution",
+          "title": "RTX Video Super Resolution",
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 1789130391921
+            },
+            {
+              "label": "resize_type",
+              "name": "resize_type",
+              "type": "COMFY_DYNAMICCOMBO_V3"
+            },
+            {
+              "label": "quality",
+              "name": "quality",
+              "type": "COMBO"
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                1789129490131
+              ]
+            }
+          ],
+          "widgets_values": [
+            null,
+            2,
+            "ULTRA"
+          ],
+          "properties": {
+            "Node name for S&R": "RTX Video Super Resolution",
+            "streamward_params": {
+              "resize_type": {
+                "label": "调整类型",
+                "seq": 2
+              },
+              "quality": {
+                "label": "RTX 超分质量",
+                "seq": 6
+              }
+            }
+          },
+          "id": 5,
+          "pos": [
+            1201,
+            195
+          ]
+        },
+        {
+          "type": "easy cleanGpuUsed",
+          "title": "Clean VRAM Used",
+          "inputs": [
+            {
+              "label": "anything",
+              "name": "anything",
+              "type": "*",
+              "link": 1789130390283
+            }
+          ],
+          "outputs": [
+            {
+              "label": "*",
+              "name": "*",
+              "type": "*",
+              "links": [
+                1789130391921
+              ]
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Clean VRAM Used"
+          },
+          "id": 6,
+          "pos": [
+            897,
+            106
+          ]
+        }
+      ],
+      "links": [
+        [
+          1,
+          2,
+          0,
+          1,
+          0,
+          "VOSR2_MODEL"
+        ],
+        [
+          3,
+          3,
+          0,
+          1,
+          1,
+          "IMAGE"
+        ],
+        [
+          1789129490131,
+          5,
+          0,
+          4,
+          0,
+          "IMAGE"
+        ],
+        [
+          1789130390283,
+          1,
+          0,
+          6,
+          0,
+          "IMAGE"
+        ],
+        [
+          1789130391921,
+          6,
+          0,
+          5,
+          0,
+          "*"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 6,
+      "last_link_id": 1789130391921,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "高清放大"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "1",
+          "nodeType": "VOSR2Upscale",
+          "field": "upscale",
+          "label": "VOSR2放大比例",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 2,
+          "min": 1,
+          "max": 9223372036854776000,
+          "step": 1,
+          "slider": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "field": "resize_type",
+          "label": "调整类型",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "scale by multiplier",
+          "dynamic": true,
+          "options": [
+            "scale by multiplier",
+            "target dimensions"
+          ],
+          "scope": "editable"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "field": "resize_type::scale",
+          "label": "调整类型 · scale",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 2,
+          "dynamicChild": true,
+          "parentField": "resize_type",
+          "parentKey": "scale by multiplier",
+          "min": 1,
+          "max": 4,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "field": "resize_type::width",
+          "label": "调整类型 · width",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 1920,
+          "dynamicChild": true,
+          "parentField": "resize_type",
+          "parentKey": "target dimensions",
+          "min": 64,
+          "max": 8192,
+          "step": 8,
+          "slider": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "field": "resize_type::height",
+          "label": "调整类型 · height",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 1080,
+          "dynamicChild": true,
+          "parentField": "resize_type",
+          "parentKey": "target dimensions",
+          "min": 64,
+          "max": 8192,
+          "step": 8,
+          "slider": false,
+          "scope": "editable"
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "field": "quality",
+          "label": "RTX 超分质量",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "ULTRA",
+          "options": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "ULTRA"
+          ],
+          "scope": "editable"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "3",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "加载图片",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "4",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "4",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：加载图片（从上传口读取图片「外部图片素材入口」）；VOSR 2.0 Model Loader（Load a locally provisioned VOSR 2.0…）；Preview Image（Preview the images without saving them to th…）；VOSR 2.0 Upscale（One-step VOSR 2.0 image super-resolution）。\n输入：参考图。\n输出：图片。\n可调参数：VOSR2放大比例、调整类型、调整类型 · scale、调整类型 · width、调整类型 · height、RTX 超分质量。",
+      "paramNodes": [
+        {
+          "nodeId": "2",
+          "nodeType": "VOSR2ModelLoader",
+          "title": "VOSR2ModelLoader",
+          "desc": "Load a locally provisioned VOSR 2.0 (one-step 1.4B) bundle: matched LightningDiT + Qwen-Image 2D VAE + DINOv2-L."
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "1",
+          "nodeType": "VOSR2Upscale",
+          "title": "vosr放大比例",
+          "desc": "One-step VOSR 2.0 image super-resolution."
+        },
+        {
+          "nodeId": "5",
+          "nodeType": "RTXVideoSuperResolution",
+          "title": "RTX Video Super Resolution",
+          "desc": "属于「image/upscaling」分类"
+        },
+        {
+          "nodeId": "6",
+          "nodeType": "easy cleanGpuUsed",
+          "title": "Clean VRAM Used",
+          "desc": "属于「EasyUse/Logic」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "LoadImage",
+      "PreviewImage",
+      "RTXVideoSuperResolution",
+      "VOSR2ModelLoader",
+      "VOSR2Upscale",
+      "easy cleanGpuUsed"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

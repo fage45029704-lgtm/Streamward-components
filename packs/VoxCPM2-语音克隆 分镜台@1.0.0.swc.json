@@ -1,0 +1,552 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.120Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mvfe4da4-ush5ul",
+    "name": "VoxCPM2-语音克隆 分镜台",
+    "savedAt": null,
+    "workflow": {
+      "id": "38537b0f-bacd-4bf1-a35f-37f2d426c5da",
+      "revision": 0,
+      "last_node_id": 4,
+      "last_link_id": 3,
+      "config": {},
+      "extra": {
+        "VHS_KeepIntermediate": true,
+        "ue_links": [],
+        "VHS_MetadataImage": true,
+        "workflowRendererVersion": "LG",
+        "VHS_latentpreviewrate": 0,
+        "frontendVersion": "1.23.0",
+        "VHS_latentpreview": false,
+        "ds": {
+          "scale": 0.7972024500000019,
+          "offset": [
+            690.0907414178221,
+            972.5045672778996
+          ]
+        },
+        "pixaromaGroups": [],
+        "0246.VERSION": [
+          0,
+          0,
+          4
+        ],
+        "links_added_by_ue": [],
+        "KKvideo_latentpreview": false,
+        "KKvideo_latentpreviewrate": 0
+      },
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 1,
+          "type": "RunningHub_VoxCPM_LoadModel",
+          "pos": [
+            -626,
+            -741
+          ],
+          "size": [
+            313.1402282714844,
+            106
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model_name",
+              "name": "model_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "model_name"
+              }
+            },
+            {
+              "label": "optimize",
+              "name": "optimize",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "optimize"
+              }
+            },
+            {
+              "label": "lora_name",
+              "name": "lora_name",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "lora_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "VOXCPM_MODEL",
+              "links": [
+                1
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "RunningHub_VoxCPM_LoadModel",
+            "ver": "f290007d6ad86407232dd4046fe7212ebb4b2b0d",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.3"
+            },
+            "aux_id": "HM-RunningHub/ComfyUI_RH_VoxCPM",
+            "widget_ue_connectable": {
+              "model_name": true,
+              "optimize": true,
+              "lora_name": true
+            }
+          },
+          "widgets_values": [
+            "VoxCPM2",
+            false,
+            "None"
+          ]
+        },
+        {
+          "id": 2,
+          "type": "RunningHub_VoxCPM_Generate",
+          "pos": [
+            -264,
+            -737
+          ],
+          "size": [
+            400,
+            432
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "VOXCPM_MODEL",
+              "link": 1
+            },
+            {
+              "label": "reference_audio",
+              "name": "reference_audio",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 3
+            },
+            {
+              "label": "control_instruction",
+              "name": "control_instruction",
+              "type": "STRING",
+              "widget": {
+                "name": "control_instruction"
+              }
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              }
+            },
+            {
+              "label": "cfg_value",
+              "name": "cfg_value",
+              "type": "FLOAT",
+              "widget": {
+                "name": "cfg_value"
+              }
+            },
+            {
+              "label": "inference_steps",
+              "name": "inference_steps",
+              "type": "INT",
+              "widget": {
+                "name": "inference_steps"
+              }
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "ultimate_clone",
+              "name": "ultimate_clone",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "ultimate_clone"
+              }
+            },
+            {
+              "label": "reference_audio_text",
+              "name": "reference_audio_text",
+              "shape": 7,
+              "type": "STRING",
+              "widget": {
+                "name": "reference_audio_text"
+              }
+            },
+            {
+              "label": "normalize_text",
+              "name": "normalize_text",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "normalize_text"
+              }
+            },
+            {
+              "label": "denoise_reference",
+              "name": "denoise_reference",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "denoise_reference"
+              }
+            },
+            {
+              "label": "max_len",
+              "name": "max_len",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "max_len"
+              }
+            },
+            {
+              "label": "retry_badcase",
+              "name": "retry_badcase",
+              "shape": 7,
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "retry_badcase"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": [
+                2
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "RunningHub_VoxCPM_Generate",
+            "ver": "f290007d6ad86407232dd4046fe7212ebb4b2b0d",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.3"
+            },
+            "aux_id": "HM-RunningHub/ComfyUI_RH_VoxCPM",
+            "widget_ue_connectable": {
+              "control_instruction": true,
+              "text": true,
+              "cfg_value": true,
+              "inference_steps": true,
+              "seed": true,
+              "ultimate_clone": true,
+              "reference_audio_text": true,
+              "normalize_text": true,
+              "denoise_reference": true,
+              "max_len": true,
+              "retry_badcase": true
+            },
+            "streamward_params": {
+              "text": {
+                "label": "要念的台词",
+                "textIn": true,
+                "seq": 1
+              },
+              "control_instruction": {
+                "label": "语气/表演指令",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "\n",
+            "在你尝试的过程中，如果遇到关于显卡配置、端口访问等技术细节问题，可以随时来问我。",
+            2,
+            10,
+            296774801940756,
+            "randomize",
+            false,
+            "",
+            true,
+            false,
+            4096,
+            true
+          ]
+        },
+        {
+          "id": 3,
+          "type": "SaveAudio",
+          "pos": [
+            174,
+            -741
+          ],
+          "size": [
+            388,
+            126
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 2
+            },
+            {
+              "label": "filename_prefix",
+              "name": "filename_prefix",
+              "type": "STRING",
+              "widget": {
+                "name": "filename_prefix"
+              }
+            },
+            {
+              "label": "audioUI",
+              "name": "audioUI",
+              "type": "AUDIO_UI",
+              "widget": {
+                "name": "audioUI"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SaveAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.3"
+            },
+            "widget_ue_connectable": {
+              "filename_prefix": true,
+              "audioUI": true
+            },
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 0,
+              "slot": "slot-3-3"
+            }
+          },
+          "widgets_values": [
+            "audio/ComfyUI"
+          ]
+        },
+        {
+          "id": 4,
+          "type": "LoadAudio",
+          "pos": [
+            -614,
+            -561
+          ],
+          "size": [
+            270,
+            136
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                3
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.12.3",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {}
+            },
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "audio": {
+                "label": "音色参考音频",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "28ce9544c34a117b304266dc4160f1f1c3577bf8d702598ed9cc95a0632ee377.mp3",
+            null,
+            null
+          ]
+        }
+      ],
+      "links": [
+        [
+          1,
+          1,
+          0,
+          2,
+          0,
+          "VOXCPM_MODEL"
+        ],
+        [
+          2,
+          2,
+          0,
+          3,
+          0,
+          "AUDIO"
+        ],
+        [
+          3,
+          4,
+          0,
+          2,
+          1,
+          "AUDIO"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": "短剧分镜台"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "2",
+          "nodeType": "RunningHub_VoxCPM_Generate",
+          "field": "text",
+          "label": "要念的台词",
+          "hint": "描述你想生成的画面",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "在你尝试的过程中，如果遇到关于显卡配置、端口访问等技术细节问题，可以随时来问我。",
+          "textIn": true,
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        },
+        {
+          "nodeId": "2",
+          "nodeType": "RunningHub_VoxCPM_Generate",
+          "field": "control_instruction",
+          "label": "语气/表演指令",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "\n",
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "4",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "音色参考音频",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "SaveAudio"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "3",
+          "nodeType": "SaveAudio",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "3",
+      "tailSlotId": "slot-3-3",
+      "tailOutIdx": 0,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "VoxCPM2 语音克隆（用户实测版）：音色参考音频 + 台词 + 语气指令 → 克隆音色的配音",
+      "paramNodes": [
+        {
+          "nodeId": "1",
+          "nodeType": "RunningHub_VoxCPM_LoadModel",
+          "title": "RunningHub_VoxCPM_LoadModel",
+          "desc": "属于「RunningHub/VoxCPM」分类"
+        },
+        {
+          "nodeId": "2",
+          "nodeType": "RunningHub_VoxCPM_Generate",
+          "title": "RunningHub_VoxCPM_Generate",
+          "desc": "属于「RunningHub/VoxCPM」分类"
+        },
+        {
+          "nodeId": "3",
+          "nodeType": "SaveAudio",
+          "title": "SaveAudio",
+          "desc": "属于「audio」分类"
+        },
+        {
+          "nodeId": "4",
+          "nodeType": "LoadAudio",
+          "title": "LoadAudio",
+          "desc": "属于「audio」分类"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "LoadAudio",
+      "RunningHub_VoxCPM_Generate",
+      "RunningHub_VoxCPM_LoadModel",
+      "SaveAudio"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

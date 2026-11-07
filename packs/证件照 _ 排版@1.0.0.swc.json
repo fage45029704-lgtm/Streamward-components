@@ -1,0 +1,935 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.082Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtjmj1lz-z3wos1",
+    "name": "证件照 _ 排版",
+    "savedAt": 1793869207350,
+    "workflow": {
+      "last_node_id": 349,
+      "last_link_id": 1793869050119,
+      "version": 0.4,
+      "nodes": [
+        {
+          "id": 348,
+          "type": "忽略多组孤海",
+          "pos": [
+            1513,
+            1133
+          ],
+          "size": [
+            959.1473388671875,
+            79.86474609375
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [],
+          "title": "组开关",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "忽略多组孤海",
+            "guhai_ig_filter": "5.",
+            "guhai_ig_mode": "default",
+            "guhai_ig_active": null,
+            "guhai_ig_active_set": [
+              "5. 自动排版"
+            ],
+            "guhai_ig_name_color": "#40a06a",
+            "guhai_ig_disable": false,
+            "guhai_ig_sort_order": "position",
+            "guhai_ig_color_filter": "none",
+            "guhai_ig_ui_scale": 1
+          },
+          "widgets_values": [
+            ""
+          ],
+          "color": "#5d5056",
+          "bgcolor": "#493c42"
+        },
+        {
+          "id": 346,
+          "type": "Any Switch (rgthree)",
+          "pos": [
+            1545,
+            1564
+          ],
+          "size": [
+            210,
+            110
+          ],
+          "flags": {
+            "collapsed": false,
+            "disabled": false
+          },
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "dir": 3,
+              "label": "any_01",
+              "name": "any_01",
+              "type": "IMAGE",
+              "link": 500
+            },
+            {
+              "dir": 3,
+              "label": "any_02",
+              "name": "any_02",
+              "type": "IMAGE"
+            },
+            {
+              "dir": 3,
+              "label": "any_03",
+              "name": "any_03",
+              "type": "IMAGE"
+            },
+            {
+              "dir": 3,
+              "label": "any_04",
+              "name": "any_04",
+              "type": "IMAGE"
+            },
+            {
+              "dir": 3,
+              "name": "any_05",
+              "type": "IMAGE"
+            }
+          ],
+          "outputs": [
+            {
+              "dir": 4,
+              "label": "IMAGE",
+              "name": "输出",
+              "shape": 3,
+              "type": "IMAGE",
+              "links": [
+                497
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "cnr_id": "rgthree-comfy",
+            "ver": "8ff50e4521881eca1fe26aec9615fc9362474931",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            }
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 343,
+          "type": "GuHai_IDPhotoCrop",
+          "pos": [
+            1514,
+            1784
+          ],
+          "size": [
+            270,
+            443
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 3,
+          "mode": 4,
+          "inputs": [
+            {
+              "label": "图像",
+              "name": "图像",
+              "type": "IMAGE",
+              "link": null
+            }
+          ],
+          "outputs": [
+            {
+              "label": "裁剪后图像",
+              "name": "裁剪后图像",
+              "type": "IMAGE",
+              "links": []
+            },
+            {
+              "label": "是否扩图",
+              "name": "是否扩图",
+              "type": "BOOLEAN",
+              "links": []
+            },
+            {
+              "label": "扩展遮罩",
+              "name": "扩展遮罩",
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "DPI",
+              "name": "DPI",
+              "type": "INT",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "GuHai_IDPhotoCrop",
+            "ver": "83abca47fa10d47a1ffd0c7cb62b7fa2a9dc0ddc",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "aux_id": "goohai/Goohaitools-comfyui",
+            "streamward_node_alias": "图片设置",
+            "streamward_params": {
+              "人脸矫正": true,
+              "预设尺寸": true,
+              "自定义宽": true,
+              "自定义高": true,
+              "单位": true,
+              "脸部大小": true,
+              "填充模式": true,
+              "自定义填充色": true
+            },
+            "streamward_mode_lock": "bypass"
+          },
+          "widgets_values": [
+            false,
+            "1寸（2.5 x 3.5 厘米）",
+            0,
+            0,
+            "厘米",
+            600,
+            0.44,
+            0.4,
+            2000,
+            "边框颜色",
+            "#364254"
+          ]
+        },
+        {
+          "id": 347,
+          "type": "LoadImage",
+          "pos": [
+            1166,
+            1468
+          ],
+          "size": [
+            210,
+            326
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                500
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "LoadImage",
+            "streamward_material": {
+              "image": {
+                "label": "加载图片",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 342,
+          "type": "SingleImageLayoutNode",
+          "pos": [
+            2231,
+            1400
+          ],
+          "size": [
+            270,
+            370
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "image",
+              "name": "image",
+              "type": "IMAGE",
+              "link": 1793869046608
+            },
+            {
+              "label": "分辨率",
+              "name": "分辨率",
+              "type": "INT",
+              "widget": {
+                "name": "分辨率"
+              },
+              "link": 1793869050119
+            }
+          ],
+          "outputs": [
+            {
+              "label": "排版图像",
+              "name": "排版图像",
+              "type": "IMAGE",
+              "links": [
+                499
+              ]
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {
+              "分辨率": true
+            },
+            "Node name for S&R": "SingleImageLayoutNode",
+            "ver": "83abca47fa10d47a1ffd0c7cb62b7fa2a9dc0ddc",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.2"
+            },
+            "aux_id": "goohai/Goohaitools-comfyui",
+            "streamward_node_alias": "相纸设置",
+            "streamward_params": {
+              "分辨率": true,
+              "相纸宽": true,
+              "相纸高": true,
+              "照片间距": true,
+              "描边": true,
+              "安全边距": true,
+              "自动切换横竖版": true
+            }
+          },
+          "widgets_values": [
+            12.7,
+            8.9,
+            350,
+            "孤海排版",
+            0.2,
+            "华文细黑.ttf",
+            0,
+            1,
+            0.2,
+            false
+          ]
+        },
+        {
+          "id": 345,
+          "type": "PreviewImage",
+          "pos": [
+            2617,
+            1407
+          ],
+          "size": [
+            504.60174560546875,
+            663.2666015625
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 499
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          }
+        },
+        {
+          "type": "GuHai_IDPhotoCrop",
+          "title": "孤海-证件照裁剪",
+          "inputs": [
+            {
+              "label": "图像",
+              "name": "图像",
+              "type": "IMAGE",
+              "link": 497
+            },
+            {
+              "label": "自定义填充色",
+              "name": "自定义填充色",
+              "type": "GHCOLOR",
+              "link": null
+            },
+            {
+              "label": "人脸矫正",
+              "name": "人脸矫正",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "人脸矫正"
+              }
+            },
+            {
+              "label": "预设尺寸",
+              "name": "预设尺寸",
+              "type": "COMBO",
+              "widget": {
+                "name": "预设尺寸"
+              }
+            },
+            {
+              "label": "自定义宽",
+              "name": "自定义宽",
+              "type": "FLOAT",
+              "widget": {
+                "name": "自定义宽"
+              }
+            },
+            {
+              "label": "自定义高",
+              "name": "自定义高",
+              "type": "FLOAT",
+              "widget": {
+                "name": "自定义高"
+              }
+            },
+            {
+              "label": "单位",
+              "name": "单位",
+              "type": "COMBO",
+              "widget": {
+                "name": "单位"
+              }
+            },
+            {
+              "label": "DPI",
+              "name": "DPI",
+              "type": "INT",
+              "widget": {
+                "name": "DPI"
+              }
+            },
+            {
+              "label": "脸部大小",
+              "name": "脸部大小",
+              "type": "FLOAT",
+              "widget": {
+                "name": "脸部大小"
+              }
+            },
+            {
+              "label": "垂直偏移",
+              "name": "垂直偏移",
+              "type": "FLOAT",
+              "widget": {
+                "name": "垂直偏移"
+              }
+            },
+            {
+              "label": "尺寸限制",
+              "name": "尺寸限制",
+              "type": "INT",
+              "widget": {
+                "name": "尺寸限制"
+              }
+            },
+            {
+              "label": "填充模式",
+              "name": "填充模式",
+              "type": "COMBO",
+              "widget": {
+                "name": "填充模式"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                1793869046608
+              ]
+            },
+            {
+              "label": "BOOLEAN",
+              "name": "BOOLEAN",
+              "type": "BOOLEAN",
+              "links": []
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            },
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                1793869050119
+              ]
+            }
+          ],
+          "widgets_values": [
+            false,
+            "1寸（2.5 x 3.5 厘米）",
+            0,
+            0,
+            "厘米",
+            600,
+            0.42,
+            0.38,
+            2000,
+            "边框颜色"
+          ],
+          "properties": {
+            "Node name for S&R": "孤海-证件照裁剪",
+            "streamward_params": {
+              "人脸矫正": true,
+              "预设尺寸": true,
+              "自定义宽": true,
+              "自定义高": true,
+              "单位": true,
+              "脸部大小": true,
+              "填充模式": true,
+              "尺寸限制": true
+            }
+          },
+          "id": 349,
+          "pos": [
+            1812,
+            1420
+          ]
+        }
+      ],
+      "links": [
+        [
+          499,
+          342,
+          0,
+          345,
+          0,
+          "IMAGE"
+        ],
+        [
+          500,
+          347,
+          0,
+          346,
+          0,
+          "IMAGE"
+        ],
+        [
+          497,
+          346,
+          0,
+          349,
+          0,
+          "IMAGE"
+        ],
+        [
+          1793869046608,
+          349,
+          0,
+          342,
+          0,
+          "IMAGE"
+        ],
+        [
+          1793869050119,
+          349,
+          3,
+          342,
+          1,
+          "INT"
+        ]
+      ],
+      "groups": []
+    },
+    "ui": {
+      "category": ""
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "分辨率",
+          "label": "分辨率",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 350,
+          "min": 72,
+          "max": 1000,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "相纸宽",
+          "label": "相纸宽",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 12.7,
+          "min": 1,
+          "max": 100,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "相纸高",
+          "label": "相纸高",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 8.9,
+          "min": 1,
+          "max": 100,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "照片间距",
+          "label": "照片间距",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0.2,
+          "min": 0,
+          "max": 2,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "描边",
+          "label": "描边",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 1,
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "安全边距",
+          "label": "安全边距",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0.2,
+          "min": 0,
+          "max": 5,
+          "step": 0.1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "field": "自动切换横竖版",
+          "label": "自动切换横竖版",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable",
+          "officialKind": "toggle",
+          "slider": false
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "人脸矫正",
+          "label": "人脸矫正",
+          "hint": null,
+          "type": "boolean",
+          "group": "main",
+          "value": false,
+          "scope": "editable",
+          "officialKind": "toggle",
+          "slider": false
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "预设尺寸",
+          "label": "预设尺寸",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "1寸（2.5 x 3.5 厘米）",
+          "options": [
+            "1寸（2.5 x 3.5 厘米）",
+            "大1寸（3.3 x 4.8 厘米）",
+            "小2寸（3.5 x 4.5 厘米）",
+            "2寸（3.5 x 4.9 厘米）",
+            "大2寸（3.5 x 5.3 厘米）",
+            "3寸（5.5 x 8.5 厘米）",
+            "5寸（8.9 x 12.7 厘米）",
+            "6寸（10.1 x 15.2 厘米）",
+            "身份证社保（2.6 x 3.2 厘米）",
+            "驾驶证（2.2 x 3.2 厘米）",
+            "日签（4.5 x 4.5 厘米）",
+            "美签（5.1 x 5.1 厘米）",
+            "研究生考试（3.0 x 4.0 厘米）",
+            "身份证电子（358 x 441 像素 DPI: 350）",
+            "普通话考试（390 x 567 像素 DPI: 300）",
+            "教师资格证（480 x 640 像素 DPI: 300）",
+            "护士资格证（160 x 210 像素 DPI: 300）",
+            "司法考试照（413 x 626 像素 DPI: 300）",
+            "执业医考照（354 x 472 像素 DPI: 300）",
+            "自定义尺寸"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "自定义宽",
+          "label": "自定义宽",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 4096,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "自定义高",
+          "label": "自定义高",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0,
+          "min": 0,
+          "max": 4096,
+          "step": 0.01,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "单位",
+          "label": "单位",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "厘米",
+          "options": [
+            "厘米",
+            "像素"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "脸部大小",
+          "label": "脸部大小",
+          "hint": null,
+          "type": "float",
+          "group": "main",
+          "value": 0.42,
+          "min": 0.3,
+          "max": 0.8,
+          "step": 0.05,
+          "slider": true,
+          "scope": "editable",
+          "officialKind": "slider"
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "填充模式",
+          "label": "填充模式",
+          "hint": null,
+          "type": "combo",
+          "group": "main",
+          "value": "边框颜色",
+          "options": [
+            "自定义颜色",
+            "边框颜色"
+          ],
+          "scope": "editable",
+          "officialKind": "combo",
+          "slider": false
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "field": "尺寸限制",
+          "label": "尺寸限制",
+          "hint": null,
+          "type": "int",
+          "group": "main",
+          "value": 2000,
+          "min": 512,
+          "max": 5120,
+          "step": 1,
+          "slider": false,
+          "scope": "editable",
+          "officialKind": "number"
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "347",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "加载图片",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "maskOut": false,
+          "required": true,
+          "marked": true,
+          "seq": 1
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "extractSlots": [],
+      "capturePoints": [
+        {
+          "nodeId": "345",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "345",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：加载图片（从上传口读取图片「外部图片素材入口」）；Preview Image（Preview the images without saving them to th…）；孤海-证件照裁剪（通过mediapipe检测人脸，根据自定义脸部比例和垂直偏移进行证件照裁剪，支持人脸矫正…）；孤海-单尺寸排版（孤海工具箱）。\n输入：参考图。\n输出：图片。",
+      "paramNodes": [
+        {
+          "nodeId": "346",
+          "nodeType": "Any Switch (rgthree)",
+          "title": "Any Switch (rgthree)",
+          "desc": "属于「rgthree」分类"
+        },
+        {
+          "nodeId": "347",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "342",
+          "nodeType": "SingleImageLayoutNode",
+          "title": "相纸设置",
+          "desc": "属于「孤海工具箱」分类"
+        },
+        {
+          "nodeId": "345",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        },
+        {
+          "nodeId": "349",
+          "nodeType": "GuHai_IDPhotoCrop",
+          "title": "孤海-证件照裁剪",
+          "desc": "通过mediapipe检测人脸，根据自定义脸部比例和垂直偏移进行证件照裁剪，支持人脸矫正和尺寸控制，不适合人脸占比非常小的全身图。"
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "Any Switch (rgthree)",
+      "GuHai_IDPhotoCrop",
+      "LoadImage",
+      "PreviewImage",
+      "SingleImageLayoutNode",
+      "忽略多组孤海"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

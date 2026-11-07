@@ -1,0 +1,844 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.098Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mtttkg0b-p3o5gf",
+    "name": "水印移除（无遮罩）kontext",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 39,
+          "type": "VAELoader",
+          "pos": [
+            -398,
+            384
+          ],
+          "size": [
+            337.76861572265625,
+            58
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                61,
+                223
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "models": [
+              {
+                "name": "ae.safetensors",
+                "directory": "vae",
+                "url": "https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors",
+                "directory_invalid": true
+              }
+            ],
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "ae.safetensors"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 31,
+          "type": "KSampler",
+          "pos": [
+            530,
+            40
+          ],
+          "size": [
+            320,
+            262
+          ],
+          "flags": {},
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 295
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 57
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 238
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 291
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "slot_index": 0,
+              "links": [
+                52
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            303895744350741,
+            "randomize",
+            20,
+            1,
+            "euler",
+            "simple",
+            1
+          ]
+        },
+        {
+          "id": 38,
+          "type": "DualCLIPLoader",
+          "pos": [
+            -398,
+            204
+          ],
+          "size": [
+            337.76861572265625,
+            130
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                59
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "DualCLIPLoader",
+            "cnr_id": "comfy-core",
+            "models": [
+              {
+                "name": "clip_l.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors",
+                "directory_invalid": true
+              },
+              {
+                "name": "t5xxl_fp8_e4m3fn_scaled.safetensors",
+                "directory": "text_encoders",
+                "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn_scaled.safetensors",
+                "directory_invalid": true
+              }
+            ],
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "clip_l.safetensors",
+            "t5xxl_fp8_e4m3fn_scaled.safetensors",
+            "flux",
+            "default"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 189,
+          "type": "NunchakuFluxDiTLoader",
+          "pos": [
+            -398,
+            -51
+          ],
+          "size": [
+            339.9315185546875,
+            204.04820251464844
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                295
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "NunchakuFluxDiTLoader",
+            "cnr_id": "ComfyUI-nunchaku",
+            "ver": "3b2c771cf2f4e62f97c284bfd8f594482c5f8bc0",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "svdq-int4_r32-flux.1-kontext-dev.safetensors",
+            0,
+            "nunchaku-fp16",
+            "auto",
+            0,
+            "bfloat16",
+            "always"
+          ]
+        },
+        {
+          "id": 8,
+          "type": "VAEDecode",
+          "pos": [
+            605,
+            357
+          ],
+          "size": [
+            190,
+            46
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 52
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 61
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "slot_index": 0,
+              "links": [
+                305
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 35,
+          "type": "FluxGuidance",
+          "pos": [
+            353,
+            94
+          ],
+          "size": [
+            240,
+            58
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 292
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "slot_index": 0,
+              "links": [
+                57
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "FluxGuidance",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            2.5
+          ]
+        },
+        {
+          "id": 135,
+          "type": "ConditioningZeroOut",
+          "pos": [
+            307,
+            146
+          ],
+          "size": [
+            240,
+            26
+          ],
+          "flags": {
+            "collapsed": true
+          },
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 237
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                238
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ConditioningZeroOut",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.39",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 6,
+          "type": "CLIPTextEncode",
+          "pos": [
+            -21,
+            172
+          ],
+          "size": [
+            289.8443298339844,
+            88
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 59
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "slot_index": 0,
+              "links": [
+                237,
+                294
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.38",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "Remove all watermarks from the picture. Keep the characters, backgrounds, etc. unchanged except for the watermarks"
+          ],
+          "color": "#232",
+          "bgcolor": "#353"
+        },
+        {
+          "id": 177,
+          "type": "ReferenceLatent",
+          "pos": [
+            35,
+            65
+          ],
+          "size": [
+            211.60000610351562,
+            46
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 294
+            },
+            {
+              "label": "latent",
+              "name": "latent",
+              "shape": 7,
+              "type": "LATENT",
+              "link": 293
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                292
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ReferenceLatent",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.41",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 124,
+          "type": "VAEEncode",
+          "pos": [
+            246,
+            305
+          ],
+          "size": [
+            240,
+            50
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 5,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "pixels",
+              "name": "pixels",
+              "type": "IMAGE",
+              "link": 308
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 223
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                291,
+                293
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.39",
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 191,
+          "type": "LoadImage",
+          "pos": [
+            -391,
+            518
+          ],
+          "size": [
+            315,
+            314
+          ],
+          "flags": {},
+          "order": 3,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                308
+              ]
+            },
+            {
+              "label": "MASK",
+              "name": "MASK",
+              "type": "MASK",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoadImage",
+            "widget_ue_connectable": {},
+            "streamward_material": {
+              "image": {
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "widgets_values": [
+            "None",
+            "image"
+          ]
+        },
+        {
+          "id": 199,
+          "type": "PreviewImage",
+          "pos": [
+            893,
+            363
+          ],
+          "size": [
+            218.12771606445312,
+            255.68130493164062
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 305
+            }
+          ],
+          "outputs": [
+            {
+              "label": "image_urls",
+              "name": "image_urls",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "PreviewImage",
+            "streamward_capture": true,
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          }
+        }
+      ],
+      "links": [
+        [
+          52,
+          31,
+          0,
+          8,
+          0,
+          "LATENT"
+        ],
+        [
+          57,
+          35,
+          0,
+          31,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          59,
+          38,
+          0,
+          6,
+          0,
+          "CLIP"
+        ],
+        [
+          61,
+          39,
+          0,
+          8,
+          1,
+          "VAE"
+        ],
+        [
+          223,
+          39,
+          0,
+          124,
+          1,
+          "VAE"
+        ],
+        [
+          237,
+          6,
+          0,
+          135,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          238,
+          135,
+          0,
+          31,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          291,
+          124,
+          0,
+          31,
+          3,
+          "LATENT"
+        ],
+        [
+          292,
+          177,
+          0,
+          35,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          293,
+          124,
+          0,
+          177,
+          1,
+          "LATENT"
+        ],
+        [
+          294,
+          6,
+          0,
+          177,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          295,
+          189,
+          0,
+          31,
+          0,
+          "MODEL"
+        ],
+        [
+          305,
+          8,
+          0,
+          199,
+          0,
+          "IMAGE"
+        ],
+        [
+          308,
+          191,
+          0,
+          124,
+          0,
+          "IMAGE"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 199,
+      "last_link_id": 308,
+      "version": 0.4
+    },
+    "ui": {
+      "category": ""
+    },
+    "manifest": {
+      "params": [],
+      "materialSlots": [
+        {
+          "nodeId": "191",
+          "nodeType": "LoadImage",
+          "field": "image",
+          "label": "参考图",
+          "hint": "上传参考图（可选）",
+          "type": "image",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewImage"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "199",
+          "nodeType": "PreviewImage",
+          "kind": "image"
+        }
+      ],
+      "tailNodeId": "199",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "img2img",
+      "isInpaint": false,
+      "description": "【图片生成】\n关键节点：加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；采样器（用模型 + 正负条件去噪采样，生成图片）；VAE 解码（把潜空间 latent 解码回像素图像）；CLIP 文本编码（用 CLIP 把提示词编码成条件嵌入）；加载图片（从上传口读取图片「外部图片素材入口」）；Load CLIP (Dual)（Recipes: sdxl: clip-l, clip-g sd3: clip-l, c…）；…（共 8 个）。\n核心模型：VAE ae.safetensors。\n输入：参考图。\n输出：图片。",
+      "paramNodes": [
+        {
+          "nodeId": "39",
+          "nodeType": "VAELoader",
+          "title": "VAELoader",
+          "desc": "加载 VAE 模型（潜空间 ↔ 像素空间的编解码）。"
+        },
+        {
+          "nodeId": "31",
+          "nodeType": "KSampler",
+          "title": "KSampler",
+          "desc": "用模型 + 正负条件去噪采样，生成图片。"
+        },
+        {
+          "nodeId": "38",
+          "nodeType": "DualCLIPLoader",
+          "title": "DualCLIPLoader",
+          "desc": "Recipes:\nsdxl: clip-l, clip-g\nsd3: clip-l, clip-g / clip-l, t5 / clip-g, t5\nflux: clip-l, t5\nhidream: at least one of t5 or llama, recommended t5 and llama\nhunyuan_image: qwen2.5vl 7b and byt5 small\nnewbie: gemma-3-4b-it, jina clip v2"
+        },
+        {
+          "nodeId": "189",
+          "nodeType": "NunchakuFluxDiTLoader",
+          "title": "NunchakuFluxDiTLoader",
+          "desc": "属于「Nunchaku」分类"
+        },
+        {
+          "nodeId": "8",
+          "nodeType": "VAEDecode",
+          "title": "VAEDecode",
+          "desc": "把潜空间 latent 解码回像素图像。"
+        },
+        {
+          "nodeId": "35",
+          "nodeType": "FluxGuidance",
+          "title": "FluxGuidance",
+          "desc": "属于「model/conditioning/flux」分类"
+        },
+        {
+          "nodeId": "135",
+          "nodeType": "ConditioningZeroOut",
+          "title": "ConditioningZeroOut",
+          "desc": "属于「model/conditioning/transform」分类"
+        },
+        {
+          "nodeId": "6",
+          "nodeType": "CLIPTextEncode",
+          "title": "CLIPTextEncode",
+          "desc": "用 CLIP 把提示词编码成条件嵌入。"
+        },
+        {
+          "nodeId": "177",
+          "nodeType": "ReferenceLatent",
+          "title": "ReferenceLatent",
+          "desc": "This node sets the guiding latent for an edit model. If the model supports it you can chain multiple to set multiple reference images."
+        },
+        {
+          "nodeId": "124",
+          "nodeType": "VAEEncode",
+          "title": "VAEEncode",
+          "desc": "属于「model/latent」分类"
+        },
+        {
+          "nodeId": "191",
+          "nodeType": "LoadImage",
+          "title": "LoadImage",
+          "desc": "从上传口读取图片（外部图片素材入口）。"
+        },
+        {
+          "nodeId": "199",
+          "nodeType": "PreviewImage",
+          "title": "PreviewImage",
+          "desc": "Preview the images without saving them to the ComfyUI output directory."
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "CLIPTextEncode",
+      "ConditioningZeroOut",
+      "DualCLIPLoader",
+      "FluxGuidance",
+      "KSampler",
+      "LoadImage",
+      "NunchakuFluxDiTLoader",
+      "PreviewImage",
+      "ReferenceLatent",
+      "VAEDecode",
+      "VAEEncode",
+      "VAELoader"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}

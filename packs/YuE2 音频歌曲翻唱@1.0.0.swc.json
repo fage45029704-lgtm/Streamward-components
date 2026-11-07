@@ -1,0 +1,2778 @@
+{
+  "format": "streamward-component",
+  "formatVersion": 1,
+  "exportedAt": "2026-11-07T15:54:39.115Z",
+  "app": {
+    "name": "streamward",
+    "version": "1.0.2"
+  },
+  "component": {
+    "id": "wf-mu8vdsmn-yw11jz",
+    "name": "YuE2 音频歌曲翻唱",
+    "savedAt": null,
+    "workflow": {
+      "nodes": [
+        {
+          "id": 44,
+          "type": "CheckpointLoaderSimple",
+          "pos": [
+            200,
+            -831
+          ],
+          "size": [
+            380,
+            110
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "ckpt_name",
+              "name": "ckpt_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "ckpt_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                57
+              ]
+            },
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                61
+              ]
+            },
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                65
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CheckpointLoaderSimple",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "yue2_3b_bf16.safetensors"
+          ]
+        },
+        {
+          "id": 81,
+          "type": "easy positive",
+          "pos": [
+            -806,
+            -367
+          ],
+          "size": [
+            282.7438659667969,
+            328.0187683105469
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "STRING",
+              "widget": {
+                "name": "positive"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "STRING",
+              "links": [
+                115
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "easy positive",
+            "widget_ue_connectable": {},
+            "streamward_params": {
+              "positive": {
+                "label": "提示词",
+                "hint": "给出翻唱需求",
+                "textIn": true,
+                "seq": 3
+              }
+            }
+          },
+          "widgets_values": [
+            "Mandarin Chinese, Chinese opera-xibo fusion pop, female voice switching between ethereal soft pop verses and piercing soaring Peking-opera style aria in the chorus, classical qi-fa breath launches and tail-note flicks, dizi flute and sheng drones answering the vocal lines, jinghu high-pitched violin lead with rapid ornamentation, guzheng arpeggios, pipa tremolo accents, wooden clapper and martial gongs marking transitions, modern subtle electronic pulse underneath, dramatic contrasts between restraint and explosive high notes, theatrical and proud, 80 BPM\n"
+          ],
+          "color": "#232",
+          "bgcolor": "#353"
+        },
+        {
+          "id": 19,
+          "type": "SheetSage2AudioToABC",
+          "pos": [
+            -66,
+            -581
+          ],
+          "size": [
+            280,
+            90
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 31,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio_encoder",
+              "name": "audio_encoder",
+              "type": "AUDIO_ENCODER",
+              "link": 25
+            },
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 89
+            },
+            {
+              "label": "mode",
+              "name": "mode",
+              "type": "COMBO",
+              "widget": {
+                "name": "mode"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "abc",
+              "name": "abc",
+              "shape": 6,
+              "type": "STRING",
+              "links": [
+                1789858646288
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "SheetSage2AudioToABC",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "melody"
+          ]
+        },
+        {
+          "id": 40,
+          "type": "VAEDecodeAudio",
+          "pos": [
+            1726,
+            -749
+          ],
+          "size": [
+            290,
+            60
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 47,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 64
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 65
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1790162789277
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecodeAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 18,
+          "type": "AudioEncoderLoader",
+          "pos": [
+            -362,
+            -703
+          ],
+          "size": [
+            245.24082946777344,
+            58
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 22,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio_encoder_name",
+              "name": "audio_encoder_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "audio_encoder_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO_ENCODER",
+              "name": "AUDIO_ENCODER",
+              "type": "AUDIO_ENCODER",
+              "links": [
+                25
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "AudioEncoderLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "sheetsage2_bf16.safetensors"
+          ]
+        },
+        {
+          "id": 37,
+          "type": "KSampler",
+          "pos": [
+            1341,
+            -674
+          ],
+          "size": [
+            383.57275390625,
+            364.4153747558594
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 45,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 57
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 58
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 59
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 60
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "steps",
+              "name": "steps",
+              "type": "INT",
+              "widget": {
+                "name": "steps"
+              }
+            },
+            {
+              "label": "cfg",
+              "name": "cfg",
+              "type": "FLOAT",
+              "widget": {
+                "name": "cfg"
+              }
+            },
+            {
+              "label": "sampler_name",
+              "name": "sampler_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "sampler_name"
+              }
+            },
+            {
+              "label": "scheduler",
+              "name": "scheduler",
+              "type": "COMBO",
+              "widget": {
+                "name": "scheduler"
+              }
+            },
+            {
+              "label": "denoise",
+              "name": "denoise",
+              "type": "FLOAT",
+              "widget": {
+                "name": "denoise"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                64
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            501069686447025,
+            "randomize",
+            32,
+            1,
+            "dpm_2",
+            "sgm_uniform",
+            1
+          ]
+        },
+        {
+          "id": 50,
+          "type": "AudioSeparation",
+          "pos": [
+            -373,
+            -321
+          ],
+          "size": [
+            270,
+            170
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 30,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 88
+            },
+            {
+              "label": "chunk_fade_shape",
+              "name": "chunk_fade_shape",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "chunk_fade_shape"
+              }
+            },
+            {
+              "label": "chunk_length",
+              "name": "chunk_length",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "chunk_length"
+              }
+            },
+            {
+              "label": "chunk_overlap",
+              "name": "chunk_overlap",
+              "shape": 7,
+              "type": "FLOAT",
+              "widget": {
+                "name": "chunk_overlap"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "Bass",
+              "name": "Bass",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "Drums",
+              "name": "Drums",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "Other",
+              "name": "Other",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "Vocals",
+              "name": "Vocals",
+              "type": "AUDIO",
+              "links": [
+                1790168549394
+              ]
+            }
+          ],
+          "title": "🎵 音频分离",
+          "properties": {
+            "Node name for S&R": "AudioSeparation",
+            "cnr_id": "audio-separation-nodes-comfyui",
+            "ver": "ac339561973f0c1e56db2f9d40f11b0fddda6763",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {
+              "chunk_fade_shape": true,
+              "chunk_length": true,
+              "chunk_overlap": true
+            }
+          },
+          "widgets_values": [
+            "linear",
+            10,
+            0.1
+          ]
+        },
+        {
+          "id": 67,
+          "type": "Audio Duration",
+          "pos": [
+            -201,
+            40
+          ],
+          "size": [
+            270,
+            140
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 32,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "shape": 7,
+              "type": "AUDIO",
+              "link": 111
+            },
+            {
+              "label": "audio_path",
+              "name": "audio_path",
+              "type": "STRING",
+              "widget": {
+                "name": "audio_path"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "seconds_int",
+              "name": "seconds_int",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "seconds_float",
+              "name": "seconds_float",
+              "type": "FLOAT",
+              "links": [
+                102
+              ]
+            },
+            {
+              "label": "minutes_int",
+              "name": "minutes_int",
+              "type": "INT",
+              "links": []
+            },
+            {
+              "label": "minutes_float",
+              "name": "minutes_float",
+              "type": "FLOAT",
+              "links": []
+            },
+            {
+              "label": "temp_wav_path",
+              "name": "temp_wav_path",
+              "type": "STRING",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "Audio Duration",
+            "cnr_id": "comfy-audio-duration",
+            "ver": "5cec70700d597f91a45c0c09261bf7517a1b1685",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            ""
+          ]
+        },
+        {
+          "id": 49,
+          "type": "Apply Whisper",
+          "pos": [
+            49,
+            -295
+          ],
+          "size": [
+            247.9239044189453,
+            150.72715759277344
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 35,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790168549394
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "language",
+              "name": "language",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "language"
+              }
+            },
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "shape": 7,
+              "type": "STRING",
+              "widget": {
+                "name": "prompt"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "links": [
+                1789858654867
+              ]
+            },
+            {
+              "label": "segments_alignment",
+              "name": "segments_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            },
+            {
+              "label": "words_alignment",
+              "name": "words_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "Apply Whisper",
+            "cnr_id": "ComfyUI-Whisper",
+            "ver": "006a709848259ed3d69e2f9fcfd7a75f6c860ddd",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": [
+            "whisper-large-v3-turbo",
+            "auto",
+            ""
+          ]
+        },
+        {
+          "id": 60,
+          "type": "AudioCrop",
+          "pos": [
+            -510,
+            -586
+          ],
+          "size": [
+            227.5835418701172,
+            82
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 27,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1789851871804
+            },
+            {
+              "label": "start_time",
+              "name": "start_time",
+              "type": "STRING",
+              "widget": {
+                "name": "start_time"
+              }
+            },
+            {
+              "label": "end_time",
+              "name": "end_time",
+              "type": "STRING",
+              "widget": {
+                "name": "end_time"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                88,
+                89,
+                111
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "AudioCrop",
+            "cnr_id": "audio-separation-nodes-comfyui",
+            "ver": "ac339561973f0c1e56db2f9d40f11b0fddda6763",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {
+              "start_time": true,
+              "end_time": true
+            },
+            "streamward_params": {
+              "start_time": {
+                "label": "开始时间",
+                "seq": 1
+              },
+              "end_time": {
+                "label": "结束时间",
+                "seq": 2
+              }
+            }
+          },
+          "widgets_values": [
+            "0",
+            "300"
+          ]
+        },
+        {
+          "id": 38,
+          "type": "YuE2GenerateMusic",
+          "pos": [
+            684,
+            -679
+          ],
+          "size": [
+            400,
+            410
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 41,
+          "mode": 0,
+          "showAdvanced": false,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 61
+            },
+            {
+              "label": "style",
+              "name": "style",
+              "type": "STRING",
+              "widget": {
+                "name": "style"
+              },
+              "link": 115
+            },
+            {
+              "label": "lyrics",
+              "name": "lyrics",
+              "type": "STRING",
+              "widget": {
+                "name": "lyrics"
+              },
+              "link": 1789858654867
+            },
+            {
+              "label": "abc",
+              "name": "abc",
+              "type": "STRING",
+              "widget": {
+                "name": "abc"
+              },
+              "link": 1789858646288
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "mode",
+              "name": "mode",
+              "type": "COMBO",
+              "widget": {
+                "name": "mode"
+              }
+            },
+            {
+              "label": "max_duration",
+              "name": "max_duration",
+              "type": "FLOAT",
+              "widget": {
+                "name": "max_duration"
+              },
+              "link": 102
+            },
+            {
+              "label": "temperature",
+              "name": "temperature",
+              "type": "FLOAT",
+              "widget": {
+                "name": "temperature"
+              }
+            },
+            {
+              "label": "top_p",
+              "name": "top_p",
+              "type": "FLOAT",
+              "widget": {
+                "name": "top_p"
+              }
+            },
+            {
+              "label": "top_k",
+              "name": "top_k",
+              "type": "INT",
+              "widget": {
+                "name": "top_k"
+              }
+            },
+            {
+              "label": "repetition_penalty",
+              "name": "repetition_penalty",
+              "type": "FLOAT",
+              "widget": {
+                "name": "repetition_penalty"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                58,
+                59
+              ]
+            },
+            {
+              "label": "seconds",
+              "name": "seconds",
+              "type": "FLOAT",
+              "links": [
+                68
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "YuE2GenerateMusic",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {
+                "abc": true,
+                "style": true,
+                "lyrics": true
+              },
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {
+              "abc": true,
+              "style": true,
+              "lyrics": true,
+              "max_duration": true
+            }
+          },
+          "widgets_values": [
+            "Mandarin Chinese, Chinese opera-xibo fusion pop, female voice switching between ethereal soft pop verses and piercing soaring Peking-opera style aria in the chorus, classical qi-fa breath launches and tail-note flicks, dizi flute and sheng drones answering the vocal lines, jinghu high-pitched violin lead with rapid ornamentation, guzheng arpeggios, pipa tremolo accents, wooden clapper and martial gongs marking transitions, modern subtle electronic pulse underneath, dramatic contrasts between restraint and explosive high notes, theatrical and proud, 80 BPM\n",
+            "",
+            "",
+            216441028433587,
+            "randomize",
+            "melody",
+            30,
+            1,
+            0.95,
+            100,
+            1.2
+          ]
+        },
+        {
+          "id": 43,
+          "type": "EmptyYuE2LatentAudio",
+          "pos": [
+            999,
+            -465
+          ],
+          "size": [
+            290,
+            100
+          ],
+          "flags": {
+            "disabled": false
+          },
+          "order": 43,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "seconds",
+              "name": "seconds",
+              "type": "FLOAT",
+              "widget": {
+                "name": "seconds"
+              },
+              "link": 68
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                60
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "EmptyYuE2LatentAudio",
+            "cnr_id": "comfy-core",
+            "ver": "0.35.0",
+            "ue_properties": {
+              "widget_ue_connectable": {
+                "seconds": true
+              },
+              "input_ue_unconnectable": {},
+              "version": "7.8"
+            },
+            "widget_ue_connectable": {
+              "seconds": true
+            }
+          },
+          "widgets_values": [
+            120,
+            1
+          ]
+        },
+        {
+          "type": "LoadAudio",
+          "title": "Load Audio",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "COMBO"
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1789851871804
+              ]
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Load Audio",
+            "streamward_material": {
+              "audio": {
+                "label": "加载原唱音频",
+                "required": true,
+                "seq": 1
+              }
+            }
+          },
+          "id": 127,
+          "pos": [
+            -824,
+            -629
+          ]
+        },
+        {
+          "type": "Egregora_DeepFilterNet_Denoise",
+          "title": "Egregora DeepFilterNet Denoise",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790162787282
+            },
+            {
+              "label": "dfn_model",
+              "name": "dfn_model",
+              "type": "COMBO",
+              "widget": {
+                "name": "dfn_model"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            },
+            {
+              "label": "use_postfilter",
+              "name": "use_postfilter",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "use_postfilter"
+              }
+            },
+            {
+              "label": "limit_ceiling",
+              "name": "limit_ceiling",
+              "type": "BOOLEAN",
+              "widget": {
+                "name": "limit_ceiling"
+              }
+            },
+            {
+              "label": "stereo_mode",
+              "name": "stereo_mode",
+              "type": "COMBO",
+              "widget": {
+                "name": "stereo_mode"
+              }
+            },
+            {
+              "label": "frame_ms",
+              "name": "frame_ms",
+              "type": "INT",
+              "widget": {
+                "name": "frame_ms"
+              }
+            },
+            {
+              "label": "strength",
+              "name": "strength",
+              "type": "FLOAT",
+              "widget": {
+                "name": "strength"
+              }
+            },
+            {
+              "label": "mix_curve",
+              "name": "mix_curve",
+              "type": "COMBO",
+              "widget": {
+                "name": "mix_curve"
+              }
+            },
+            {
+              "label": "adaptive_vad_source",
+              "name": "adaptive_vad_source",
+              "type": "COMBO",
+              "widget": {
+                "name": "adaptive_vad_source"
+              }
+            },
+            {
+              "label": "adaptive_mode",
+              "name": "adaptive_mode",
+              "type": "COMBO",
+              "widget": {
+                "name": "adaptive_mode"
+              }
+            },
+            {
+              "label": "adaptive_amount",
+              "name": "adaptive_amount",
+              "type": "FLOAT",
+              "widget": {
+                "name": "adaptive_amount"
+              }
+            },
+            {
+              "label": "vad_threshold",
+              "name": "vad_threshold",
+              "type": "FLOAT",
+              "widget": {
+                "name": "vad_threshold"
+              }
+            },
+            {
+              "label": "vad_smooth_ms",
+              "name": "vad_smooth_ms",
+              "type": "INT",
+              "widget": {
+                "name": "vad_smooth_ms"
+              }
+            },
+            {
+              "label": "post_gain_db",
+              "name": "post_gain_db",
+              "type": "FLOAT",
+              "widget": {
+                "name": "post_gain_db"
+              }
+            },
+            {
+              "label": "ceiling",
+              "name": "ceiling",
+              "type": "FLOAT",
+              "widget": {
+                "name": "ceiling"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1790162783933
+              ]
+            }
+          ],
+          "widgets_values": [
+            "DeepFilterNet2",
+            "auto",
+            false,
+            true,
+            "per_channel",
+            20,
+            0.65,
+            "equal_power",
+            "rms",
+            "more_on_noise",
+            0.45,
+            0.9,
+            60,
+            0.5,
+            0.98
+          ],
+          "properties": {
+            "Node name for S&R": "Egregora DeepFilterNet Denoise"
+          },
+          "id": 128,
+          "pos": [
+            1972,
+            -465
+          ]
+        },
+        {
+          "type": "PreviewAudio",
+          "title": "Preview Audio",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790162789277
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1790162787282
+              ]
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Preview Audio",
+            "streamward_capture": true
+          },
+          "id": 129,
+          "pos": [
+            1844,
+            -626
+          ]
+        },
+        {
+          "type": "PreviewAudio",
+          "title": "Preview Audio",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790162783933
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1790168507735
+              ]
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Preview Audio"
+          },
+          "id": 130,
+          "pos": [
+            2567,
+            -447
+          ]
+        },
+        {
+          "id": 131,
+          "type": "CLIPLoader",
+          "pos": [
+            3553,
+            -192
+          ],
+          "size": [
+            270,
+            106
+          ],
+          "flags": {},
+          "order": 0,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip_name",
+              "name": "clip_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "clip_name"
+              }
+            },
+            {
+              "label": "type",
+              "name": "type",
+              "type": "COMBO",
+              "widget": {
+                "name": "type"
+              }
+            },
+            {
+              "label": "device",
+              "name": "device",
+              "shape": 7,
+              "type": "COMBO",
+              "widget": {
+                "name": "device"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                8
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CLIPLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "clip_name": true,
+              "type": true,
+              "device": true
+            }
+          },
+          "widgets_values": [
+            "qwen_3_4b.safetensors",
+            "qwen_image",
+            "default"
+          ],
+          "color": "#2a363b",
+          "bgcolor": "#3f5159"
+        },
+        {
+          "id": 132,
+          "type": "VAELoader",
+          "pos": [
+            3626,
+            106
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 1,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "vae_name",
+              "name": "vae_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "vae_name"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "VAE",
+              "name": "VAE",
+              "type": "VAE",
+              "links": [
+                16
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAELoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "vae_name": true
+            }
+          },
+          "widgets_values": [
+            "ae.safetensors"
+          ],
+          "color": "#322",
+          "bgcolor": "#533"
+        },
+        {
+          "id": 133,
+          "type": "ConditioningZeroOut",
+          "pos": [
+            4636,
+            -244
+          ],
+          "size": [
+            200.04110717773438,
+            26
+          ],
+          "flags": {
+            "collapsed": false
+          },
+          "order": 9,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "conditioning",
+              "name": "conditioning",
+              "type": "CONDITIONING",
+              "link": 9
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                12
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "ConditioningZeroOut",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 134,
+          "type": "KSampler",
+          "pos": [
+            4998,
+            -374
+          ],
+          "size": [
+            270,
+            474
+          ],
+          "flags": {},
+          "order": 10,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 10
+            },
+            {
+              "label": "positive",
+              "name": "positive",
+              "type": "CONDITIONING",
+              "link": 11
+            },
+            {
+              "label": "negative",
+              "name": "negative",
+              "type": "CONDITIONING",
+              "link": 12
+            },
+            {
+              "label": "latent_image",
+              "name": "latent_image",
+              "type": "LATENT",
+              "link": 13
+            },
+            {
+              "label": "seed",
+              "name": "seed",
+              "type": "INT",
+              "widget": {
+                "name": "seed"
+              }
+            },
+            {
+              "label": "steps",
+              "name": "steps",
+              "type": "INT",
+              "widget": {
+                "name": "steps"
+              }
+            },
+            {
+              "label": "cfg",
+              "name": "cfg",
+              "type": "FLOAT",
+              "widget": {
+                "name": "cfg"
+              }
+            },
+            {
+              "label": "sampler_name",
+              "name": "sampler_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "sampler_name"
+              }
+            },
+            {
+              "label": "scheduler",
+              "name": "scheduler",
+              "type": "COMBO",
+              "widget": {
+                "name": "scheduler"
+              }
+            },
+            {
+              "label": "denoise",
+              "name": "denoise",
+              "type": "FLOAT",
+              "widget": {
+                "name": "denoise"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                15
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "KSampler",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "scheduler": true,
+              "denoise": true,
+              "seed": true,
+              "cfg": true,
+              "sampler_name": true,
+              "steps": true
+            }
+          },
+          "widgets_values": [
+            1052207736111737,
+            "randomize",
+            8,
+            1,
+            "dpmpp_2m_sde",
+            "sgm_uniform",
+            1
+          ]
+        },
+        {
+          "id": 135,
+          "type": "VAEDecode",
+          "pos": [
+            5349,
+            -281
+          ],
+          "size": [
+            140,
+            46
+          ],
+          "flags": {},
+          "order": 11,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "samples",
+              "name": "samples",
+              "type": "LATENT",
+              "link": 15
+            },
+            {
+              "label": "vae",
+              "name": "vae",
+              "type": "VAE",
+              "link": 16
+            }
+          ],
+          "outputs": [
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": [
+                1790167840181
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "VAEDecode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {}
+          },
+          "widgets_values": []
+        },
+        {
+          "id": 136,
+          "type": "UNETLoader",
+          "pos": [
+            3804,
+            -394
+          ],
+          "size": [
+            270,
+            294
+          ],
+          "flags": {},
+          "order": 2,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "unet_name",
+              "name": "unet_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "unet_name"
+              }
+            },
+            {
+              "label": "weight_dtype",
+              "name": "weight_dtype",
+              "type": "COMBO",
+              "widget": {
+                "name": "weight_dtype"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                7
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "UNETLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "weight_dtype": true,
+              "unet_name": true
+            }
+          },
+          "widgets_values": [
+            "z-image-turbo-fp8-e4m3fn.safetensors",
+            "default"
+          ],
+          "color": "#432",
+          "bgcolor": "#653"
+        },
+        {
+          "id": 137,
+          "type": "LoraLoader",
+          "pos": [
+            4338,
+            -309
+          ],
+          "size": [
+            270,
+            126
+          ],
+          "flags": {},
+          "order": 6,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "model",
+              "name": "model",
+              "type": "MODEL",
+              "link": 7
+            },
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 8
+            },
+            {
+              "label": "lora_name",
+              "name": "lora_name",
+              "type": "COMBO",
+              "widget": {
+                "name": "lora_name"
+              }
+            },
+            {
+              "label": "strength_model",
+              "name": "strength_model",
+              "type": "FLOAT",
+              "widget": {
+                "name": "strength_model"
+              }
+            },
+            {
+              "label": "strength_clip",
+              "name": "strength_clip",
+              "type": "FLOAT",
+              "widget": {
+                "name": "strength_clip"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "MODEL",
+              "name": "MODEL",
+              "type": "MODEL",
+              "links": [
+                10
+              ]
+            },
+            {
+              "label": "CLIP",
+              "name": "CLIP",
+              "type": "CLIP",
+              "links": [
+                6
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "LoraLoader",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.74",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.5.1"
+            },
+            "widget_ue_connectable": {
+              "lora_name": true,
+              "strength_model": true,
+              "strength_clip": true
+            }
+          },
+          "widgets_values": [
+            "造相-极致写实_造相.safetensors",
+            1.0000000000000002,
+            1.0000000000000002
+          ]
+        },
+        {
+          "id": 140,
+          "type": "EmptyLatentImage",
+          "pos": [
+            4614,
+            -773
+          ],
+          "size": [
+            270,
+            106
+          ],
+          "flags": {},
+          "order": 7,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "widget": {
+                "name": "width"
+              },
+              "link": 1788717597979
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "widget": {
+                "name": "height"
+              },
+              "link": 1788717599548
+            },
+            {
+              "label": "batch_size",
+              "name": "batch_size",
+              "type": "INT",
+              "widget": {
+                "name": "batch_size"
+              },
+              "link": 1788717599549
+            }
+          ],
+          "outputs": [
+            {
+              "label": "LATENT",
+              "name": "LATENT",
+              "type": "LATENT",
+              "links": [
+                13
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "EmptyLatentImage",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "batch_size": true,
+              "width": true,
+              "height": true
+            },
+            "streamward_node_alias": "图像大小"
+          },
+          "widgets_values": [
+            1080,
+            1920,
+            1
+          ]
+        },
+        {
+          "id": 141,
+          "type": "SizeSelector",
+          "pos": [
+            3680,
+            -954
+          ],
+          "size": [
+            270,
+            150
+          ],
+          "flags": {},
+          "order": 4,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "size_preset",
+              "name": "size_preset",
+              "type": "COMBO",
+              "widget": {
+                "name": "size_preset"
+              }
+            },
+            {
+              "label": "use_custom_size",
+              "name": "use_custom_size",
+              "type": "COMBO",
+              "widget": {
+                "name": "use_custom_size"
+              }
+            },
+            {
+              "label": "custom_width",
+              "name": "custom_width",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "custom_width"
+              }
+            },
+            {
+              "label": "custom_height",
+              "name": "custom_height",
+              "shape": 7,
+              "type": "INT",
+              "widget": {
+                "name": "custom_height"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "width",
+              "name": "width",
+              "type": "INT",
+              "links": [
+                1788717597979
+              ]
+            },
+            {
+              "label": "height",
+              "name": "height",
+              "type": "INT",
+              "links": [
+                1788717599548
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "尺寸预设",
+            "streamward_node_alias": "图像大小",
+            "widget_ue_connectable": {
+              "size_preset": true,
+              "use_custom_size": true,
+              "custom_width": true,
+              "custom_height": true
+            }
+          },
+          "widgets_values": [
+            "16:9-超清横屏：2048x1152",
+            "否",
+            1024,
+            1024
+          ]
+        },
+        {
+          "id": 142,
+          "type": "Int",
+          "pos": [
+            3682,
+            -617
+          ],
+          "size": [
+            270,
+            58
+          ],
+          "flags": {},
+          "order": 5,
+          "mode": 0,
+          "inputs": [],
+          "outputs": [
+            {
+              "label": "INT",
+              "name": "INT",
+              "type": "INT",
+              "links": [
+                1788717599549
+              ]
+            }
+          ],
+          "title": "批量大小",
+          "properties": {
+            "widget_ue_connectable": {},
+            "Node name for S&R": "Int",
+            "streamward_node_alias": "批量大小"
+          },
+          "widgets_values": [
+            1
+          ]
+        },
+        {
+          "id": 143,
+          "type": "CLIPTextEncode",
+          "pos": [
+            4233,
+            -551
+          ],
+          "size": [
+            400,
+            200
+          ],
+          "flags": {},
+          "order": 8,
+          "mode": 0,
+          "inputs": [
+            {
+              "label": "clip",
+              "name": "clip",
+              "type": "CLIP",
+              "link": 6
+            },
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790167657034
+            }
+          ],
+          "outputs": [
+            {
+              "label": "CONDITIONING",
+              "name": "CONDITIONING",
+              "type": "CONDITIONING",
+              "links": [
+                9,
+                11
+              ]
+            }
+          ],
+          "properties": {
+            "Node name for S&R": "CLIPTextEncode",
+            "cnr_id": "comfy-core",
+            "ver": "0.3.75",
+            "ue_properties": {
+              "widget_ue_connectable": {},
+              "input_ue_unconnectable": {},
+              "version": "7.2.2"
+            },
+            "widget_ue_connectable": {
+              "text": true
+            }
+          },
+          "widgets_values": [
+            ""
+          ],
+          "color": "#233",
+          "bgcolor": "#355"
+        },
+        {
+          "type": "TextPreview",
+          "title": "Preview Text",
+          "inputs": [
+            {
+              "label": "text",
+              "name": "text",
+              "type": "STRING",
+              "widget": {
+                "name": "text"
+              },
+              "link": 1790168529689
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1790167657034
+              ]
+            }
+          ],
+          "widgets_values": [
+            ""
+          ],
+          "properties": {
+            "Node name for S&R": "Preview Text"
+          },
+          "id": 146,
+          "pos": [
+            3393,
+            -738
+          ]
+        },
+        {
+          "type": "PreviewImage",
+          "title": "Preview Image",
+          "inputs": [
+            {
+              "label": "images",
+              "name": "images",
+              "type": "IMAGE",
+              "link": 1790167840181
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": []
+            },
+            {
+              "label": "IMAGE",
+              "name": "IMAGE",
+              "type": "IMAGE",
+              "links": []
+            }
+          ],
+          "widgets_values": [],
+          "properties": {
+            "Node name for S&R": "Preview Image",
+            "streamward_tail": {
+              "out": 1,
+              "slot": "image-chooser-1"
+            }
+          },
+          "id": 147,
+          "pos": [
+            5002,
+            -293
+          ]
+        },
+        {
+          "type": "AudioSeparation",
+          "title": "AudioSeparation",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790168507735
+            },
+            {
+              "label": "chunk_fade_shape",
+              "name": "chunk_fade_shape",
+              "type": "COMBO",
+              "widget": {
+                "name": "chunk_fade_shape"
+              }
+            },
+            {
+              "label": "chunk_length",
+              "name": "chunk_length",
+              "type": "FLOAT",
+              "widget": {
+                "name": "chunk_length"
+              }
+            },
+            {
+              "label": "chunk_overlap",
+              "name": "chunk_overlap",
+              "type": "FLOAT",
+              "widget": {
+                "name": "chunk_overlap"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": [
+                1790168525812
+              ]
+            },
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": []
+            },
+            {
+              "label": "AUDIO",
+              "name": "AUDIO",
+              "type": "AUDIO",
+              "links": []
+            }
+          ],
+          "widgets_values": [
+            "linear",
+            10,
+            0.1
+          ],
+          "properties": {
+            "Node name for S&R": "AudioSeparation"
+          },
+          "id": 148,
+          "pos": [
+            2961,
+            -596
+          ]
+        },
+        {
+          "type": "Apply Whisper",
+          "title": "Apply Whisper",
+          "inputs": [
+            {
+              "label": "audio",
+              "name": "audio",
+              "type": "AUDIO",
+              "link": 1790168525812
+            },
+            {
+              "label": "model",
+              "name": "model",
+              "type": "COMBO",
+              "widget": {
+                "name": "model"
+              }
+            },
+            {
+              "label": "language",
+              "name": "language",
+              "type": "COMBO",
+              "widget": {
+                "name": "language"
+              }
+            },
+            {
+              "label": "prompt",
+              "name": "prompt",
+              "type": "STRING",
+              "widget": {
+                "name": "prompt"
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "label": "STRING",
+              "name": "STRING",
+              "type": "STRING",
+              "links": [
+                1790168529689
+              ]
+            },
+            {
+              "label": "whisper_alignment",
+              "name": "whisper_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            },
+            {
+              "label": "whisper_alignment",
+              "name": "whisper_alignment",
+              "type": "whisper_alignment",
+              "links": []
+            }
+          ],
+          "widgets_values": [
+            "Belle-whisper-large-v3-zh-punct-ct2-float32",
+            "auto",
+            ""
+          ],
+          "properties": {
+            "Node name for S&R": "Apply Whisper"
+          },
+          "id": 149,
+          "pos": [
+            3283,
+            -557
+          ]
+        }
+      ],
+      "links": [
+        [
+          25,
+          18,
+          0,
+          19,
+          0,
+          "AUDIO_ENCODER"
+        ],
+        [
+          57,
+          44,
+          0,
+          37,
+          0,
+          "MODEL"
+        ],
+        [
+          58,
+          38,
+          0,
+          37,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          59,
+          38,
+          0,
+          37,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          60,
+          43,
+          0,
+          37,
+          3,
+          "LATENT"
+        ],
+        [
+          61,
+          44,
+          1,
+          38,
+          0,
+          "CLIP"
+        ],
+        [
+          64,
+          37,
+          0,
+          40,
+          0,
+          "LATENT"
+        ],
+        [
+          65,
+          44,
+          2,
+          40,
+          1,
+          "VAE"
+        ],
+        [
+          68,
+          38,
+          1,
+          43,
+          0,
+          "FLOAT"
+        ],
+        [
+          88,
+          60,
+          0,
+          50,
+          0,
+          "AUDIO"
+        ],
+        [
+          89,
+          60,
+          0,
+          19,
+          1,
+          "AUDIO"
+        ],
+        [
+          102,
+          67,
+          1,
+          38,
+          6,
+          "FLOAT"
+        ],
+        [
+          111,
+          60,
+          0,
+          67,
+          0,
+          "AUDIO"
+        ],
+        [
+          115,
+          81,
+          0,
+          38,
+          1,
+          "STRING"
+        ],
+        [
+          1789851871804,
+          127,
+          0,
+          60,
+          0,
+          "AUDIO"
+        ],
+        [
+          1789858646288,
+          19,
+          0,
+          38,
+          3,
+          "STRING"
+        ],
+        [
+          1789858654867,
+          49,
+          0,
+          38,
+          2,
+          "STRING"
+        ],
+        [
+          1790162783933,
+          128,
+          0,
+          130,
+          0,
+          "AUDIO"
+        ],
+        [
+          1790162787282,
+          129,
+          0,
+          128,
+          0,
+          "AUDIO"
+        ],
+        [
+          1790162789277,
+          40,
+          0,
+          129,
+          0,
+          "AUDIO"
+        ],
+        [
+          6,
+          137,
+          1,
+          143,
+          0,
+          "CLIP"
+        ],
+        [
+          7,
+          136,
+          0,
+          137,
+          0,
+          "MODEL"
+        ],
+        [
+          8,
+          131,
+          0,
+          137,
+          1,
+          "CLIP"
+        ],
+        [
+          9,
+          143,
+          0,
+          133,
+          0,
+          "CONDITIONING"
+        ],
+        [
+          10,
+          137,
+          0,
+          134,
+          0,
+          "MODEL"
+        ],
+        [
+          11,
+          143,
+          0,
+          134,
+          1,
+          "CONDITIONING"
+        ],
+        [
+          12,
+          133,
+          0,
+          134,
+          2,
+          "CONDITIONING"
+        ],
+        [
+          13,
+          140,
+          0,
+          134,
+          3,
+          "LATENT"
+        ],
+        [
+          15,
+          134,
+          0,
+          135,
+          0,
+          "LATENT"
+        ],
+        [
+          16,
+          132,
+          0,
+          135,
+          1,
+          "VAE"
+        ],
+        [
+          1788717597979,
+          141,
+          0,
+          140,
+          0,
+          "INT"
+        ],
+        [
+          1788717599548,
+          141,
+          1,
+          140,
+          1,
+          "INT"
+        ],
+        [
+          1788717599549,
+          142,
+          0,
+          140,
+          2,
+          "INT"
+        ],
+        [
+          1790167657034,
+          146,
+          0,
+          143,
+          1,
+          "STRING"
+        ],
+        [
+          1790167840181,
+          135,
+          0,
+          147,
+          0,
+          "IMAGE"
+        ],
+        [
+          1790168507735,
+          130,
+          0,
+          148,
+          0,
+          "AUDIO"
+        ],
+        [
+          1790168525812,
+          148,
+          0,
+          149,
+          0,
+          "AUDIO"
+        ],
+        [
+          1790168529689,
+          149,
+          0,
+          146,
+          0,
+          "STRING"
+        ],
+        [
+          1790168549394,
+          50,
+          3,
+          49,
+          0,
+          "AUDIO"
+        ]
+      ],
+      "groups": [],
+      "last_node_id": 149,
+      "last_link_id": 1790168549394,
+      "version": 0.4
+    },
+    "ui": {
+      "category": "音乐制作"
+    },
+    "manifest": {
+      "params": [
+        {
+          "nodeId": "60",
+          "nodeType": "AudioCrop",
+          "field": "start_time",
+          "label": "开始时间",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "0",
+          "scope": "editable",
+          "officialKind": "text",
+          "slider": false
+        },
+        {
+          "nodeId": "60",
+          "nodeType": "AudioCrop",
+          "field": "end_time",
+          "label": "结束时间",
+          "hint": null,
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "300",
+          "scope": "editable",
+          "officialKind": "text",
+          "slider": false
+        },
+        {
+          "nodeId": "81",
+          "nodeType": "easy positive",
+          "field": "positive",
+          "label": "提示词",
+          "hint": "给出翻唱需求",
+          "fromMark": true,
+          "type": "text",
+          "group": "main",
+          "value": "Mandarin Chinese, Chinese opera-xibo fusion pop, female voice switching between ethereal soft pop verses and piercing soaring Peking-opera style aria in the chorus, classical qi-fa breath launches and tail-note flicks, dizi flute and sheng drones answering the vocal lines, jinghu high-pitched violin lead with rapid ornamentation, guzheng arpeggios, pipa tremolo accents, wooden clapper and martial gongs marking transitions, modern subtle electronic pulse underneath, dramatic contrasts between restraint and explosive high notes, theatrical and proud, 80 BPM\n",
+          "textIn": true,
+          "scope": "editable",
+          "officialKind": "customtext",
+          "slider": false
+        }
+      ],
+      "materialSlots": [
+        {
+          "nodeId": "127",
+          "nodeType": "LoadAudio",
+          "field": "audio",
+          "label": "加载原唱音频",
+          "hint": "上传音频（可选）",
+          "type": "audio",
+          "isMask": false,
+          "required": true,
+          "marked": true
+        }
+      ],
+      "outputNodes": [
+        "PreviewAudio"
+      ],
+      "capturePoints": [
+        {
+          "nodeId": "129",
+          "nodeType": "PreviewAudio",
+          "kind": "audio"
+        }
+      ],
+      "tailNodeId": "147",
+      "tailSlotId": "image-chooser-1",
+      "tailOutIdx": 1,
+      "category": "audio",
+      "isInpaint": false,
+      "description": "【音频生成】\n关键节点：VAE 音频解码（把音频 latent 解码回音频）；采样器（用模型 + 正负条件去噪采样，生成图片）；Load Checkpoint（Loads a diffusion model checkpoint, diffusio…）；Preview Audio（Preview the audio without saving it to the C…）；SheetSage2 Audio to ABC（Transcribes vocal and instrumental melodies…）；AudioSeparation（Separate audio into four sources: bass, drum…）；…（共 8 个）。\n核心模型：底模 yue2_3b_bf16.safetensors。\n输入：参考音频。\n输出：音频。\n可调参数：开始时间、结束时间、提示词（给出翻唱需求）。",
+      "paramNodes": [
+        {
+          "nodeId": "44",
+          "nodeType": "CheckpointLoaderSimple",
+          "title": "CheckpointLoaderSimple",
+          "desc": "Loads a diffusion model checkpoint, diffusion models are used to denoise latents."
+        },
+        {
+          "nodeId": "81",
+          "nodeType": "easy positive",
+          "title": "easy positive",
+          "desc": "属于「EasyUse/Prompt」分类"
+        },
+        {
+          "nodeId": "19",
+          "nodeType": "SheetSage2AudioToABC",
+          "title": "SheetSage2AudioToABC",
+          "desc": "Transcribes vocal and instrumental melodies from music into ABC notation. Connect abc output to YuE2 Generate Music node and use the matching mode."
+        },
+        {
+          "nodeId": "40",
+          "nodeType": "VAEDecodeAudio",
+          "title": "VAEDecodeAudio",
+          "desc": "把音频 latent 解码回音频。"
+        },
+        {
+          "nodeId": "18",
+          "nodeType": "AudioEncoderLoader",
+          "title": "AudioEncoderLoader",
+          "desc": "属于「model/loaders」分类"
+        },
+        {
+          "nodeId": "37",
+          "nodeType": "KSampler",
+          "title": "KSampler",
+          "desc": "用模型 + 正负条件去噪采样，生成图片。"
+        },
+        {
+          "nodeId": "50",
+          "nodeType": "AudioSeparation",
+          "title": "AudioSeparation",
+          "desc": "Separate audio into four sources: bass, drums, other, and vocals."
+        },
+        {
+          "nodeId": "67",
+          "nodeType": "Audio Duration",
+          "title": "Audio Duration",
+          "desc": "属于「audio/utils」分类"
+        },
+        {
+          "nodeId": "49",
+          "nodeType": "Apply Whisper",
+          "title": "Apply Whisper",
+          "desc": "属于「whisper」分类"
+        },
+        {
+          "nodeId": "60",
+          "nodeType": "AudioCrop",
+          "title": "AudioCrop",
+          "desc": "Crop (trim) audio to a specific start and end time."
+        },
+        {
+          "nodeId": "38",
+          "nodeType": "YuE2GenerateMusic",
+          "title": "YuE2GenerateMusic",
+          "desc": "Generates music tokens and acoustic conditioning from style, lyrics, and an ABC notation. Provide the generated seconds to the Empty YuE2 Latent Audio node. An empty ABC input ignores the selected mode."
+        },
+        {
+          "nodeId": "43",
+          "nodeType": "EmptyYuE2LatentAudio",
+          "title": "EmptyYuE2LatentAudio",
+          "desc": "属于「model/latent/yue2」分类"
+        },
+        {
+          "nodeId": "127",
+          "nodeType": "LoadAudio",
+          "title": "Load Audio",
+          "desc": "属于「audio」分类"
+        },
+        {
+          "nodeId": "129",
+          "nodeType": "PreviewAudio",
+          "title": "Preview Audio",
+          "desc": "Preview the audio without saving it to the ComfyUI output directory."
+        }
+      ]
+    }
+  },
+  "requires": {
+    "nodeTypes": [
+      "Apply Whisper",
+      "Audio Duration",
+      "AudioCrop",
+      "AudioEncoderLoader",
+      "AudioSeparation",
+      "CLIPLoader",
+      "CLIPTextEncode",
+      "CheckpointLoaderSimple",
+      "ConditioningZeroOut",
+      "Egregora_DeepFilterNet_Denoise",
+      "EmptyLatentImage",
+      "EmptyYuE2LatentAudio",
+      "Int",
+      "KSampler",
+      "LoadAudio",
+      "LoraLoader",
+      "PreviewAudio",
+      "PreviewImage",
+      "SheetSage2AudioToABC",
+      "SizeSelector",
+      "TextPreview",
+      "UNETLoader",
+      "VAEDecode",
+      "VAEDecodeAudio",
+      "VAELoader",
+      "YuE2GenerateMusic",
+      "easy positive"
+    ]
+  },
+  "sanitize": {
+    "authParams": 0,
+    "userIds": 0,
+    "userIdHits": 0
+  }
+}
