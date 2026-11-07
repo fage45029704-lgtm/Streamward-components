@@ -2,21 +2,8 @@
   "format": "streamward-registry",
   "formatVersion": 1,
   "name": "万流集组件仓库",
-  "updatedAt": "2026-11-07T09:58:21.333Z",
-  "count": 1,
-  "packs": [
-    {
-      "id": "wf-mvfb7sku-z33x7a",
-      "name": "video_minimax_h3_r2v 分镜台",
-      "version": "1.1.0",
-      "category": "短剧分镜台",
-      "description": "【视频生成】 关键节点：加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；采样器选择（选择采样算法「如 euler 等」）；自定义高级采样（新版自定义采样节点「H3/新架构视频工作流用」）；加载图片（从上传口读取图片「外部…",
-      "file": "packs/video_minimax_h3_r2v 分镜台@1.1.0.swc.json",
-      "sha256": "aadfc178703258e242e377e3756c1559e2d7cd9e3636d75022b5b8ca2bee121e",
-      "bytes": 83224,
-      "nodes": 29,
-      "params": 4,
-      "updatedAt": "2026-11-07T09:58:21.332Z"
-    }
-  ]
+  "description": "画布组件包（.swc.json）。装了就能在双击选择器的「模型组件」里看到。",
+  "updatedAt": "2026-11-07T10:20:34.308Z",
+  "count": 0,
+  "packs": []
 }
