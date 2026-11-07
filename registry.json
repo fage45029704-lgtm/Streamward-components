@@ -2,22 +2,21 @@
   "format": "streamward-registry",
   "formatVersion": 1,
   "name": "万流集组件仓库",
-  "description": "画布组件包（.swc.json）。装了就能在双击选择器的「模型组件」里看到。",
-  "updatedAt": "2026-11-07T09:09:59.502Z",
+  "updatedAt": "2026-11-07T09:58:21.333Z",
   "count": 1,
   "packs": [
     {
       "id": "wf-mvfb7sku-z33x7a",
       "name": "video_minimax_h3_r2v 分镜台",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "短剧分镜台",
-      "description": "【视频生成】 关键节点：加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；采样器选择（选择采样算法「如 euler 等」）；自定义高级采样（新版自定义采样节点「H3/新架构视频工作流用」）；加载图片（从上传口读取图片「外部图片素材入口」）；加载 CLIP（加载文本编码器 CLIP 模型「把提示词编码成条件」）；加载扩散模型（加载 UNet/DiT 扩散主干模型「生成的核心权重」）；…（共 19 个）。 核心模型：VAE minimax_h3_video_vae_fp16.safetensors / VAE minimax_h3_audio_vae_fp32.safetenso",
-      "file": "packs/分镜台@1.0.0.swc.json",
-      "sha256": "42f97bd35caffd80036cd8cb71dbb18c10613e45debca5b790c0dd07550b64c9",
+      "description": "【视频生成】 关键节点：加载 VAE（加载 VAE 模型「潜空间 ↔ 像素空间的编解码」）；采样器选择（选择采样算法「如 euler 等」）；自定义高级采样（新版自定义采样节点「H3/新架构视频工作流用」）；加载图片（从上传口读取图片「外部…",
+      "file": "packs/video_minimax_h3_r2v 分镜台@1.1.0.swc.json",
+      "sha256": "aadfc178703258e242e377e3756c1559e2d7cd9e3636d75022b5b8ca2bee121e",
       "bytes": 83224,
       "nodes": 29,
       "params": 4,
-      "updatedAt": "2026-11-07T09:09:59.472Z"
+      "updatedAt": "2026-11-07T09:58:21.332Z"
     }
   ]
 }
